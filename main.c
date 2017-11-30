@@ -17,6 +17,30 @@ int str_contains(char c)
     return (0);
 }
 
+char			*ft_itoa(int n)
+{
+	char	*str;
+	int		temp_n;
+	size_t	len;
+	char	sign;
+
+	sign = (n < 0) ? -1 : 1;
+	len = 2 + (n < 0);
+	temp_n = n;
+	while ((n = n / 10))
+		len++;
+	n = temp_n;
+	if ((str = (char *)malloc(sizeof(char) * len--)) == NULL)
+		return (NULL);
+	str[len--] = '\0';
+	str[len--] = sign * (n % 10) + '0';
+	while ((n = n / 10))
+		str[len--] = sign * (n % 10) + '0';
+	if (sign < 0)
+		str[len] = '-';
+	return (str);
+}
+
 void    putnbr(int n)
 {
     if(n >= 10)
@@ -46,10 +70,14 @@ void    handle_d_i(char *f, int d_i)
     int i;
     int l_justfy;
     int force_pos;
+    int num_digits;
 
     l_justfy = flags('-', f);
     force_pos = flags('+', f);
     i = atoi(f + (l_justfy + force_pos));
+    num_digits = strlen(ft_itoa(i));
+    if (force_pos)
+        i = i - (num_digits + 1);
     if (l_justfy)
     {
         if (force_pos)
