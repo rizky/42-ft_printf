@@ -15,7 +15,7 @@ FILES:=ft_vasprintf ft_printf ft_vprintf db_printf ft_convert \
 	ft_convert_1 ft_convert_2 ft_convert_3 ft_convert_4 ft_convert_5
 
 # ----- Libft ------
-LFTDIR:=../Libft
+LFTDIR:=./Libft
 # ==================
 
 # ------------------
