@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/03 18:35:59 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/12/03 18:36:01 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 /*
@@ -18,6 +30,21 @@ int		ft_printf(char const *format, ...)
 
 	va_start(ap, format);
 	ans = ft_vprintf(format, ap);
+	va_end(ap);
+	return (ans);
+}
+
+/*
+** Allocates a string, writes into it, and returns it through _ret_
+*/
+
+int		ft_asprintf(char **ret, char const *format, ...)
+{
+	va_list		ap;
+	int			ans;
+
+	va_start(ap, format);
+	ans = ft_vasprintf(ret, format, ap);
 	va_end(ap);
 	return (ans);
 }

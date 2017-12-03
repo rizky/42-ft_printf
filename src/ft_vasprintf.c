@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_vasprintf.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/12/03 18:36:35 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static inline const char
@@ -57,8 +69,8 @@ int
 	while (*s != '\0')
 	{
 		m = NEW_MODIFIER;
-		if (*s == '%' && (s = pf_match(s + 1, &m, ap)) && m.conversion)
-			pf_convert(&m, &d, ap);
+		// if (*s == '%' && (s = pf_match(s + 1, &m, ap)) && m.conversion)
+			// pf_convert(&m, &d, ap);
 		p = s;
 		while (*p != '\0' && *p != '%')
 			p++;

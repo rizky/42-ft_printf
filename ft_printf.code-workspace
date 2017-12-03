@@ -7,7 +7,12 @@
 			"path": "Libft"
 		},
 		{
-			"path": "ft_printf"
+			"path": "/Users/rnugroho/Documents/Codes/42/ft_printf/ft_printf"
 		}
-	]
+	],
+	"settings": {
+		"files.associations": {
+			"ft_printf.h": "c"
+		}
+	}
 }
