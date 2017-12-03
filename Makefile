@@ -1,96 +1,91 @@
-NAME = libftprintf.a
+#******************************************************************************#
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: angagnie <angagnie@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/11/01 20:07:00 by angagnie          #+#    #+#              #
+#    Updated: 2016/12/22 16:17:09 by angagnie         ###   ########.fr        #
+#                                                                              #
+#******************************************************************************#
 
-C_INCLUDE_PATH += include/ libft/include
+NAME:=libftprintf.a
+FILES:=ft_printf ft_vprintf ft_vasprintf
 
-CFLAGS += -Wall -Wextra -Werror
+# ----- Libft ------
+LFTDIR:=./Libft
+# ==================
 
-CFLAGS += $(foreach d, $(C_INCLUDE_PATH), -I$d)
+# ------------------
+COMPILER:=clang
+LINKER:=ar rc
+SRCPATH:=src/
+HDRPATH:=include/
+CCHPATH:=cache/
+IFLAGS:=-I $(HDRPATH) -I $(LFTDIR)/include
+LFLAGS:=-L $(LFTDIR) -lft
+CFLAGS:=-Wall -Wextra $(IFLAGS)
+# ==================
 
-SRCS = src/ft_printf.c \
-	   src/parse_handlers.c \
-	   src/utils/get_unsigned_from_length.c \
-	   src/utils/width_pad.c \
-	   src/utils/nbrlen.c \
-	   src/utils/calc_nbrstrlen.c \
-	   src/utils/nbrforceprefix.c \
-	   src/handlers/get_handler_arr.c \
-	   src/handlers/generic_handle_unsigned.c \
-	   src/handlers/handle_null.c \
-	   src/handlers/handle_char.c \
-	   src/handlers/handle_escape.c \
-	   src/handlers/handle_hex.c \
-	   src/handlers/handle_int.c \
-	   src/handlers/handle_long.c \
-	   src/handlers/handle_octal.c \
-	   src/handlers/handle_ptr.c \
-	   src/handlers/handle_str.c \
-	   src/handlers/handle_unsigned.c \
-	   src/handlers/handle_wchar.c \
-	   src/handlers/handle_binary.c \
-	   src/handlers/handle_charswritten.c \
-	   src/handlers/handle_float.c \
-	   src/handlers/handle_wstr.c
+# ----- Colors -----
+BLACK:="\033[1;30m"
+RED:="\033[1;31m"
+GREEN:="\033[1;32m"
+CYAN:="\033[1;35m"
+PURPLE:="\033[1;36m"
+WHITE:="\033[1;37m"
+EOC:="\033[0;0m"
+# ==================
 
-LIBFT_FUNS =	putchar_fd \
-				putchar_fd \
-				putstr_fd \
-				putnbrbase_fd \
-				putnstr_fd \
-				putwchar_fd \
-				memset \
-				strchr \
-				putstr \
-				strlen \
-				putnstr \
-				bzero \
-				isdigit \
-				memalloc \
-				putchar \
-				max \
-				tolower \
-				nstrlen \
-				putwchar \
-				putnwstr \
-				putnbrbase \
-
-CFLAGS += $(foreach fun,$(LIBFT_FUNS),-Dft_$(fun)=ft_printf_libft_$(fun))
-
-OBJS = $(patsubst src/%.c,obj/%.o,$(SRCS))
-OBJS += $(foreach fun,$(LIBFT_FUNS),obj/libft/ft_$(fun).o)
-
-CP = cp
-
-RM = rm -f
+# ------ Auto ------
+SRC:=$(addprefix $(SRCPATH),$(addsuffix .c,$(FILES)))
+OBJ:=$(addprefix $(CCHPATH),$(addsuffix .o,$(FILES)))
+# ==================
+CCHF:=.cache_exists
 
 all: $(NAME)
 
-$(OBJS): | obj
+$(NAME): $(OBJ)
+	@echo $(CYAN) "\tCompiling $@" $(RED)
+	@$(LINKER) $(NAME) $(OBJ) $(LFTDIR)/cache/*.o $(LFTDIR)/cache/*/*.o
+	@ranlib $(NAME)
+	@echo $(GREEN)"OK"$(EOC)
 
-obj:
-	@mkdir -p $@
-	@mkdir -p $@/handlers
-	@mkdir -p $@/utils
-	@mkdir -p $@/libft
+$(CCHPATH)%.o: $(SRCPATH)%.c | $(CCHF)
+	@echo $(PURPLE) "\tCompiling $< into $@" $(EOC)
+	@$(COMPILER) $(CFLAGS) -c $< -o $@
 
-obj/%.o: src/%.c
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+%.c:
+	@echo $(RED)"Missing file : $@" $(EOC)
 
-obj/libft/%.o: libft/%.c
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
-
-$(NAME): $(OBJS)
-	$(AR) -rcs $(NAME) $^
+$(CCHF):
+	@mkdir $(CCHPATH)
+	@touch $(CCHF)
 
 clean:
-	$(RM) $(OBJS)
-
-libfttest: $(NAME) obj/main.o
-	$(CC) -o $@ obj/main.o -L. -lftprintf
+	@rm -rf $(CCHPATH)
+	@rm -f $(CCHF)
 
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) -rf obj
+	@rm -f $(NAME)
+	@rm -f test_me
+	@rm -rf test_me.dSYM/
 
-re: fclean all
+re: fclean
+	@$(MAKE) all
 
-.PHONY: all clean fclean re
+test: $(NAME)
+	@echo "Files :" $(FILES)
+	@$(COMPILER) -g $(CFLAGS) src/main.c $(SRC) $(LFLAGS) -o test_me
+
+debug: $(NAME)
+	@echo "Files :" $(FILES)
+	@$(COMPILER) -g $(CFLAGS) src/main.c $(SRC) $(LFLAGS)
+
+norm:
+	@echo $(RED)
+	@norminette $(SRC) $(HDRPATH) | grep -v	Norme -B1 || true
+	@echo $(END)
+
+.PHONY: all clean fclean re test norme
