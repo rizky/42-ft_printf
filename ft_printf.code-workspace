@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": “.“
+		},
+		{
+			"path": “./ft_printf"
+		},
+		{
+			"path": “./Libft"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"libft.h": "c",
+			"header.h": "c",
+			"fillit.h": "c",
+			"get_next_line.h": "c",
+			"unistd.h": "c"
+		}
+	}
+}
