@@ -69,8 +69,11 @@ int
 	while (*s != '\0')
 	{
 		m = NEW_MODIFIER;
-		// if (*s == '%' && (s = pf_match(s + 1, &m, ap)) && m.conversion)
-			// pf_convert(&m, &d, ap);
+		if (*s == '%')
+		{
+		 	s = pf_match(s + 1, &m, ap);
+			pf_convert(&m, &d, ap);
+		}
 		p = s;
 		while (*p != '\0' && *p != '%')
 			p++;
@@ -83,20 +86,3 @@ int
 	*ret = d.data;
 	return (d.size - 1);
 }
-
-/*
-** -------------------
-**		m = NEW_MODIFIER;
-**		p = s;
-**		while (*p != '\0' && *p != '%')
-**			p++;
-**		if (p != s)
-**			fta_append(&d, (void *)s, p - s);
-**		s = p;
-**		if (*p == '%')
-**		{
-**			s = pf_match(p + 1, &m);
-**			pf_convert(m, d, ap);
-**		}
-** ===============
-*/

@@ -36,10 +36,28 @@ int		main(int ac, char **av)
 	int		pf;
 	int		ft;
 
-	TEST("1-Simple String.", 0);
-	TEST("2-Stringception _%s_", "Hello World");
-	TEST("%s", "The End");
-	(void)ac;
-	(void)av;
+	// TEST("1-Simple String.", 0);
+	// TEST("2-Stringception _%s_", "Hello World");
+	TEST("3-Stringception _%20s_", "Hello World");
+	TEST("4-Stringception _%-20s_", "Hello World");
+	TEST("5-Stringception _%20.5s_", "Hello World");
+	TEST("6-Stringception _%-20.5s_", "Hello World");
+	TEST("7-Stringception _%020s_", "Hello World");
+	TEST("8-Stringception _%0-.20s_", "Hello World");
+	TEST("9-Stringception _%20s_", "Hello World");
+	TEST("A-Stringception _%20s_", "Hello World");
+	TEST("B-Stringception _%20.s_", "Hello World");
+	TEST("C-Stringception _%-#20s_", "Hello World");
+	TEST("D-Integer _%hi_", -61234);
+	TEST("D-Integer _%hhi_", -61234);
+	TEST("D-Integer _%hhhi_", -61234);
+	// TEST("E-Integer _%hhu_", -61234);
+	// TEST("F-Integer _%hhhi_", -61234);
+	// TEST("G-Integer _%hhhu_", -61234);
+	// TEST("H-Integer _%hhhhi_", -61234);
+	// TEST("I-Integer _%hhhhu_", -61234);
+	// TEST("J-Integer [p] _%#.10hhhx_", -61234);
+	// TEST("K-Integer _%lX_", 0xDEADBEEF);
+	// TEST("%s", "The End");
 	return (0);
 }

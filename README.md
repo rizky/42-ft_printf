@@ -4,7 +4,10 @@ Tasks
 - You must manage the flags #0-+ and space
 - You must manage the minimum field-width
 - You must manage the precision
-- You must manage the flags hh, h, l, ll, j, et z.
+- You must manage "length modifier" flags hh, h, l, ll, j, et z.
+
+Bonus
+
 - More detailed conversions management: eE, fF, gG, aA, n.
 - More detailed flags management: *, $, L, ’.
 - Non-existing flags management: %b to print in binary, %r to print a string of non- printable characters, %k to print a date in any ordinary ISO format etc.
@@ -13,3 +16,5 @@ Tasks
 
 Guides
 - https://github.com/tvisenti/Ft_Printf/blob/master/inc/ft_printf.h
+- http://en.cppreference.com/w/cpp/io/c/fprintf
+
