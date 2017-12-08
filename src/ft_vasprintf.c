@@ -27,10 +27,10 @@ static inline const char
 }
 
 static inline void
-	pf_set_length(char c, char *lm)
+	pf_set_length_modifier(char c, char *lm)
 {
 	if ((c == 'h' || c == 'l') && *lm == c)
-		*lm = c - 32;
+		*lm = ft_toupper(c);
 	else if (*lm == 0 || !(c == 'h' && *lm != 'H'))
 		*lm = c;
 }
@@ -49,7 +49,7 @@ static inline const char
 		else if ((n = is_in(*s, FTPF_SWITCHES)) >= 0)
 			m->booleans.t[n] = 1;
 		else if (is_in(*s, FTPF_LM) >= 0)
-			pf_set_length(*s, &(m->length));
+			pf_set_length_modifier(*s, &(m->length));
 		else if ((m->conversion = *s))
 			return (s + 1);
 		s++;

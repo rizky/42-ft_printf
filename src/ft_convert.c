@@ -1,24 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_convert.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: angagnie <angagnie@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 02:02:14 by angagnie          #+#    #+#             */
-/*   Updated: 2017/01/31 18:07:49 by angagnie         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_printf.h"
 
 static inline int
 	pf_print(t_modifier *m, t_array *d, va_list ap)
 {
 	int			i;
-	char const	*c = "sSpdDioOuUxXcC";
-	// char const	*c = "diouxXcCsSpbn";
-	void *const	t[] = {&pf_cv_s, NULL, NULL, &pf_cv_di, &pf_cv_di, &pf_cv_di};
+	char const	*c = "sSpdDioOuUxXcCbn";
+	void *const	t[] = 
+		{	&pf_cv_s, &pf_cv_s, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
+			&pf_cv_o, &pf_cv_o, &pf_cv_u, &pf_cv_u, &pf_cv_x, &pf_cv_cx,
+			&pf_cv_c, &pf_cv_c, &pf_cv_b, &pf_cv_n
+		};
 
 	if (is_in(m->conversion, "DOU") >= 0)
 		m->length = 'l';

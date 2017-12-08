@@ -11,7 +11,7 @@
 #******************************************************************************#
 
 NAME:=libftprintf.a
-FILES:=ft_printf ft_vprintf ft_vasprintf ft_convert ft_convert_di ft_convert_s
+FILES:=ft_printf ft_vprintf ft_vasprintf ft_convert ft_convert_numeric ft_convert_char
 
 # ----- Libft ------
 LFTDIR:=./Libft
