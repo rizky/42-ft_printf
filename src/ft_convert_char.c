@@ -37,6 +37,7 @@ int		pf_cv_c(t_modifier *m, t_array *d, va_list ap)
 
 	(void)m;
 	arg = (char)va_arg(ap, int);
+	m->precision = -1;
 	fta_append(d, (void *)&arg, 1);
 	return (1);
 }
