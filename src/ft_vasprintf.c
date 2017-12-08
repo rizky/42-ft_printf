@@ -72,7 +72,8 @@ int
 		if (*s == '%')
 		{
 		 	s = pf_match(s + 1, &m, ap);
-			pf_convert(&m, &d, ap);
+			if (m.conversion)
+				pf_convert(&m, &d, ap);
 		}
 		p = s;
 		while (*p != '\0' && *p != '%')

@@ -3,6 +3,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#define LONG_MAX  __LONG_MAX__
+
+#define LONG_MIN  (-__LONG_MAX__ -1L)
+#define ULONG_MAX (__LONG_MAX__ *2UL+1UL)
+
 #define TEST(FMT,...)															\
 	pf = asprintf(&pf_dst,FMT,##__VA_ARGS__);									\
 	ft = ft_asprintf(&ft_dst,FMT,##__VA_ARGS__);								\
@@ -26,6 +31,9 @@ int		main(int ac, char **av)
 
 	TEST("%03.2d", 0);
 	TEST("%03.2d", 1);
+	TEST("%%");
+	TEST("% ");
+	TEST("% h");
 
 	TEST("1-Simple String.", 0);
 	TEST("2-Stringception _%s_", "Hello World");
@@ -116,7 +124,19 @@ int		main(int ac, char **av)
 	TEST("28-Char {%05.C}", 65);
 	TEST("28-Char {%5.C}", 65);
 	TEST("1Z-Binary %b", 20);
-	TEST("%%");
+
+	TEST("{%030S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	TEST("%hhC, %hhC", 0, L'Á±≥');
+	TEST("{%05.*d}", -15, 42);
+	TEST("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")
+	TEST("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
+	TEST("%C", L'ÁM-^L´');
+	TEST("{%f}{%F}", 1.42, 1.42);
+	TEST("{%*d}", -5, 42);
+	TEST("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	char cc;
+	TEST("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &cc, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	TEST("{% S}", L"(null)");
 
 	int a,b,c,d,e,f;
 	ft_printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &a, &b, &c);
