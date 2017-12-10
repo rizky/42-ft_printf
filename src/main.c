@@ -127,7 +127,6 @@ int		main(int ac, char **av)
 	// TEST("{%.3f}{%F}", 1.419, -1.419);
 	// TEST("{% S}", L"(null)");
 	// TEST("{%05.*d}", 15, 42);
-	// TEST("%hhC, %hhC", 0, L'Á±≥');
 	// TEST("{%05.*d}", -15, 42);
 	// TEST("%.2s is a string", "");
 	// TEST("%-.2s is a string", "");
@@ -141,6 +140,50 @@ int		main(int ac, char **av)
 	// TEST("%#.3i", 1);
 	// TEST("{%*d}", 5, 42);
 	// TEST("{%05.s}", 0);
+	// ft_printf("1Z-Binary %b\n", 2);
+	// int a,b,c,d,e,f;
+	// ft_printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &a, &b, &c);
+	// printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &d, &e, &f);
+	// if (a != d || b != e || c != f)
+	// 	ft_printf("FAIL : (Real,FT) (%i,%i) (%i,%i) (%i,%i)\n", d,a,e,b,f,c);
+	// else
+	// 	ft_printf("SUCCESS : (Real,FT) (%i,%i) (%i,%i) (%i,%i)\n", d,a,e,b,f,c);
+	// TEST("%.f", -1.22e-9);
+	// TEST("%e", 1222e9);
+	// TEST("%e", -1e9);
+	// TEST("%e", -1e-9);
+	// TEST("%.2e", 0);
+	// TEST("%E", 1222e9);
+	// TEST("%E", -1e9);
+	
+	// TEST("%E", (-1e-9));
+	// TEST("%.2E", 0);
+	// TEST("%.e", 0);
+	// TEST("%.e", -1.22e-9);
+	// double x=34523423.52342353;
+    // TEST("%g",x);
+	// x = 0.10000000000001;
+	// TEST("%04.2f", x);
+	// TEST("%04.1e", x);
+	// TEST("%04.2g", x);
+	// TEST("%g", x);
+
+	// TEST("%04.2g", 1222e9);
+	// TEST("%04.1g", 1222e9);
+	// TEST("%04.g", 1222e9);
+    // TEST("%g",x);
+	// TEST("%g", -1e9);
+	// TEST("%g", -1e-9);
+	// TEST("%.2g", 0);
+	// TEST("%G", 1222e9);
+	// TEST("%G", -1e9);
+	
+	// TEST("%G", (-1e-9));
+	// TEST("%.2G", 0);
+	// TEST("%.g", 0);
+	// TEST("%.g", -1.22e-9);
+
+	TEST("%hhC, %hhC", 0, L'Á±≥');
 	// TEST("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
 	// printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	// ft_printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
@@ -150,29 +193,12 @@ int		main(int ac, char **av)
 	// ft_printf("%S, %S\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	// TEST("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")
 	// TEST("%C", L'ÁM-^L´');
-	//TEST("{%030S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	// TEST("{%030S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 	// TEST("{%*d}", -5, 42);
 	// TEST("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 	// char cc;
 	// TEST("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &cc, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 	
-	// ft_printf("1Z-Binary %b\n", 2);
-	// int a,b,c,d,e,f;
-	// ft_printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &a, &b, &c);
-	// printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &d, &e, &f);
-	// if (a != d || b != e || c != f)
-	// 	ft_printf("FAIL : (Real,FT) (%i,%i) (%i,%i) (%i,%i)\n", d,a,e,b,f,c);
-	// else
-	// 	ft_printf("SUCCESS : (Real,FT) (%i,%i) (%i,%i) (%i,%i)\n", d,a,e,b,f,c);
-
-	TEST("%e", 1222e9);
-	TEST("%e", -1e9);
-	TEST("%e", -1e-9);
-	TEST("%.2e", 0);
-	TEST("%E", 1222e9);
-	TEST("%E", -1e9);
-	TEST("%E", -1e-9);
-	TEST("%.2E", 0);
 	TEST("%s", "The End");
 	(void)ac;
 	(void)av;

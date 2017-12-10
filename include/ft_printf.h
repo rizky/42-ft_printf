@@ -80,4 +80,6 @@ int		pf_cv_n(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_f(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_e(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_ce(t_modifier *m, t_array *d, va_list ap);
+int		pf_cv_g(t_modifier *m, t_array *d, va_list ap);
+int		pf_cv_cg(t_modifier *m, t_array *d, va_list ap);
 #endif
