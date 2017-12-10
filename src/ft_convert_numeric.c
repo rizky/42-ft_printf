@@ -46,8 +46,6 @@ int		pf_cv_cx(t_modifier *m, t_array *d, va_list ap)
 
 int		pf_cv_p(t_modifier *m, t_array *d, va_list ap)
 {
-	void	*arg;
-
 	(void)m;
 	fta_append(d, "0x", 2);
 	m->length = 'L';
@@ -60,9 +58,15 @@ int		pf_cv_p(t_modifier *m, t_array *d, va_list ap)
 
 int		pf_cv_o(t_modifier *m, t_array *d, va_list ap)
 {
+	int alt;
+
+	alt = 0;
 	if (m->booleans.n.alternate)
+	{
 		fta_append(d, "0", 1);
-	return (pf_unsigned_integer(m, d, ap, 8));
+		alt++;
+	}
+	return (pf_unsigned_integer(m, d, ap, 8) + alt);
 }
 
 /*

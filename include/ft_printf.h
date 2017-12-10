@@ -42,7 +42,7 @@ typedef struct		s_modifier
 	int				precision;
 }					t_modifier;
 
-# define NEW_MODIFIER (t_modifier){{{0, 0, 0, 0, 0, 0}}, 0, 0, -1, -1};
+# define NEW_MODIFIER (t_modifier){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, -1};
 
 int		ft_printf(char const *format, ...);
 int		ft_dprintf(int fd, char const *format, ...);
@@ -61,6 +61,8 @@ void	pf_convert(t_modifier *m, t_array *d, va_list ap);
 int		pf_unsigned_integer(t_modifier *m, t_array *d, va_list ap, int b);
 int		pf_signed_integer(t_modifier *m, t_array *d, va_list ap, int b);
 
+int		pf_itoa_base(t_array *d, intmax_t n, int b, char info);
+
 int		pf_cv_s(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_ws(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_p(t_modifier *m, t_array *d, va_list ap);
@@ -70,7 +72,11 @@ int		pf_cv_x(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_cx(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_o(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_c(t_modifier *m, t_array *d, va_list ap);
+int		pf_cv_wc(t_modifier *m, t_array *d, va_list ap);
 
 int		pf_cv_b(t_modifier *m, t_array *d, va_list ap);
 int		pf_cv_n(t_modifier *m, t_array *d, va_list ap);
+
+int		pf_cv_f(t_modifier *m, t_array *d, va_list ap);
+int		pf_cv_e(t_modifier *m, t_array *d, va_list ap);
 #endif

@@ -4,11 +4,11 @@ static inline int
 	pf_print(t_modifier *m, t_array *d, va_list ap)
 {
 	int			i;
-	char const	*c = "sSpdDioOuUxXcCbn";
+	char const	*c = "sSpdDioOuUxXcCbneEfFgGaA";
 	void *const	t[] = 
-		{	&pf_cv_s, &pf_cv_s, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
+		{	&pf_cv_s, &pf_cv_ws, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
 			&pf_cv_o, &pf_cv_o, &pf_cv_u, &pf_cv_u, &pf_cv_x, &pf_cv_cx,
-			&pf_cv_c, &pf_cv_c, &pf_cv_b, &pf_cv_n
+			&pf_cv_c, &pf_cv_wc, &pf_cv_b, &pf_cv_n, &pf_cv_e, NULL, &pf_cv_f, &pf_cv_f
 		};
 
 	if (is_in(m->conversion, "DOU") >= 0)
@@ -19,6 +19,7 @@ static inline int
 	if (c[i] != '\0')
 		return (((int (*)())t[i])(m, d, ap));
 	fta_append(d, &m->conversion, 1);
+	m->precision = -1;
 	return (1);
 }
 
@@ -55,10 +56,15 @@ void
 	width = pf_precision(m, d, ap);
 	after = d->size;
 	len = after - before;
-	if (len < m->size)
+	if (m->size < 0 && m->precision == -1)
+	{
+		m->size = ABS(m->size);
+		m->booleans.n.minus = 1;
+	}
+	if (len <= m->size)
 	{
 		if (m->booleans.n.zero
-			&& m->precision == -1
+			&& m->precision <= -1
 			&& !m->booleans.n.minus)
 		{
 			while (len < m->size && ++len)
