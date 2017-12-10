@@ -35,20 +35,20 @@ double ft_modf(double x, double *iptr)
 	return x - *iptr;
 }
 
-int ft_round(double x)
+long int ft_round(double x)
 {
     if (x < 0.0)
-        return (int)(x - 0.5);
+        return (long int)(x - 0.5);
     else
-        return (int)(x + 0.5);
+        return (long int)(x + 0.5);
 }
 
 int		pf_rtoa(t_array *d, long double x, int b, int precision)
 {
-	double				frac;
-	double				intg;
-	int					ans;
-	int					bp;
+	double			frac;
+	double			intg;
+	int				ans;
+	int				bp;
 
 	ans = 1 + pf_itoa_base(d, (long long)x, b, 0);
 	if (precision == 0)
@@ -59,23 +59,14 @@ int		pf_rtoa(t_array *d, long double x, int b, int precision)
 	while (bp < precision)
 	{
 		frac *= b;
+		if (frac < 1)
+			fta_append(d, "0", 1);
 		ans++;
 		bp++;
 	}
 	frac = ft_round(frac);
 	if (frac != 0)
-	{
 		pf_itoa_base(d, (long long)frac, b, 0);
-	}
-	else
-	{
-		bp = 0;
-		while (bp < precision)
-		{
-			fta_append(d, "0", 1);
-			bp++;
-		}
-	}
 	return (ans);
 }
 
@@ -141,8 +132,6 @@ int			pf_signed_double_g(t_modifier *m, t_array *d, va_list ap, char *c)
 	double	arg;
 	int		ans;
 	int		e;
-	int		sig;
-	int		mul;
 
 	arg = va_arg(ap, double);
 	if (arg < 0)
@@ -176,17 +165,8 @@ int			pf_signed_double_g(t_modifier *m, t_array *d, va_list ap, char *c)
 		arg = arg / 10;
 		e++;
 	}
-	mul = 10;
-	sig = 0;
-	while (((int)(arg * mul) % 10) != 0)
-	{
-		sig++;
-		mul = mul * 10;
-	}
 	if (m->precision != 0)
 		m->precision = m->precision - 1;
-	if (sig < m->precision)
-		m->precision = sig;
 	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
 	if (e == 0)
 	{
@@ -200,6 +180,44 @@ int			pf_signed_double_g(t_modifier *m, t_array *d, va_list ap, char *c)
 		ans += fta_append(d, "-", 1);
 	if (e < 10)
 		ans += fta_append(d, "0", 1);
+	pf_itoa_base(d, e, 10, 0);
+	return (ans);
+}
+
+int			pf_signed_double_a(t_modifier *m, t_array *d, va_list ap, char *c)
+{
+	double	arg;
+	int		ans;
+	int		e;
+
+	arg = va_arg(ap, double);
+	if (arg < 0)
+		fta_append(d, "-", 1);
+	else if (m->booleans.n.plus)
+		fta_append(d, "+", 1);
+	else if (m->booleans.n.space)
+		fta_append(d, " ", 1);
+	fta_append(d, "0x", 2);		
+	if (m->precision == -1)
+		m->precision = 13;
+	e = 0;
+	arg = ABS(arg);
+	while (arg > 0 && arg < 1)
+	{
+		arg = arg * 2;
+		e--;
+	}
+	while (arg > 2)
+	{
+		arg = arg / 2;
+		e++;
+	}
+	ans = pf_rtoa(d, ABS(arg), 16, m->precision);
+	ans += fta_append(d, c, 1);
+	if (e >= 0)
+		ans += fta_append(d, "+", 1);
+	else
+		ans += fta_append(d, "-", 1);
 	pf_itoa_base(d, e, 10, 0);
 	return (ans);
 }
@@ -227,4 +245,14 @@ int		pf_cv_g(t_modifier *m, t_array *d, va_list ap)
 int		pf_cv_cg(t_modifier *m, t_array *d, va_list ap)
 {
 	return (pf_signed_double_g(m, d, ap, "E"));
+}
+
+int		pf_cv_a(t_modifier *m, t_array *d, va_list ap)
+{
+	return (pf_signed_double_a(m, d, ap, "p"));
+}
+
+int		pf_cv_ca(t_modifier *m, t_array *d, va_list ap)
+{
+	return (pf_signed_double_a(m, d, ap, "P"));
 }

@@ -29,6 +29,7 @@ int		main(int ac, char **av)
 	int		pf;
 	int		ft;
 
+	double x=34523423.52342353;
 	// TEST("%03.2d", 0);
 	// TEST("%03.2d", 1);
 	// TEST("%%");
@@ -155,12 +156,10 @@ int		main(int ac, char **av)
 	// TEST("%.2e", 0);
 	// TEST("%E", 1222e9);
 	// TEST("%E", -1e9);
-	
 	// TEST("%E", (-1e-9));
 	// TEST("%.2E", 0);
 	// TEST("%.e", 0);
 	// TEST("%.e", -1.22e-9);
-	// double x=34523423.52342353;
     // TEST("%g",x);
 	// x = 0.10000000000001;
 	// TEST("%04.2f", x);
@@ -177,13 +176,52 @@ int		main(int ac, char **av)
 	// TEST("%.2g", 0);
 	// TEST("%G", 1222e9);
 	// TEST("%G", -1e9);
-	
 	// TEST("%G", (-1e-9));
 	// TEST("%.2G", 0);
 	// TEST("%.g", 0);
 	// TEST("%.g", -1.22e-9);
 
-	TEST("%hhC, %hhC", 0, L'Á±≥');
+	// TEST("%x\n", 3.141593);
+	// TEST("%2.2a", 1.5);
+	// TEST("%X", 0.2);
+	// TEST("%X", 0.3);
+
+	// TEST("aA: %a", 0.12);
+	// TEST("%a", 0.1);
+	// TEST("%a", 0.2);
+	// TEST("%a", 0.3);
+	// TEST("%a", 1.12);
+	// TEST("%a", 0.12);
+	// TEST("%f", 0.02);
+	// TEST("%a", 0.53);
+	// TEST("%a", 1.06);
+	// TEST("%a", 2.12);
+
+	// TEST("%04.1a", 1222e9);
+	// TEST("%04.a", 1222e9);
+    // TEST("%a",x);
+	// TEST("%a", -1e-9);
+	// TEST("%.a", -1.22e-9);
+	// TEST("%.2a", 0);
+
+	// Todo
+
+	// TEST("Hex Significant cut: %.5g", 1.02);
+	// TEST("Hex Significant cut: %a", 1e9);
+	// TEST("Hex Significant cut: %a", -1e9);
+	// TEST("Hex Significant cut: %a", 0);
+	// TEST("%a", -1e9);
+
+	// TEST("Hex Round Problem: %04.2a", 1222e9);
+	// TEST("Hex Capital Problem: %A", 1222e9);
+	// TEST("Hex Capital Problem: %.2A", 0);
+	// TEST("%.a", 0);
+
+	// TEST("%#0.3o", 0);
+	// TEST("%lc", 0xa2);
+	// TEST("%n", 0)
+	// TEST("%n", 1);
+	// TEST("%hhC, %hhC", 0, L'Á±≥');
 	// TEST("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
 	// printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	// ft_printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');

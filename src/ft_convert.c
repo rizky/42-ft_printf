@@ -9,7 +9,7 @@ static inline int
 		{	&pf_cv_s, &pf_cv_ws, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
 			&pf_cv_o, &pf_cv_o, &pf_cv_u, &pf_cv_u, &pf_cv_x, &pf_cv_cx,
 			&pf_cv_c, &pf_cv_wc, &pf_cv_b, &pf_cv_n, &pf_cv_e, &pf_cv_ce,
-			&pf_cv_f, &pf_cv_f, &pf_cv_g, &pf_cv_cg
+			&pf_cv_f, &pf_cv_f, &pf_cv_g, &pf_cv_cg, &pf_cv_a, &pf_cv_ca
 		};
 
 	if (is_in(m->conversion, "DOU") >= 0)
