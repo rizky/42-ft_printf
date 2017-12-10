@@ -54,8 +54,8 @@ int		pf_rtoa(t_array *d, long double x, int b, int precision)
 	}
 	if (frac != 0)
 	{
-		pf_itoa_base(d, (long long)frac, b, 0);
 		frac = (int)(frac * 100 + 0.5) / 100.0;
+		pf_itoa_base(d, (long long)frac, b, 0);
 	}
 	else
 	{
@@ -105,26 +105,23 @@ int			pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, int b)
 	if (m->precision == -1)
 		m->precision = 6;
 	e = 0;
-	if (arg < 0)
+	arg = ABS(arg);
+	while (arg > 0 && arg < 1)
 	{
-		while (arg < 0)
-		{
-			arg = arg * 10;
-			e--;
-		}
+		arg = arg * 10;
+		e--;
 	}
-	else
+	while (arg > 9)
 	{
-		while (arg > 9)
-		{
-			arg = arg / 10;
-			e++;
-		}
+		arg = arg / 10;
+		e++;
 	}
 	ans = pf_rtoa(d, ABS(arg), b, m->precision);
 	ans += fta_append(d, "e", 1);
 	if (e > 0)
 		ans += fta_append(d, "+", 1);
+	else
+		ans += fta_append(d, "-", 1);
 	if (e < 10)
 		ans += fta_append(d, "0", 1);
 	pf_itoa_base(d, e, 10, 0);

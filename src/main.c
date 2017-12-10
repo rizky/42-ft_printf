@@ -165,7 +165,9 @@ int		main(int ac, char **av)
 	// else
 	// 	ft_printf("SUCCESS : (Real,FT) (%i,%i) (%i,%i) (%i,%i)\n", d,a,e,b,f,c);
 
-	TEST("%e", 1e9);
+	TEST("%e", 1222e9);
+	TEST("%e", -1e9);
+	TEST("%e", -1e-9);
 	// TEST("%.2e", 0);
 	TEST("%s", "The End");
 	(void)ac;
