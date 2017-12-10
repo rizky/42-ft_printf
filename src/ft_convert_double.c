@@ -87,7 +87,7 @@ int			pf_signed_double(t_modifier *m, t_array *d, va_list ap, int b)
 	return (pf_rtoa(d, ABS(arg), b, m->precision));
 }
 
-int			pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, int b)
+int			pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, char *c)
 {
 	double	arg;
 	int		ans;
@@ -116,8 +116,8 @@ int			pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, int b)
 		arg = arg / 10;
 		e++;
 	}
-	ans = pf_rtoa(d, ABS(arg), b, m->precision);
-	ans += fta_append(d, "e", 1);
+	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
+	ans += fta_append(d, c, 1);
 	if (e > 0)
 		ans += fta_append(d, "+", 1);
 	else
@@ -135,5 +135,10 @@ int		pf_cv_f(t_modifier *m, t_array *d, va_list ap)
 
 int		pf_cv_e(t_modifier *m, t_array *d, va_list ap)
 {
-	return (pf_signed_double_e(m, d, ap, 10));
+	return (pf_signed_double_e(m, d, ap, "e"));
+}
+
+int		pf_cv_ce(t_modifier *m, t_array *d, va_list ap)
+{
+	return (pf_signed_double_e(m, d, ap, "E"));
 }

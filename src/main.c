@@ -168,7 +168,11 @@ int		main(int ac, char **av)
 	TEST("%e", 1222e9);
 	TEST("%e", -1e9);
 	TEST("%e", -1e-9);
-	// TEST("%.2e", 0);
+	TEST("%.2e", 0);
+	TEST("%E", 1222e9);
+	TEST("%E", -1e9);
+	TEST("%E", -1e-9);
+	TEST("%.2E", 0);
 	TEST("%s", "The End");
 	(void)ac;
 	(void)av;
