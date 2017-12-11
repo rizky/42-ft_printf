@@ -30,7 +30,7 @@ int ft_printf(const char *format, ...);
 
 
 <h2>Specifier:</h2>
-<b>sSpdDioOuUxXcC</b>
+<b>sSpdDioOuUxXcCbneEfFgGaA</b>
 
 <h2>Flags:</h2>
 <b>\#0-+ and space</b>
