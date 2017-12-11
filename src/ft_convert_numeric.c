@@ -64,7 +64,7 @@ int		pf_cv_o(t_modifier *m, t_array *d, va_list ap)
 	if (m->booleans.n.alternate)
 	{
 		fta_append(d, "0", 1);
-		alt++;
+		alt = 1;
 	}
 	return (pf_unsigned_integer(m, d, ap, 8) + alt);
 }
@@ -89,6 +89,8 @@ int		pf_cv_n(t_modifier *m, t_array *d, va_list ap)
 	int		*arg;
 
 	arg = va_arg(ap, void *);
+	if (!arg)
+		return(-1);
 	m->size = 0;
 	m->precision = -1;
 	if (m->length == 'H')
@@ -179,7 +181,7 @@ int			pf_unsigned_integer(t_modifier *m, t_array *d, va_list ap, int b)
 		d->size -= 2;
 	if (arg == 0 && m->precision == 0)
 		return (0);
-	if (arg == 0 && m->booleans.n.alternate && m->conversion == 'o')
-		d->size -= 1;
+	if (arg == 0 && m->conversion == 'o')
+		return (0);
 	return (pf_itoa_base(d, arg, ABS(b), 2 | (b < 0)));
 }

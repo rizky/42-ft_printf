@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <locale.h>
 
 #define LONG_MAX  __LONG_MAX__
 
@@ -29,6 +30,7 @@ int		main(int ac, char **av)
 	int		pf;
 	int		ft;
 
+	setlocale(LC_ALL, "");
 	double x=34523423.52342353;
 	// TEST("%03.2d", 0);
 	// TEST("%03.2d", 1);
@@ -204,8 +206,19 @@ int		main(int ac, char **av)
 	// TEST("%.a", -1.22e-9);
 	// TEST("%.2a", 0);
 
+	// TEST("%#0.3o", 0);
+	// TEST("%#0.3o", 1);
+	// TEST("%#.3o", 1);
+	// TEST("%9.o", 482);
+	// TEST("%#09.0o", 482);
+	// TEST("%.3o", 1);
+	// TEST("%#0#4lo", 0);
+	// TEST("%n", 0);
+	
+
 	// Todo
 
+	TEST("%#o", 0)
 	// TEST("Hex Significant cut: %.5g", 1.02);
 	// TEST("Hex Significant cut: %a", 1e9);
 	// TEST("Hex Significant cut: %a", -1e9);
@@ -217,12 +230,24 @@ int		main(int ac, char **av)
 	// TEST("Hex Capital Problem: %.2A", 0);
 	// TEST("%.a", 0);
 
+	// TEST("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
+	// ft_printf("%lc\n", L'≠');
+	// ft_printf("%lc", 0x24);
+	// printf("%C\n", L'≠');
+	// ft_printf("%lc\n", L'≠');
+	// ft_printf("%C\n", L'≠');
+	// printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
+	// printf("%lc\n", L'ÊM-^ZM-^V');
+	// ft_printf("%lc\n", L'ÊM-^ZM-^V');
+	// printf("%lc\n", L'≠');
+
+	// ft_printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	// TEST("%#0.3o", 0);
 	// TEST("%lc", 0xa2);
+	// TEST("%C", 0xa2);
 	// TEST("%n", 0)
 	// TEST("%n", 1);
 	// TEST("%hhC, %hhC", 0, L'Á±≥');
-	// TEST("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
 	// printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	// ft_printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	// printf("%C, %C\n", L'ÊM-^ZM-^V', L'ÿ≠');
@@ -237,7 +262,7 @@ int		main(int ac, char **av)
 	// char cc;
 	// TEST("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &cc, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 	
-	TEST("%s", "The End");
+	// TEST("%s", "The End");
 	(void)ac;
 	(void)av;
 	return (0);

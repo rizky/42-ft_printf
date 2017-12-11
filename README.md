@@ -18,15 +18,6 @@ Guides
 - https://github.com/tvisenti/Ft_Printf/blob/master/inc/ft_printf.h
 - http://en.cppreference.com/w/cpp/io/c/fprintf
 
-For s: When used with printf functions, specifies a single-byte or multi-byte character string; when used with wprintf functions, specifies a wide-character string. Characters are displayed up to the first null character or until the precision value is reached.
-
-For S: When used with printf functions, specifies a wide-character string; when used with wprintf functions, specifies a single-byte or multi-byte character string. Characters are displayed up to the first null character or until the precision value is reached.
-
-In Unix-like platform, s and S have the same meaning as windows platform.
-
-Reference: https://msdn.microsoft.com/en-us/library/hf4y5e3w.aspx
-
-
 # ft_printf
 
 As printf in C:  
