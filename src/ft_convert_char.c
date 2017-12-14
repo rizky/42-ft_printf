@@ -1,4 +1,3 @@
-// #include "ft_wchar.h"
 #include "ft_printf.h"
 #include <wchar.h>
 

@@ -35,12 +35,15 @@ double ft_modf(double x, double *iptr)
 	return x - *iptr;
 }
 
-long int ft_round(double x)
+long int ft_round_base(double x, int b)
 {
+	double half;
+
+	half = ((double)b)/10/2;
     if (x < 0.0)
-        return (long int)(x - 0.5);
+        return (long int)(x - half);
     else
-        return (long int)(x + 0.5);
+        return (long int)(x + half);
 }
 
 int		pf_rtoa(t_array *d, long double x, int b, int precision)
@@ -64,28 +67,10 @@ int		pf_rtoa(t_array *d, long double x, int b, int precision)
 		ans++;
 		bp++;
 	}
-	frac = ft_round(frac);
+	frac = ft_round_base(frac, b);
 	if (frac != 0)
 		pf_itoa_base(d, (long long)frac, b, 0);
 	return (ans);
-}
-
-int			pf_signed_double(t_modifier *m, t_array *d, va_list ap, int b)
-{
-	double	arg;
-
-	arg = va_arg(ap, double);
-	if (arg < 0)
-		fta_append(d, "-", 1);
-	else if (m->booleans.n.plus)
-		fta_append(d, "+", 1);
-	else if (m->booleans.n.space)
-		fta_append(d, " ", 1);
-	if (arg == 0 && m->precision == 0)
-		return (0);
-	if (m->precision == -1)
-		m->precision = 6;
-	return (pf_rtoa(d, ABS(arg), b, m->precision));
 }
 
 int			pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, char *c)
@@ -224,7 +209,20 @@ int			pf_signed_double_a(t_modifier *m, t_array *d, va_list ap, char *c)
 
 int		pf_cv_f(t_modifier *m, t_array *d, va_list ap)
 {
-	return (pf_signed_double(m, d, ap, 10));
+	double	arg;
+
+	arg = va_arg(ap, double);
+	if (arg < 0)
+		fta_append(d, "-", 1);
+	else if (m->booleans.n.plus)
+		fta_append(d, "+", 1);
+	else if (m->booleans.n.space)
+		fta_append(d, " ", 1);
+	if (arg == 0 && m->precision == 0)
+		return (0);
+	if (m->precision == -1)
+		m->precision = 6;
+	return (pf_rtoa(d, ABS(arg), 10, m->precision));
 }
 
 int		pf_cv_e(t_modifier *m, t_array *d, va_list ap)

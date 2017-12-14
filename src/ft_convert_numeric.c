@@ -181,7 +181,7 @@ int			pf_unsigned_integer(t_modifier *m, t_array *d, va_list ap, int b)
 		d->size -= 2;
 	if (arg == 0 && m->precision == 0)
 		return (0);
-	if (arg == 0 && m->conversion == 'o')
+	if (arg == 0 && m->conversion == 'o' && m->booleans.n.alternate)
 		return (0);
 	return (pf_itoa_base(d, arg, ABS(b), 2 | (b < 0)));
 }

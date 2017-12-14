@@ -126,8 +126,8 @@ int		main(int ac, char **av)
 	// TEST("28-Char {%05.c}", 65);
 	// TEST("28-Char {%05.C}", 65);
 	// TEST("28-Char {%5.C}", 65);
-	// TEST("{%.3f}{%F}", 1.42, -1.42);
-	// TEST("{%.3f}{%F}", 1.419, -1.419);
+	TEST("{%.3f}{%F}", 1.42, -1.42);
+	TEST("{%.3f}{%F}", 1.419, -1.419);
 	// TEST("{% S}", L"(null)");
 	// TEST("{%05.*d}", 15, 42);
 	// TEST("{%05.*d}", -15, 42);
@@ -163,7 +163,7 @@ int		main(int ac, char **av)
 	// TEST("%.e", 0);
 	// TEST("%.e", -1.22e-9);
     // TEST("%g",x);
-	// x = 0.10000000000001;
+	x = 0.10000000000001;
 	// TEST("%04.2f", x);
 	// TEST("%04.1e", x);
 	// TEST("%04.2g", x);
@@ -215,45 +215,13 @@ int		main(int ac, char **av)
 	// TEST("%#0#4lo", 0);
 	// TEST("%n", 0);
 	
-
-	// Todo
-
-	TEST("%#o", 0)
-	// TEST("Hex Significant cut: %.5g", 1.02);
-	// TEST("Hex Significant cut: %a", 1e9);
-	// TEST("Hex Significant cut: %a", -1e9);
-	// TEST("Hex Significant cut: %a", 0);
-	// TEST("%a", -1e9);
-
-	// TEST("Hex Round Problem: %04.2a", 1222e9);
-	// TEST("Hex Capital Problem: %A", 1222e9);
-	// TEST("Hex Capital Problem: %.2A", 0);
-	// TEST("%.a", 0);
-
 	// TEST("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	// ft_printf("%lc\n", L'≠');
-	// ft_printf("%lc", 0x24);
-	// printf("%C\n", L'≠');
-	// ft_printf("%lc\n", L'≠');
-	// ft_printf("%C\n", L'≠');
-	// printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	// printf("%lc\n", L'ÊM-^ZM-^V');
-	// ft_printf("%lc\n", L'ÊM-^ZM-^V');
-	// printf("%lc\n", L'≠');
-
-	// ft_printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	// TEST("%#0.3o", 0);
 	// TEST("%lc", 0xa2);
 	// TEST("%C", 0xa2);
 	// TEST("%n", 0)
-	// TEST("%n", 1);
+
 	// TEST("%hhC, %hhC", 0, L'Á±≥');
-	// printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	// ft_printf("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	// printf("%C, %C\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	// ft_printf("%C, %C\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	// printf("%S, %S\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	// ft_printf("%S, %S\n", L'ÊM-^ZM-^V', L'ÿ≠');
 	// TEST("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")
 	// TEST("%C", L'ÁM-^L´');
 	// TEST("{%030S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
@@ -262,6 +230,23 @@ int		main(int ac, char **av)
 	// char cc;
 	// TEST("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &cc, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 	
+	// TEST("%#o", 0)
+	// TEST("%.a", 0);
+
+	// Todo
+
+	// TEST("Hex Significant cut: %.5g", 1.02);
+	// TEST("Hex Significant cut: %a", 1e9);
+	// TEST("Hex Significant cut: %a", -1e9);
+	// TEST("Hex Significant cut: %a", 0);
+	// TEST("%a", -1e9);
+
+	// TEST("Hex Round Problem: %04.1a", 26);
+	// TEST("Hex Round Problem: %04.2a", 1222e9);
+	// TEST("Hex Round Problem: %04.3a", 1222e9);
+	// TEST("Hex Capital Problem: %A", 1222e9);
+	// TEST("Hex Capital Problem: %.2A", 0);
+
 	// TEST("%s", "The End");
 	(void)ac;
 	(void)av;
