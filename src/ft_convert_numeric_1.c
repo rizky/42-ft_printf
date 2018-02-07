@@ -1,124 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_numeric.c                               :+:      :+:    :+:   */
+/*   ft_convert_numeric_1.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 16:30:01 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 16:55:40 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*
-** Converts a signed integer into decimal representation [-]dddd.
-*/
-
-int		pf_cv_di(t_modifier *m, t_array *d, va_list ap)
-{
-	return (pf_signed_integer(m, d, ap, 10));
-}
-
-/*
-** Converts an unsigned integer into decimal representation dddd.
-*/
-
-int		pf_cv_u(t_modifier *m, t_array *d, va_list ap)
-{
-	return (pf_unsigned_integer(m, d, ap, 10));
-}
-
-/*
-** Converts an unsigned integer into hexadecimal representation hhhh.
-*/
-
-int		pf_cv_x(t_modifier *m, t_array *d, va_list ap)
-{
-	if (m->booleans.n.alternate)
-		fta_append(d, "0x", 2);
-	return (pf_unsigned_integer(m, d, ap, 16));
-}
-
-/*
-** Converts an unsigned integer into hexadecimal representation HHHH.
-*/
-
-int		pf_cv_cx(t_modifier *m, t_array *d, va_list ap)
-{
-	if (m->booleans.n.alternate)
-		fta_append(d, "0X", 2);
-	return (pf_unsigned_integer(m, d, ap, -16));
-}
-
-/*
-** Writes an implementation defined character sequence defining a pointer.
-*/
-
-int		pf_cv_p(t_modifier *m, t_array *d, va_list ap)
-{
-	(void)m;
-	fta_append(d, "0x", 2);
-	m->length = 'L';
-	return (pf_unsigned_integer(m, d, ap, 16));
-}
-
-/*
-** Converts a unsigned integer into octal representation oooo.
-*/
-
-int		pf_cv_o(t_modifier *m, t_array *d, va_list ap)
-{
-	int alt;
-
-	alt = 0;
-	if (m->booleans.n.alternate)
-	{
-		fta_append(d, "0", 1);
-		alt = 1;
-	}
-	return (pf_unsigned_integer(m, d, ap, 8) + alt);
-}
-
-/*
-** Converts a unsigned integer into binary representation bbbb.
-*/
-
-int		pf_cv_b(t_modifier *m, t_array *d, va_list ap)
-{
-	if (m->booleans.n.alternate)
-		fta_append(d, "b", 1);
-	return (pf_unsigned_integer(m, d, ap, 2));
-}
-
-/*
-** returns the number of characters written so far by this call to the function.
-*/
-
-int		pf_cv_n(t_modifier *m, t_array *d, va_list ap)
-{
-	int		*arg;
-
-	arg = va_arg(ap, void *);
-	if (!arg)
-		return (-1);
-	m->size = 0;
-	m->precision = -1;
-	if (m->length == 'H')
-		*(char *)arg = (char)d->size;
-	else if (m->length == 'h')
-		*(short *)arg = (short)d->size;
-	else if (m->length == 'l' || m->length == 'z')
-		*(long *)arg = (long)d->size;
-	else if (m->length == 'L')
-		*(long long *)arg = (long long)d->size;
-	else if (m->length == 'j')
-		*(intmax_t *)arg = (intmax_t)d->size;
-	else
-		*(int *)arg = (int)d->size;
-	return (0);
-}
 
 /*
 ** pf_itoa_base appends _n_ expressed in base _b_ in _d_
@@ -127,7 +19,8 @@ int		pf_cv_n(t_modifier *m, t_array *d, va_list ap)
 ** if the second weakest bit of _info_ is on, _n_ is considered unsigned.
 */
 
-int			pf_itoa_base(t_array *d, intmax_t n, int b, char info)
+int
+	pf_itoa_base(t_array *d, intmax_t n, int b, char info)
 {
 	int					ans;
 	const uintmax_t		un = (uintmax_t)n;
@@ -143,7 +36,8 @@ int			pf_itoa_base(t_array *d, intmax_t n, int b, char info)
 	return (ans);
 }
 
-int			pf_signed_integer(t_modifier *m, t_array *d, va_list ap, int b)
+int
+	pf_signed_integer(t_modifier *m, t_array *d, va_list ap, int b)
 {
 	intmax_t	arg;
 
@@ -170,7 +64,8 @@ int			pf_signed_integer(t_modifier *m, t_array *d, va_list ap, int b)
 	return (pf_itoa_base(d, arg, ABS(b), b < 0));
 }
 
-int			pf_unsigned_integer(t_modifier *m, t_array *d, va_list ap, int b)
+int
+	pf_unsigned_integer(t_modifier *m, t_array *d, va_list ap, int b)
 {
 	uintmax_t	arg;
 

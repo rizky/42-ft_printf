@@ -1,17 +1,17 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: angagnie <angagnie@student.42.fr>          +#+  +:+       +#+         #
+#    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by angagnie          #+#    #+#              #
-#    Updated: 2016/12/22 16:17:09 by angagnie         ###   ########.fr        #
+#    Updated: 2018/02/07 16:56:06 by rnugroho         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 NAME:=libftprintf.a
-FILES:=ft_printf ft_vprintf ft_vasprintf ft_convert ft_convert_numeric ft_convert_char \
+FILES:=ft_printf ft_vprintf ft_vasprintf ft_convert ft_convert_numeric_1 ft_convert_numeric_2 ft_convert_numeric_3 ft_convert_char \
 		ft_convert_double
 
 # ----- Libft ------
