@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vasprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 16:24:26 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 19:03:39 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int
 		m = NEW_MODIFIER;
 		if (*s == '%')
 		{
-		 	s = pf_match(s + 1, &m, ap);
+			s = pf_match(s + 1, &m, ap);
 			if (m.conversion)
 				pf_convert(&m, &d, ap);
 		}
