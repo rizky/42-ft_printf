@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 17:48:25 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 20:40:15 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int
 	pf_rtoa(t_array *d, long double x, int b, int precision)
 {
 	double			frac;
-	double			intg;
 	int				ans;
 	int				bp;
 
@@ -59,4 +58,41 @@ int
 	if (frac != 0)
 		pf_itoa_base(d, (long long)frac, b, 0);
 	return (ans);
+}
+
+int
+	pf_cv_f(t_modifier *m, t_array *d, va_list ap)
+{
+	double	arg;
+
+	arg = va_arg(ap, double);
+	if (arg < 0)
+		fta_append(d, "-", 1);
+	else if (m->booleans.n.plus)
+		fta_append(d, "+", 1);
+	else if (m->booleans.n.space)
+		fta_append(d, " ", 1);
+	if (arg == 0 && m->precision == 0)
+		return (0);
+	if (m->precision == -1)
+		m->precision = 6;
+	return (pf_rtoa(d, ABS(arg), 10, m->precision));
+}
+
+int
+	pf_cv_e(t_modifier *m, t_array *d, va_list ap)
+{
+	double	arg;
+
+	arg = va_arg(ap, double);
+	if (arg < 0)
+		fta_append(d, "-", 1);
+	else if (m->booleans.n.plus)
+		fta_append(d, "+", 1);
+	else if (m->booleans.n.space)
+		fta_append(d, " ", 1);
+	if (m->precision == -1)
+		m->precision = 6;
+	arg = ABS(arg);
+	return (pf_signed_double_e(m, d, arg, "e"));
 }

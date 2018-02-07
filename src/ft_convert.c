@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 16:33:29 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 20:23:47 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ static int
 			fta_append(d, "0", 1);
 		fta_swap(d, after - width, after);
 	}
+	if (m->size < 0 && m->precision == -1)
+	{
+		m->size = ABS(m->size);
+		m->booleans.n.minus = 1;
+	}
 	return (len);
 }
 
@@ -64,20 +69,15 @@ void
 	int		width;
 	int		len;
 
+	if (!m->conversion)
+		return ;
 	before = d->size;
 	width = pf_precision(m, d, ap);
 	after = d->size;
 	len = after - before;
-	if (m->size < 0 && m->precision == -1)
-	{
-		m->size = ABS(m->size);
-		m->booleans.n.minus = 1;
-	}
 	if (len <= m->size)
 	{
-		if (m->booleans.n.zero
-			&& m->precision <= -1
-			&& !m->booleans.n.minus)
+		if (m->booleans.n.zero && m->precision <= -1 && !m->booleans.n.minus)
 		{
 			while (len < m->size && ++len)
 				fta_append(d, "0", 1);

@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 19:03:39 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 19:23:53 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ int
 		if (*s == '%')
 		{
 			s = pf_match(s + 1, &m, ap);
-			if (m.conversion)
-				pf_convert(&m, &d, ap);
+			pf_convert(&m, &d, ap);
 		}
 		p = s;
 		while (*p != '\0' && *p != '%')

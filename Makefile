@@ -3,21 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
+#    By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/02/07 17:39:15 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/02/07 21:40:57 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME:=libftprintf.a
 FILES:=ft_printf ft_vprintf ft_vasprintf ft_convert \
 		ft_convert_numeric_1 ft_convert_numeric_2 ft_convert_numeric_3 \
-		ft_convert_char_1 ft_convert_char_2 \
+		ft_convert_char \
 		ft_convert_double_1 ft_convert_double_2 ft_convert_double_3
 
 # ----- Libft ------
-LFTDIR:=./Libft
+LFTDIR:=./libft
 # ==================
 
 # ------------------
@@ -84,7 +84,7 @@ test: $(NAME)
 
 debug: $(NAME)
 	@echo "Files :" $(FILES)
-	@$(COMPILER) -g $(CFLAGS) src/main.c $(SRC) $(LFLAGS)
+	@$(COMPILER) -g $(IFLAGS) src/main.c $(SRC) $(LFLAGS)
 
 norm:
 	@echo $(RED)

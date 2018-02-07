@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_char_1.c                                :+:      :+:    :+:   */
+/*   ft_convert_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 17:12:14 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 17:14:41 by rnugroho         ###   ########.fr       */
+/*   Created: 2018/01/11 09:33:58 by rnugroho          #+#    #+#             */
+/*   Updated: 2018/02/07 21:30:14 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <wchar.h>
+
+int
+	pf_cv_wc(t_modifier *m, t_array *d, va_list ap)
+{
+	wint_t	arg;
+	size_t	ans;
+
+	(void)m;
+	arg = va_arg(ap, wint_t);
+	m->precision = -1;
+	fta_reserve(d, 4);
+	ans = ft_widetoa((char *)ARRAY_END(d), arg);
+	d->size += ans;
+	return ((int)ans);
+}
 
 int
 	pf_cv_ws(t_modifier *m, t_array *d, va_list ap)

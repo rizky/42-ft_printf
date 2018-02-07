@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:26 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 17:41:42 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 20:31:40 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ int					pf_signed_integer(t_modifier *m,
 
 int					pf_itoa_base(t_array *d, intmax_t n, int b, char info);
 int					pf_rtoa(t_array *d, long double x, int b, int precision);
-int					pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, char *c);
-int					pf_signed_double_g(t_modifier *m, t_array *d, va_list ap, char *c);
-int					pf_signed_double_a(t_modifier *m, t_array *d, va_list ap, char *c);
+int					pf_signed_double_e(t_modifier *m,
+					t_array *d, double arg, char *c);
+int					pf_signed_double_g(t_modifier *m,
+					t_array *d, double arg, char *c);
+int					pf_signed_double_a(t_modifier *m,
+					t_array *d, double arg, char *c);
 
 int					pf_cv_s(t_modifier *m, t_array *d, va_list ap);
 int					pf_cv_ws(t_modifier *m, t_array *d, va_list ap);
