@@ -6,7 +6,7 @@
 #    By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/02/07 21:40:57 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/02/07 21:47:12 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ COMPILER:=clang
 LINKER:=ar rc
 SRCPATH:=src/
 HDRPATH:=include/
-CCHPATH:=cache/
+CCHPATH:=obj/
 IFLAGS:=-I $(HDRPATH) -I $(LFTDIR)/include
 LFLAGS:=-L $(LFTDIR) -lft
 CFLAGS:=-Wall -Wextra $(IFLAGS)
@@ -51,7 +51,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo $(CYAN) "\tCompiling $@" $(RED)
-	@$(LINKER) $(NAME) $(OBJ) $(LFTDIR)/cache/*.o $(LFTDIR)/cache/*/*.o
+	@$(LINKER) $(NAME) $(OBJ) $(LFTDIR)/$(CCHPATH)*.o $(LFTDIR)/$(CCHPATH)*/*.o
 	@ranlib $(NAME)
 	@echo $(GREEN)"OK"$(EOC)
 
