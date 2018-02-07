@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/01/11 09:34:08 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 16:29:50 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-double ft_modf(double x, double *iptr)
+static double
+	ft_modf(double x, double *iptr)
 {
 	union {double x; uint64_t n;} u = {x};
 	uint64_t mask;
@@ -20,24 +21,25 @@ double ft_modf(double x, double *iptr)
 
 	e = (int)(u.n>>52 & 0x7ff) - 0x3ff;
 
-	/* no fractional part */
-	if (e >= 52) {
+	if (e >= 52)
+	{
 		*iptr = x;
-		if (e == 0x400 && u.n<<12 != 0) /* nan */
+		if (e == 0x400 && u.n<<12 != 0)
 			return x;
 		u.n &= (uint64_t)1<<63;
 		return u.x;
 	}
 
-	/* no integral part*/
-	if (e < 0) {
+	if (e < 0)
+	{
 		u.n &= (uint64_t)1<<63;
 		*iptr = u.x;
 		return x;
 	}
 
 	mask = (uint64_t)-1>>12 >> e;
-	if ((u.n & mask) == 0) {
+	if ((u.n & mask) == 0)
+	{
 		*iptr = x;
 		u.n &= (uint64_t)1<<63;
 		return u.x;
@@ -47,15 +49,16 @@ double ft_modf(double x, double *iptr)
 	return x - *iptr;
 }
 
-long int ft_round_base(double x, int b)
+static long int
+	ft_round_base(double x, int b)
 {
 	double half;
 
-	half = ((double)b)/10/2;
-    if (x < 0.0)
-        return (long int)(x - half);
-    else
-        return (long int)(x + half);
+	half = ((double)b) / 10 / 2;
+	if (x < 0.0)
+		return (long int)(x - half);
+	else
+		return (long int)(x + half);
 }
 
 int		pf_rtoa(t_array *d, long double x, int b, int precision)
@@ -85,7 +88,8 @@ int		pf_rtoa(t_array *d, long double x, int b, int precision)
 	return (ans);
 }
 
-int			pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, char *c)
+static int
+	pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, char *c)
 {
 	double	arg;
 	int		ans;
@@ -97,7 +101,7 @@ int			pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, char *c)
 	else if (m->booleans.n.plus)
 		fta_append(d, "+", 1);
 	else if (m->booleans.n.space)
-		fta_append(d, " ", 1);		
+		fta_append(d, " ", 1);
 	if (m->precision == -1)
 		m->precision = 6;
 	e = 0;
@@ -124,7 +128,8 @@ int			pf_signed_double_e(t_modifier *m, t_array *d, va_list ap, char *c)
 	return (ans);
 }
 
-int			pf_signed_double_g(t_modifier *m, t_array *d, va_list ap, char *c)
+static int
+	pf_signed_double_g(t_modifier *m, t_array *d, va_list ap, char *c)
 {
 	double	arg;
 	int		ans;
@@ -136,7 +141,7 @@ int			pf_signed_double_g(t_modifier *m, t_array *d, va_list ap, char *c)
 	else if (m->booleans.n.plus)
 		fta_append(d, "+", 1);
 	else if (m->booleans.n.space)
-		fta_append(d, " ", 1);		
+		fta_append(d, " ", 1);
 	if (m->precision == -1)
 		m->precision = 6;
 	e = 0;
@@ -181,7 +186,8 @@ int			pf_signed_double_g(t_modifier *m, t_array *d, va_list ap, char *c)
 	return (ans);
 }
 
-int			pf_signed_double_a(t_modifier *m, t_array *d, va_list ap, char *c)
+static int
+	pf_signed_double_a(t_modifier *m, t_array *d, va_list ap, char *c)
 {
 	double	arg;
 	int		ans;
@@ -194,7 +200,7 @@ int			pf_signed_double_a(t_modifier *m, t_array *d, va_list ap, char *c)
 		fta_append(d, "+", 1);
 	else if (m->booleans.n.space)
 		fta_append(d, " ", 1);
-	fta_append(d, "0x", 2);		
+	fta_append(d, "0x", 2);
 	if (m->precision == -1)
 		m->precision = 13;
 	e = 0;

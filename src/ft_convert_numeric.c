@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_numeric.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/01/11 09:34:16 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 16:30:01 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		pf_cv_n(t_modifier *m, t_array *d, va_list ap)
 
 	arg = va_arg(ap, void *);
 	if (!arg)
-		return(-1);
+		return (-1);
 	m->size = 0;
 	m->precision = -1;
 	if (m->length == 'H')

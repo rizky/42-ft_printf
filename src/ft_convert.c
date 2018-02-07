@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/01/11 09:34:24 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 16:33:29 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static inline int
+static int
 	pf_print(t_modifier *m, t_array *d, va_list ap)
 {
 	int			i;
 	char const	*c = "sSpdDioOuUxXcCbneEfFgGaA";
-	void *const	t[] = 
-		{	&pf_cv_s, &pf_cv_ws, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
-			&pf_cv_o, &pf_cv_o, &pf_cv_u, &pf_cv_u, &pf_cv_x, &pf_cv_cx,
-			&pf_cv_c, &pf_cv_wc, &pf_cv_b, &pf_cv_n, &pf_cv_e, &pf_cv_ce,
-			&pf_cv_f, &pf_cv_f, &pf_cv_g, &pf_cv_cg, &pf_cv_a, &pf_cv_ca
-		};
+	void *const	t[] = {
+	&pf_cv_s, &pf_cv_ws, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
+	&pf_cv_o, &pf_cv_o, &pf_cv_u, &pf_cv_u, &pf_cv_x, &pf_cv_cx,
+	&pf_cv_c, &pf_cv_wc, &pf_cv_b, &pf_cv_n, &pf_cv_e, &pf_cv_ce,
+	&pf_cv_f, &pf_cv_f, &pf_cv_g, &pf_cv_cg, &pf_cv_a, &pf_cv_ca};
 
 	if (is_in(m->conversion, "DOU") >= 0)
 		m->length = 'l';
@@ -36,7 +35,7 @@ static inline int
 	return (1);
 }
 
-static inline int
+static int
 	pf_precision(t_modifier *m, t_array *d, va_list ap)
 {
 	size_t	before;

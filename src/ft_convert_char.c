@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:33:58 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/01/11 09:34:00 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/07 16:29:20 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <wchar.h>
 
-
-size_t		ft_wstrlen(const wchar_t *wstr)
+static size_t
+	ft_wstrlen(const wchar_t *wstr)
 {
 	const wchar_t	*ptr = wstr;
 
@@ -23,7 +23,8 @@ size_t		ft_wstrlen(const wchar_t *wstr)
 	return (ptr - wstr);
 }
 
-size_t		ft_widetoa(char *buff, wint_t w)
+static size_t
+	ft_widetoa(char *buff, wint_t w)
 {
 	if (w < 0x80)
 	{
@@ -54,7 +55,8 @@ size_t		ft_widetoa(char *buff, wint_t w)
 	return (0);
 }
 
-size_t		ft_wstrconv(char *buff, const wchar_t *wstr)
+size_t
+	ft_wstrconv(char *buff, const wchar_t *wstr)
 {
 	size_t	ans;
 
@@ -64,7 +66,8 @@ size_t		ft_wstrconv(char *buff, const wchar_t *wstr)
 	return (ans);
 }
 
-size_t		ft_wstrnconv(char *buff, const wchar_t *wstr, size_t n)
+size_t
+	ft_wstrnconv(char *buff, const wchar_t *wstr, size_t n)
 {
 	size_t	ans;
 	size_t	tmp;
@@ -81,7 +84,8 @@ size_t		ft_wstrnconv(char *buff, const wchar_t *wstr, size_t n)
 	return (ans);
 }
 
-int		pf_cv_s(t_modifier *m, t_array *d, va_list ap)
+int
+	pf_cv_s(t_modifier *m, t_array *d, va_list ap)
 {
 	char	*arg;
 	int		ans;
@@ -99,7 +103,8 @@ int		pf_cv_s(t_modifier *m, t_array *d, va_list ap)
 	return (ans);
 }
 
-int		pf_cv_ws(t_modifier *m, t_array *d, va_list ap)
+int
+	pf_cv_ws(t_modifier *m, t_array *d, va_list ap)
 {
 	wchar_t	*arg;
 	size_t	len;
@@ -117,7 +122,8 @@ int		pf_cv_ws(t_modifier *m, t_array *d, va_list ap)
 	return (len);
 }
 
-int		pf_cv_c(t_modifier *m, t_array *d, va_list ap)
+int
+	pf_cv_c(t_modifier *m, t_array *d, va_list ap)
 {
 	unsigned char	arg;
 
@@ -144,4 +150,3 @@ int		pf_cv_wc(t_modifier *m, t_array *d, va_list ap)
 	d->size += ans;
 	return ((int)ans);
 }
-
