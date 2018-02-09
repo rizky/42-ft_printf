@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 21:14:59 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/09 20:09:21 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,17 @@ int		main(int ac, char **av)
 	int		ft;
 
 	setlocale(LC_ALL, "");
-	double x=34523423.52342353;
-	// TEST("%03.2d", 0);
-	// TEST("%03.2d", 1);
-	// TEST("%%");
-	// TEST("% ");
-	// TEST("% h");
 
-	// TEST("1-Simple String.", 0);
-	// TEST("2-Stringception _%s_", "Hello World");
-	// TEST("3-Stringception _%20s_", "Hello World");
-	// TEST("4-Stringception _%-20s_", "Hello World");
-	// TEST("5-Stringception _%20.5s_", "Hello World");
-	// TEST("6-Stringception _%-20.5s_", "Hello World");
-	// TEST("7-Stringception _%020s_", "Hello World");
-	// TEST("8-Stringception _%0-.20s_", "Hello World");
-	// TEST("9-Stringception _%20s_", "Hello World");
-	// TEST("10-NULL string _%s_", NULL);
+	TEST("1-Simple String.", 0);
+	TEST("2-Stringception _%s_", "Hello World");
+	TEST("3-Stringception _%20s_", "Hello World");
+	TEST("4-Stringception _%-20s_", "Hello World");
+	TEST("5-Stringception _%20.5s_", "Hello World");
+	TEST("6-Stringception _%-20.5s_", "Hello World");
+	TEST("7-Stringception _%020s_", "Hello World");
+	TEST("8-Stringception _%0-.20s_", "Hello World");
+	TEST("9-Stringception _%20s_", "Hello World");
+	TEST("10-NULL string _%s_", NULL);
 	// TEST("11-NULL string _%4s_", NULL);
 	// TEST("12-NULL string _%.4s_", NULL);
 	// TEST("13-NULL string _%S_", NULL);
@@ -175,64 +169,71 @@ int		main(int ac, char **av)
 	// TEST("%.e", 0);
 	// TEST("%.e", -1.22e-9);
     // TEST("%g",x);
-	x = 0.10000000000001;
+	// x = 0.10000000000001;
 	// TEST("%04.2f", x);
 	// TEST("%04.1e", x);
-	TEST("{%f}{%F}", 1444565444646.6465424242242, 1444565444646.6465424242242);
-	TEST("%04.2g", x);
-	TEST("%g", x);
+	// TEST("{%f}{%F}", 1444565444646.6465424242242, 1444565444646.6465424242242);
+	// TEST("%04.2g", x);
+	// TEST("%g", x);
 
-	TEST("%04.2g", 1222e9);
-	TEST("%04.1g", 1222e9);
-	TEST("%04.g", 1222e9);
-    TEST("%g",x);
-	TEST("%g", -1e9);
-	TEST("%g", -1e-9);
-	TEST("%.2g", 0);
-	TEST("%G", 1222e9);
-	TEST("%G", -1e9);
-	TEST("%G", (-1e-9));
-	TEST("%.2G", 0);
-	TEST("%.g", 0);
-	TEST("%.g", -1.22e-9);
+	// double x=34523423.52342353;
+	// TEST("%03.2d", 0);
+	// TEST("%03.2d", 1);
+	// TEST("%%");
+	// TEST("% ");
+	// TEST("% h");
 
-	TEST("%x\n", 3.141593);
-	TEST("%2.2a", 1.5);
-	TEST("%X", 0.2);
-	TEST("%X", 0.3);
+	// TEST("%04.2g", 1222e9);
+	// TEST("%04.1g", 1222e9);
+	// TEST("%04.g", 1222e9);
+    // TEST("%g",x);
+	// TEST("%g", -1e9);
+	// TEST("%g", -1e-9);
+	// TEST("%.2g", 0);
+	// TEST("%G", 1222e9);
+	// TEST("%G", -1e9);
+	// TEST("%G", (-1e-9));
+	// TEST("%.2G", 0);
+	// TEST("%.g", 0);
+	// TEST("%.g", -1.22e-9);
 
-	TEST("aA: %a", 0.12);
-	TEST("%a", 0.1);
-	TEST("%a", 0.2);
-	TEST("%a", 0.3);
-	TEST("%a", 1.12);
-	TEST("%a", 0.12);
-	TEST("%f", 0.02);
-	TEST("%a", 0.53);
-	TEST("%a", 1.06);
-	TEST("%a", 2.12);
+	// TEST("%x\n", 3.141593);
+	// TEST("%2.2a", 1.5);
+	// TEST("%X", 0.2);
+	// TEST("%X", 0.3);
 
-	TEST("%04.1a", 1222e9);
-	TEST("%04.a", 1222e9);
-    TEST("%a",x);
-	TEST("%a", -1e-9);
-	TEST("%.a", -1.22e-9);
-	TEST("%.2a", 0);
+	// TEST("aA: %a", 0.12);
+	// TEST("%a", 0.1);
+	// TEST("%a", 0.2);
+	// TEST("%a", 0.3);
+	// TEST("%a", 1.12);
+	// TEST("%a", 0.12);
+	// TEST("%f", 0.02);
+	// TEST("%a", 0.53);
+	// TEST("%a", 1.06);
+	// TEST("%a", 2.12);
 
-	TEST("%#0.3o", 0);
-	TEST("%#0.3o", 1);
-	TEST("%#.3o", 1);
-	TEST("%9.o", 482);
-	TEST("%#09.0o", 482);
-	TEST("%.3o", 1);
-	TEST("%#0#4lo", 0);
-	TEST("%n", 0);
+	// TEST("%04.1a", 1222e9);
+	// TEST("%04.a", 1222e9);
+    // TEST("%a",x);
+	// TEST("%a", -1e-9);
+	// TEST("%.a", -1.22e-9);
+	// TEST("%.2a", 0);
+
+	// TEST("%#0.3o", 0);
+	// TEST("%#0.3o", 1);
+	// TEST("%#.3o", 1);
+	// TEST("%9.o", 482);
+	// TEST("%#09.0o", 482);
+	// TEST("%.3o", 1);
+	// TEST("%#0#4lo", 0);
+	// TEST("%n", 0);
 	
-	TEST("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	TEST("%#0.3o", 0);
-	TEST("%lc", 0xa2);
-	TEST("%C", 0xa2);
-	TEST("%n", 0)
+	// TEST("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
+	// TEST("%#0.3o", 0);
+	// TEST("%lc", 0xa2);
+	// TEST("%C", 0xa2);
+	// TEST("%n", 0)
 
 	// TEST("%hhC, %hhC", 0, L'Á±≥');
 	// TEST("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")
