@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/09 20:09:21 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/11 14:09:55 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,16 @@ int		main(int ac, char **av)
 	int		ft;
 
 	setlocale(LC_ALL, "");
-
-	TEST("1-Simple String.", 0);
-	TEST("2-Stringception _%s_", "Hello World");
-	TEST("3-Stringception _%20s_", "Hello World");
-	TEST("4-Stringception _%-20s_", "Hello World");
-	TEST("5-Stringception _%20.5s_", "Hello World");
-	TEST("6-Stringception _%-20.5s_", "Hello World");
-	TEST("7-Stringception _%020s_", "Hello World");
-	TEST("8-Stringception _%0-.20s_", "Hello World");
-	TEST("9-Stringception _%20s_", "Hello World");
-	TEST("10-NULL string _%s_", NULL);
+	// TEST("1-Simple String.", 0);
+	// TEST("2-Stringception _%s_", "Hello World");
+	// TEST("3-Stringception _%20s_", "Hello World");
+	// TEST("4-Stringception _%-20s_", "Hello World");
+	// TEST("5-Stringception _%20.5s_", "Hello World");
+	// TEST("6-Stringception _%-20.5s_", "Hello World");
+	// TEST("7-Stringception _%020s_", "Hello World");
+	// TEST("8-Stringception _%0-.20s_", "Hello World");
+	// TEST("9-Stringception _%20s_", "Hello World");
+	// TEST("10-NULL string _%s_", NULL);
 	// TEST("11-NULL string _%4s_", NULL);
 	// TEST("12-NULL string _%.4s_", NULL);
 	// TEST("13-NULL string _%S_", NULL);
