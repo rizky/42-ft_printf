@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/09 20:09:21 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/14 16:28:03 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@
 		dprintf(2, "Fail : return value Real(%i vs %i)Yours\n", pf, ft);		\
 	if (pf >= 0 && ft >= 0) {													\
 		if (strcmp(ft_dst, pf_dst))												\
-			dprintf(2,															\
-					"%sFail : strings differ\n|%s| (Real) vs\n|%s| (Yours)\n%s",\
+			printf("%sFail : strings differ\n|%s| (Real) vs\n|%s| (Yours)\n%s",	\
 					"\e[1;31m", pf_dst, ft_dst, "\e[0m");						\
 		else																	\
-			dprintf(1, "\e[1;32m|%s|\e[0m\n", ft_dst);							\
+		{																		\
+			printf("\e[1;32m|%s|\e[0m\n", ft_dst);								\
+		}																		\
 	}
 
 int		main(int ac, char **av)
@@ -44,21 +45,22 @@ int		main(int ac, char **av)
 
 	setlocale(LC_ALL, "");
 
-	TEST("1-Simple String.", 0);
-	TEST("2-Stringception _%s_", "Hello World");
-	TEST("3-Stringception _%20s_", "Hello World");
-	TEST("4-Stringception _%-20s_", "Hello World");
-	TEST("5-Stringception _%20.5s_", "Hello World");
-	TEST("6-Stringception _%-20.5s_", "Hello World");
-	TEST("7-Stringception _%020s_", "Hello World");
-	TEST("8-Stringception _%0-.20s_", "Hello World");
-	TEST("9-Stringception _%20s_", "Hello World");
-	TEST("10-NULL string _%s_", NULL);
+	// TEST("1-Simple String.", 0);
+	// TEST("2-Stringception _%s_", "Hello World");
+	// TEST("3-Stringception _%20s_", "Hello World");
+	// TEST("4-Stringception _%-20s_", "Hello World");
+	// TEST("5-Stringception _%20.5s_", "Hello World");
+	// TEST("6-Stringception _%-20.5s_", "Hello World");
+	// TEST("7-Stringception _%020s_", "Hello World");
+	// TEST("8-Stringception _%0-.20s_", "Hello World");
+	// TEST("9-Stringception _%20s_", "Hello World");
+	// TEST("10-NULL string _%s_", NULL);
 	// TEST("11-NULL string _%4s_", NULL);
 	// TEST("12-NULL string _%.4s_", NULL);
 	// TEST("13-NULL string _%S_", NULL);
 	// TEST("14-NULL string _%4S_", NULL);
 	// TEST("15-NULL string _%l.4s_", NULL);
+	
 	// TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
 	// TEST("17-Nothing _%20.10",0);
 	// TEST("18-Nothing _%20.10__%i",0,42);
@@ -172,7 +174,7 @@ int		main(int ac, char **av)
 	// x = 0.10000000000001;
 	// TEST("%04.2f", x);
 	// TEST("%04.1e", x);
-	// TEST("{%f}{%F}", 1444565444646.6465424242242, 1444565444646.6465424242242);
+	TEST("{%f}{%F}", 1444565444646.6465424242242, 1444565444646.6465424242242);
 	// TEST("%04.2g", x);
 	// TEST("%g", x);
 

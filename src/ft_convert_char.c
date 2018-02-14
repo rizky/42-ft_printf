@@ -6,12 +6,31 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:33:58 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 21:30:14 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/09 20:15:25 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <wchar.h>
+
+int
+	pf_cv_s(t_modifier *m, t_array *d, va_list ap)
+{
+	char	*arg;
+	int		ans;
+
+	if (m->length == 'l')
+		return (pf_cv_ws(m, d, ap));
+	else
+		arg = va_arg(ap, char *);
+	if (arg == NULL)
+		arg = "(null)";
+	ans = (m->precision >= 0 ? MIN(ft_strlen(arg), (size_t)m->precision)
+		: ft_strlen(arg));
+	m->precision = -1;
+	fta_append(d, (void *)arg, ans);
+	return (ans);
+}
 
 int
 	pf_cv_wc(t_modifier *m, t_array *d, va_list ap)
@@ -64,23 +83,4 @@ int
 	m->precision = -1;
 	fta_append(d, (void *)&arg, 1);
 	return (1);
-}
-
-int
-	pf_cv_s(t_modifier *m, t_array *d, va_list ap)
-{
-	char	*arg;
-	int		ans;
-
-	if (m->length == 'l')
-		return (pf_cv_ws(m, d, ap));
-	else
-		arg = va_arg(ap, char *);
-	if (arg == NULL)
-		arg = "(null)";
-	ans = (m->precision >= 0 ? MIN(ft_strlen(arg), (size_t)m->precision)
-		: ft_strlen(arg));
-	m->precision = -1;
-	fta_append(d, (void *)arg, ans);
-	return (ans);
 }

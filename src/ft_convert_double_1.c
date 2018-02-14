@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 20:40:15 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/14 16:32:13 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static double
 	ft_modf(double num)
 {
-	int		intpart;
+	long int		intpart;
 
-	intpart = (int)num;
+	intpart = (long int)num;
 	return (num - intpart);
 }
 
