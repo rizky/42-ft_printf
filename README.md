@@ -1,3 +1,5 @@
+https://forum.intra.42.fr/topics/15759/messages
+
 Tasks
 - You have to manage the following conversions: sSpdDioOuUxXcC
 - You must manage %%
