@@ -6,11 +6,15 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/14 16:32:13 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/14 17:03:39 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Return the fraction of the parameter num
+*/
 
 static double
 	ft_modf(double num)
@@ -20,6 +24,10 @@ static double
 	intpart = (long int)num;
 	return (num - intpart);
 }
+
+/*
+** Round value base on the base @param b
+*/
 
 static long int
 	ft_round_base(double x, int b)

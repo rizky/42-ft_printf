@@ -6,7 +6,7 @@
 #    By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/02/09 20:09:59 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/02/14 16:54:27 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,13 +50,14 @@ CCHF:=.cache_exists
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo $(CYAN) "\tCompiling $@" $(RED)
+	@cd $(LFTDIR) && $(MAKE)
+	@echo $(CYAN) " - Compiling $@" $(RED)
 	@$(LINKER) $(NAME) $(OBJ) $(LFTDIR)/$(CCHPATH)*.o $(LFTDIR)/$(CCHPATH)*/*.o
 	@ranlib $(NAME)
 	@echo $(GREEN)"OK"$(EOC)
 
 $(CCHPATH)%.o: $(SRCPATH)%.c | $(CCHF)
-	@echo $(PURPLE) "\tCompiling $< into $@" $(EOC)
+	@echo $(PURPLE) " - Compiling $< into $@" $(EOC)
 	@$(COMPILER) $(CFLAGS) -c $< -o $@
 
 %.c:
@@ -69,11 +70,13 @@ $(CCHF):
 clean:
 	@rm -rf $(CCHPATH)
 	@rm -f $(CCHF)
+	@cd $(LFTDIR) && $(MAKE) clean
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f test_me
 	@rm -rf test_me.dSYM/
+	@cd $(LFTDIR) && $(MAKE) fclean
 
 re: fclean
 	@$(MAKE) all
