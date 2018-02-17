@@ -15,6 +15,11 @@ Bonus
 - Non-existing flags management: %b to print in binary, %r to print a string of non- printable characters, %k to print a date in any ordinary ISO format etc.
 - Management of alter tools for colors, fd or other fun stuff like that :)
 
+WideChar Exeption
+
+- if MB_CUR_MAX = 1 then treat as 1 byte
+- U+DC00 to U+DFFF
+- U+D800 to U+DBFF
 
 Guides
 - https://github.com/tvisenti/Ft_Printf/blob/master/inc/ft_printf.h
