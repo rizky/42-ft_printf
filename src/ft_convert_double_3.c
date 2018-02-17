@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:36:25 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 20:39:06 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 15:41:57 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int		pf_cv_ca(t_modifier *m, t_array *d, va_list ap)
 		fta_append(d, "+", 1);
 	else if (m->booleans.n.space)
 		fta_append(d, " ", 1);
-	fta_append(d, "0x", 2);
+	fta_append(d, "0X", 2);
 	if (m->precision == -1)
 		m->precision = 13;
 	arg = ABS(arg);
