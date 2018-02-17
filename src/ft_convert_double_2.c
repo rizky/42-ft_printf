@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 21:26:59 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 00:54:27 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int
 	int		e;
 
 	e = 0;
-	e = pf_finde(&arg, &ans, d);
+	if (arg < 0.0001)
+		e = pf_finde(&arg, &ans, d);
 	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
 	if (e == 0)
 	{
