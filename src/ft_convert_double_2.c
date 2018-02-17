@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 00:54:27 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 14:41:31 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ int
 	if (arg < 0.0001)
 		e = pf_finde(&arg, &ans, d);
 	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
+	while (((char *)ARRAY_LAST(d))[0] == '0' || ((char *)ARRAY_LAST(d))[0] == '.')
+	{
+		fta_popback(d, 1);
+		ans--;
+	}
 	if (e == 0)
 	{
 		m->precision = -1;
