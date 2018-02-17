@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 14:41:31 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 15:07:58 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int
 	int		e;
 
 	e = 0;
-	if (arg < 0.0001)
+	if (arg > 1 || arg < 0.0001)
 		e = pf_finde(&arg, &ans, d);
 	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
-	while (((char *)ARRAY_LAST(d))[0] == '0' || ((char *)ARRAY_LAST(d))[0] == '.')
+	while ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.')
 	{
 		fta_popback(d, 1);
 		ans--;
