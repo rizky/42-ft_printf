@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 16:16:45 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 19:07:35 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,6 +279,15 @@ int		main(int ac, char **av)
 	TEST("Hex Capital Problem: %.5A", 1222e9);
 	TEST("Hex Capital Problem: %.6A", 1222e9);
 	TEST("Hex Capital Problem: %.7A", 1222e9);
+	TEST("Hex Capital Problem: %.8A", 1222e9);
+
+	TEST("Hex Capital Problem: %.2G", 1222e9);
+	TEST("Hex Capital Problem: %.3G", 1222e9);
+	TEST("Hex Capital Problem: %.4G", 1222e9);
+	TEST("Hex Capital Problem: %.5G", 1222e9);
+	TEST("Hex Capital Problem: %.6G", 1222e9);
+	TEST("Hex Capital Problem: %.7G", 1222e9);
+	TEST("Hex Capital Problem: %.8G", 1222e9);
 	// TEST("Hex Capital Problem: %.2A", 0);
 
 	TEST("%s", "The End");

@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 16:41:09 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 19:17:06 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,27 @@ static double
 */
 
 static long int
-	ft_round_base(double x, int b)
+	ft_round_dec(double x)
 {
-	double half;
+	return (long int)x + 0.5;
+}
 
+static long int
+	ft_round_base(double x, double f, int b)
+{
+	double 		half;
+	long int	r;
+
+	r = ft_round_dec(f);
 	half = ((double)b) / 10 / 2;
-	return (long int)(x + half);
+	if (r < half)
+		return (x);
+	else
+	{
+		while ((long int)x % b != 0)
+			x = x + 1;
+		return (x);
+	}
 }
 
 int
@@ -59,8 +74,7 @@ int
 		ans++;
 		bp++;
 	}
-	if (ABS(b) == 10)
-		frac = ft_round_base(frac, ABS(b));
+	frac = ft_round_base(frac, ft_modf(frac), ABS(b));
 	if (frac != 0)
 		pf_itoa_base(d, (long long)frac, ABS(b), 2 | (b < 0));
 	return (ans);
