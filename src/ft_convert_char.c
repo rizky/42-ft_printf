@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:33:58 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/09 20:15:25 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 22:33:11 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ int
 	arg = va_arg(ap, wint_t);
 	m->precision = -1;
 	fta_reserve(d, 4);
+	if (arg >= 0x800 && arg <= 0xBFF)
+		return (-1);
+	if (arg >= 0xC00 && arg <= 0xFFF)
+		return (-1);
 	ans = ft_widetoa((char *)ARRAY_END(d), arg);
 	d->size += ans;
 	return ((int)ans);

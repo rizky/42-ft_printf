@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 21:31:26 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 22:39:21 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,8 @@ int
 }
 
 static int
-	pf_finde(double *arg, int *ans, t_array *d)
+	pf_finde(double *arg, int *ans, t_array *d, int e)
 {
-	int		e;
-
-	e = 0;
 	if (*arg < 1 && *arg >= 0.0001)
 		return (e);
 	if (*arg > 0 && *arg < 1)
@@ -79,7 +76,8 @@ int
 	int		ans;
 	int		e;
 
-	e = pf_finde(&arg, &ans, d);
+	e = 0;
+	e = pf_finde(&arg, &ans, d, e);
 	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
 	while ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.')
 	{
@@ -102,7 +100,21 @@ int
 	return (ans);
 }
 
-
+static int
+	pf_findp(double *arg, int p)
+{
+	while (*arg > 0 && *arg < 1)
+	{
+		*arg = *arg * 2;
+		p--;
+	}
+	while (*arg > 2)
+	{
+		*arg = *arg / 2;
+		p++;
+	}
+	return (p);
+}
 
 int
 	pf_signed_double_a(t_modifier *m, t_array *d, double arg, char *c)
@@ -111,17 +123,8 @@ int
 	int		p;
 
 	p = 0;
-	while (arg > 0 && arg < 1)
-	{
-		arg = arg * 2;
-		p--;
-	}
-	while (arg > 2)
-	{
-		arg = arg / 2;
-		p++;
-	}
-	if (c == "p")
+	p = pf_findp(&arg, p);
+	if (c[0] == 'p')
 	{
 		ans = pf_rtoa(d, ABS(arg), 16, m->precision);
 		while ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.')

@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 21:36:45 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 22:40:36 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int		main(int ac, char **av)
 
 	double x=34523423.52342353;
 	setlocale(LC_ALL, "");
+	TEST("%#16zO", 0);
+	TEST("%#16zo", 0);
 	TEST("1-Simple String.", 0);
 	TEST("2-Stringception _%s_", "Hello World");
 	TEST("3-Stringception _%20s_", "Hello World");
@@ -215,12 +217,6 @@ int		main(int ac, char **av)
 	TEST("%x", 3141593);
 	TEST("%X", 2);
 	TEST("%X", 3);
-
-	TEST("%x", 60);
-	TEST("%x", 1.5);
-	TEST("%x", 3.141593);
-	TEST("%X", 0.2);
-	TEST("%X", 0.3);
 
 	TEST("aA: %a", 0.12);
 	TEST("%a", 0.1);

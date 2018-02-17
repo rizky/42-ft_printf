@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_numeric_2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:54:20 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 15:35:38 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 22:27:19 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int
 		fta_append(d, "0", 1);
 		alt = 1;
 	}
+	m->conversion = 'o';
 	return (pf_unsigned_integer(m, d, ap, 8) + alt);
 }
 
