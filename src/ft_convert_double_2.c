@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 15:43:44 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 15:46:14 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int
 	pf_itoa_base(d, e, 10, 0);
 	return (ans);
 }
+
+
 
 int
 	pf_signed_double_a(t_modifier *m, t_array *d, double arg, char *c)

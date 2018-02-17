@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 15:39:34 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 16:41:09 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ static long int
 	double half;
 
 	half = ((double)b) / 10 / 2;
-	if (x < 0.0)
-		return (long int)(x - half);
-	else
-		return (long int)(x + half);
+	return (long int)(x + half);
 }
 
 int
@@ -63,7 +60,7 @@ int
 		bp++;
 	}
 	if (ABS(b) == 10)
-		frac = ft_round_base(frac, b);
+		frac = ft_round_base(frac, ABS(b));
 	if (frac != 0)
 		pf_itoa_base(d, (long long)frac, ABS(b), 2 | (b < 0));
 	return (ans);
