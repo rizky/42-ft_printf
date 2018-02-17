@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 19:00:46 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/17 21:31:26 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,14 +122,16 @@ int
 		p++;
 	}
 	if (c == "p")
+	{
 		ans = pf_rtoa(d, ABS(arg), 16, m->precision);
+		while ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.')
+		{
+			fta_popback(d, 1);
+			ans--;
+		}
+	}
 	else
 		ans = pf_rtoa(d, ABS(arg), -16, m->precision);
-	while ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.')
-	{
-		fta_popback(d, 1);
-		ans--;
-	}
 	ans += fta_append(d, c, 1);
 	if (p >= 0)
 		ans += fta_append(d, "+", 1);
