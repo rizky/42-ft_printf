@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:14 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/07 16:24:18 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/18 18:39:04 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int		ft_vdprintf(int fd, char const *format, va_list ap)
 	int			ans;
 
 	ans = ft_vasprintf(&str, format, ap);
-	write(fd, str, ans);
+	if (ans == -1)
+		write(fd, str, ft_strlen(str));
+	else
+		write(fd, str, ans);
 	free(str);
 	return (ans);
 }

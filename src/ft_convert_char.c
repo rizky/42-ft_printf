@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:33:58 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 22:33:11 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/18 19:12:36 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,19 @@ int
 	arg = va_arg(ap, wint_t);
 	m->precision = -1;
 	fta_reserve(d, 4);
-	if (arg >= 0x800 && arg <= 0xBFF)
+	if (arg >= 0xD800 && arg <= 0xDBFF)
 		return (-1);
-	if (arg >= 0xC00 && arg <= 0xFFF)
+	if (arg >= 0xDC00 && arg <= 0xDFFF)
 		return (-1);
+	if (arg < 0)
+		return (-1);
+	if (MB_CUR_MAX == 1 && arg >= 0x100)
+		return (-1);
+	if (MB_CUR_MAX == 1 && (arg >= 0x80 && arg < 0x100))
+		arg = arg - 256;
 	ans = ft_widetoa((char *)ARRAY_END(d), arg);
+	if (ans == 0)
+		return (-1);
 	d->size += ans;
 	return ((int)ans);
 }
@@ -63,7 +71,19 @@ int
 		arg = L"(null)";
 	ptr = arg;
 	while (*ptr)
+	{
+		if (*ptr >= 0xD800 && *ptr <= 0xDBFF)
+			return (-1);
+		if (*ptr >= 0xDC00 && *ptr <= 0xDFFF)
+			return (-1);
+		if (*ptr < 0)
+			return (-1);
+		if (MB_CUR_MAX == 1 && *ptr >= 0x100)
+			return (-1);
+		if (MB_CUR_MAX == 1 && (*ptr >= 0x80 && *ptr < 0x100))
+			*ptr = *ptr - 256;
 		ptr++;
+	}
 	fta_reserve(d, 4 * (ptr - arg));
 	if (m->precision >= 0)
 		len = ft_wstrnconv((char *)ARRAY_END(d), arg, m->precision);

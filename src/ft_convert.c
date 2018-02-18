@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 22:18:30 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/18 19:06:09 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int
 
 	before = d->size;
 	width = pf_print(m, d, ap);
+	if (width == -1)
+		return (-1);
 	after = d->size;
 	len = width;
 	if (len < m->precision && is_in(m->conversion, FTPF_NUMERIC) >= 0)
@@ -61,7 +63,7 @@ static int
 	return (len);
 }
 
-void
+int
 	pf_convert(t_modifier *m, t_array *d, va_list ap)
 {
 	size_t	before;
@@ -70,9 +72,11 @@ void
 	int		len;
 
 	if (!m->conversion)
-		return ;
+		return (1);
 	before = d->size;
 	width = pf_precision(m, d, ap);
+	if (width == -1)
+		return (-1);
 	after = d->size;
 	len = after - before;
 	if (len <= m->size)
@@ -89,4 +93,5 @@ void
 		if (!m->booleans.n.minus)
 			fta_swap(d, before, after);
 	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/18 01:10:23 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/18 19:09:31 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,35 +45,39 @@ int		main(int ac, char **av)
 
 	// double x=34523423.52342353;
 	// setlocale(LC_ALL, "");
-	TEST("%C", 0x11ffff);
-	TEST("%C", (wint_t)-2);
-	TEST("%C", 0xd800);
-	TEST("%C", 0xdb02);
-	TEST("%C", 0xdfff);
-	TEST("%C", 0xbffe);
-	TEST("%lc", 254);
-	TEST("%C", 256);
-	TEST("%-1C", 2250);
+	// TEST("%C", 0x6f);
+	// TEST("%C", 0x11ffff);
+	// TEST("%C", (wint_t)-2);
+	// TEST("%C", 0xd800);
+	// TEST("%C", 0xdb02);
+	// TEST("%C", 0xdfff);
+	// TEST("%C", 0xbffe);
+	// TEST("%lc", 254);
+	// TEST("%C", 256);
+	// TEST("%-1C", 2250);
 
-	TEST("%8C et coco %C titi %lc", 3250, 0x11ffff, 'a');
-	TEST("%---8C et coco %1C titi", 3250, 0xffff);
-	TEST("%6C et coco %C titi %C tyty", 3250, 0xd800, 'u');
-	TEST("yo%2C%-12lc et %C titi %C tyty", 'u', 254, 256, 'a');
+	// TEST("%8C et coco %C titi %lc", 3250, 0x11ffff, 'a');
+	// TEST("%---8C et coco %1C titi", 3250, 0xffff);
+	// TEST("%6C et coco %C titi %C tyty", 3250, 0xd800, 'u');
+	// printf("yo%2C%-12lc et %C titi %C tyty", 'u', 254, 256, 'a');
+
+	// ft_printf("yo%2C%-12lc et %C titi %C tyty", 'u', 254, 256, 'a');
+	// printf("yo%2C%-12lc et %C titi %C tyty", 'u', 254, 256, 'a');
 
 	wchar_t	s[4];
 
-	setlocale(LC_ALL, "");
-	s[0] = 0x53;
-	s[1] = 0x3abc;
-	s[2] = 0x81000;
-	s[3] = '\0';
-	TEST("%S", s);
+	// setlocale(LC_ALL, "");
+	// s[0] = 0x53;
+	// s[1] = 0x3abc;
+	// s[2] = 0x81000;
+	// s[3] = '\0';
+	// TEST("%S", s);
 
-	s[0] = 0x53;
-	s[1] = 0xd800;
-	s[2] = 0x81000;
-	s[3] = '\0';
-	TEST("%S", s);
+	// s[0] = 0x53;
+	// s[1] = 0xd800;
+	// s[2] = 0x81000;
+	// s[3] = '\0';
+	// TEST("%S", s);
 
 	s[0] = 'a';
 	s[1] = 254;
@@ -81,11 +85,11 @@ int		main(int ac, char **av)
 	s[3] = '\0';
 	TEST("%S", s);
 
-	s[0] = 254;
-	s[1] = 256;
-	s[2] = 'b';
-	s[3] = '\0';
-	TEST("%S", s);
+	// s[0] = 254;
+	// s[1] = 256;
+	// s[2] = 'b';
+	// s[3] = '\0';
+	// TEST("%S", s);
 
 	s[0] = 0x53;
 	s[1] = 0x3abc;
@@ -99,25 +103,25 @@ int		main(int ac, char **av)
 	s[3] = '\0';
 	TEST("%.2ls", s);
 	
-	s[0] = 'a';
-	s[1] = 250;
-	s[2] = 'b';
-	s[3] = '\0';
-	TEST("%-4S", s);
+	// s[0] = 'a';
+	// s[1] = 250;
+	// s[2] = 'b';
+	// s[3] = '\0';
+	// TEST("%-4S", s);
 
-	s[0] = 'a';
-	s[1] = 256;
-	s[2] = 'b';
-	s[3] = '\0';
-	TEST("%9ls", s);
+	// s[0] = 'a';
+	// s[1] = 256;
+	// s[2] = 'b';
+	// s[3] = '\0';
+	// TEST("%9ls", s);
 
-	s[0] = 0x53;
-	s[1] = 0x3abc;
-	s[2] = 0x81000;
-	s[3] = '\0';
-	TEST("%9.6ls %S", s, (wchar_t *)'a');
+	// s[0] = 0x53;
+	// s[1] = 0x3abc;
+	// s[2] = 0x81000;
+	// s[3] = '\0';
+	// TEST("%9.6ls %S", s, (wchar_t *)'a');
 
-	TEST("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256);
+	// TEST("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256);
 
 	// TEST("%#16zO", 0);
 	// TEST("%#16zo", 0);

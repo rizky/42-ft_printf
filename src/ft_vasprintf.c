@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 22:17:18 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/18 18:57:00 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int
 	t_array		d;
 	t_modifier	m;
 	char const	*p;
+	int			temp;
 
 	d = NEW_ARRAY(char);
 	fta_reserve(&d, ft_strlen(s));
@@ -72,7 +73,14 @@ int
 		if (*s == '%')
 		{
 			s = pf_match(s + 1, &m, ap);
-			pf_convert(&m, &d, ap);
+			if (pf_convert(&m, &d, ap) == -1)
+			{
+				fta_resize(&d, temp);
+				fta_trim(&d);
+				*ret = d.data;
+				return (-1);
+			}
+			temp = d.size;
 		}
 		p = s;
 		while (*p != '\0' && *p != '%')
