@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/18 19:09:31 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/18 22:59:40 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ int		main(int ac, char **av)
 	// s[3] = '\0';
 	// TEST("%S", s);
 
-	s[0] = 'a';
-	s[1] = 254;
-	s[2] = 'b';
-	s[3] = '\0';
-	TEST("%S", s);
+	// s[0] = 'a';
+	// s[1] = 254;
+	// s[2] = 'b';
+	// s[3] = '\0';
+	// TEST("%S", s);
 
 	// s[0] = 254;
 	// s[1] = 256;
@@ -91,18 +91,39 @@ int		main(int ac, char **av)
 	// s[3] = '\0';
 	// TEST("%S", s);
 
-	s[0] = 0x53;
-	s[1] = 0x3abc;
-	s[2] = 0x81000;
-	s[3] = '\0';
-	TEST("%.5ls", s);
+	// s[0] = 0x53;
+	// s[1] = 0x3abc;
+	// s[2] = 0x81000;%
+	// s[3] = '\0';
+	// TEST("%.5ls", s);
 
-	s[0] = 'S';
-	s[1] = 254;
-	s[2] = 'u';
-	s[3] = '\0';
-	TEST("%.2ls", s);
+	// s[0] = 'S';
+	// s[1] = 254;
+	// s[2] = 'u';
+	// s[3] = '\0';
+	// TEST("%.2ls", s);
+
+	// ft_printf("\e[36m|%s|\e[0m\n", "Test");
+
+	// ft_printf("%1z|%s|%z\n","Test");
+
+	ft_printf("%w|%s|%w\n","Test");
+	ft_printf("%1w|%s|%w\n","Test");
+	ft_printf("%2w|%s|%w\n","Test");
+	ft_printf("%3w|%s|%w\n","Test");
+	ft_printf("%4w|%s|%w\n","Test");
+	ft_printf("%5w|%s|%w\n","Test");
+	ft_printf("%6w|%s|%w\n","Test");
+
+	ft_printf("%6w|%s|%5w|%s|%4w|%s|%3w|%s|%2w|%s|%1w|%s|%w\n","Test","Test","Test","Test","Test","Test");
 	
+	ft_printf("%0.1w|%s|%w\n","Test");
+	ft_printf("%1.1w|%s|%w\n","Test");
+	ft_printf("%2.1w|%s|%w\n","Test");
+	ft_printf("%3.1w|%s|%w\n","Test");
+	ft_printf("%4.1w|%s|%w\n","Test");
+	ft_printf("%5.1w|%s|%w\n","Test");
+	ft_printf("%6.1w|%s|%w\n","Test");
 	// s[0] = 'a';
 	// s[1] = 250;
 	// s[2] = 'b';
@@ -121,7 +142,9 @@ int		main(int ac, char **av)
 	// s[3] = '\0';
 	// TEST("%9.6ls %S", s, (wchar_t *)'a');
 
-	// TEST("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256);
+	// char *ret;
+	// ft_asprintf(&ret, "%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256);
+	// ft_printf("%s", ret);
 
 	// TEST("%#16zO", 0);
 	// TEST("%#16zo", 0);
@@ -231,7 +254,7 @@ int		main(int ac, char **av)
 	// TEST("%#.3i", 1);
 	// TEST("{%*d}", 5, 42);
 	// TEST("{%05.s}", 0);
-	// ft_printf("1Z-Binary %b\n", 2);
+	// ft_printf("1Z-Binary %b\n", 700);
 	// int a,b,c,d,e,f;
 	// ft_printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &a, &b, &c);
 	// printf("~ Flag%nWooWo% %[% 20.010-5n]%n\n", &d, &e, &f);
@@ -290,7 +313,7 @@ int		main(int ac, char **av)
 	// TEST("%.g", 0);
 	// TEST("%.g", -1.22e-9);
 
-	// TEST("%x", 60);
+	// TEST("%X", -60);
 	// TEST("%x", 15);
 	// TEST("%x", 3141593);
 	// TEST("%X", 2);

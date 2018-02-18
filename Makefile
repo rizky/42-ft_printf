@@ -6,7 +6,7 @@
 #    By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/02/17 11:25:39 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/02/18 22:33:35 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME:=libftprintf.a
 FILES:=ft_printf ft_vprintf ft_vasprintf ft_convert \
 		ft_convert_numeric_1 ft_convert_numeric_2 ft_convert_numeric_3 \
 		ft_convert_char \
-		ft_convert_double_1 ft_convert_double_2 ft_convert_double_3
+		ft_convert_double_1 ft_convert_double_2 ft_convert_double_3 \
+		ft_convert_color
 
 # ----- Libft ------
 LFTDIR:=./libft
