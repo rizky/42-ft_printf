@@ -21,7 +21,8 @@
 	],
 	"settings": {
 		"files.associations": {
-			"ft_printf.h": "c"
+			"ft_printf.h": "c",
+			"conv_bigs_test.h": "c"
 		}
 	}
 }
