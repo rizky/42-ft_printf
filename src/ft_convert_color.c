@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 22:27:14 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/18 22:58:54 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/19 14:01:39 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int
 	pf_cv_w(t_modifier *m, t_array *d, va_list ap)
 {
-	(void)ap;
-	(void)m;
 	int		index;
 
+	(void)ap;
+	(void)m;
 	index = m->size;
 	m->size = 0;
 	if (index > 6)

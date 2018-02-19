@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/18 22:59:40 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/19 14:13:50 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		main(int ac, char **av)
 	int		pf;
 	int		ft;
 
-	// double x=34523423.52342353;
+	double x=34523423.52342353;
 	// setlocale(LC_ALL, "");
 	// TEST("%C", 0x6f);
 	// TEST("%C", 0x11ffff);
@@ -52,7 +52,7 @@ int		main(int ac, char **av)
 	// TEST("%C", 0xdb02);
 	// TEST("%C", 0xdfff);
 	// TEST("%C", 0xbffe);
-	// TEST("%lc", 254);
+	TEST("%lc", 253);
 	// TEST("%C", 256);
 	// TEST("%-1C", 2250);
 
@@ -64,7 +64,7 @@ int		main(int ac, char **av)
 	// ft_printf("yo%2C%-12lc et %C titi %C tyty", 'u', 254, 256, 'a');
 	// printf("yo%2C%-12lc et %C titi %C tyty", 'u', 254, 256, 'a');
 
-	wchar_t	s[4];
+	// wchar_t	s[4];
 
 	// setlocale(LC_ALL, "");
 	// s[0] = 0x53;
@@ -93,7 +93,7 @@ int		main(int ac, char **av)
 
 	// s[0] = 0x53;
 	// s[1] = 0x3abc;
-	// s[2] = 0x81000;%
+	// s[2] = 0x81000;
 	// s[3] = '\0';
 	// TEST("%.5ls", s);
 
@@ -107,23 +107,23 @@ int		main(int ac, char **av)
 
 	// ft_printf("%1z|%s|%z\n","Test");
 
-	ft_printf("%w|%s|%w\n","Test");
-	ft_printf("%1w|%s|%w\n","Test");
-	ft_printf("%2w|%s|%w\n","Test");
-	ft_printf("%3w|%s|%w\n","Test");
-	ft_printf("%4w|%s|%w\n","Test");
-	ft_printf("%5w|%s|%w\n","Test");
-	ft_printf("%6w|%s|%w\n","Test");
+	// ft_printf("%w|%s|%w\n","Test");
+	// ft_printf("%1w|%s|%w\n","Test");
+	// ft_printf("%2w|%s|%w\n","Test");
+	// ft_printf("%3w|%s|%w\n","Test");
+	// ft_printf("%4w|%s|%w\n","Test");
+	// ft_printf("%5w|%s|%w\n","Test");
+	// ft_printf("%6w|%s|%w\n","Test");
 
-	ft_printf("%6w|%s|%5w|%s|%4w|%s|%3w|%s|%2w|%s|%1w|%s|%w\n","Test","Test","Test","Test","Test","Test");
+	// ft_printf("%6w|%s|%5w|%s|%4w|%s|%3w|%s|%2w|%s|%1w|%s|%w\n","Test","Test","Test","Test","Test","Test");
 	
-	ft_printf("%0.1w|%s|%w\n","Test");
-	ft_printf("%1.1w|%s|%w\n","Test");
-	ft_printf("%2.1w|%s|%w\n","Test");
-	ft_printf("%3.1w|%s|%w\n","Test");
-	ft_printf("%4.1w|%s|%w\n","Test");
-	ft_printf("%5.1w|%s|%w\n","Test");
-	ft_printf("%6.1w|%s|%w\n","Test");
+	// ft_printf("%0.1w|%s|%w\n","Test");
+	// ft_printf("%1.1w|%s|%w\n","Test");
+	// ft_printf("%2.1w|%s|%w\n","Test");
+	// ft_printf("%3.1w|%s|%w\n","Test");
+	// ft_printf("%4.1w|%s|%w\n","Test");
+	// ft_printf("%5.1w|%s|%w\n","Test");
+	// ft_printf("%6.1w|%s|%w\n","Test");
 	// s[0] = 'a';
 	// s[1] = 250;
 	// s[2] = 'b';

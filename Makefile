@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+         #
+#    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/02/18 22:33:35 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/02/19 14:20:53 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,5 +95,6 @@ norm:
 	@echo $(RED)
 	@norminette $(SRC) $(HDRPATH) | grep -v	Norme -B1 || true
 	@echo $(END)
+	@cd $(LFTDIR) && $(MAKE) norm
 
 .PHONY: all clean fclean re test norme
