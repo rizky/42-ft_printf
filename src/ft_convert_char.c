@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:33:58 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/18 19:12:36 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/20 19:22:57 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,22 @@ int
 	m->precision = -1;
 	fta_append(d, (void *)arg, ans);
 	return (ans);
+}
+
+int
+	pf_widechar_exception(wchar_t *c)
+{
+	if (*c >= 0xD800 && *c <= 0xDBFF)
+		return (-1);
+	if (*c >= 0xDC00 && *c <= 0xDFFF)
+		return (-1);
+	if (*c < 0)
+		return (-1);
+	if (MB_CUR_MAX == 1 && *c >= 0x100)
+		return (-1);
+	if (MB_CUR_MAX == 1 && (*c >= 0x80 && *c < 0x100))
+		*c = *c - 256;
+	return (1);
 }
 
 int
@@ -72,16 +88,8 @@ int
 	ptr = arg;
 	while (*ptr)
 	{
-		if (*ptr >= 0xD800 && *ptr <= 0xDBFF)
+		if (pf_widechar_exception(ptr) == -1)
 			return (-1);
-		if (*ptr >= 0xDC00 && *ptr <= 0xDFFF)
-			return (-1);
-		if (*ptr < 0)
-			return (-1);
-		if (MB_CUR_MAX == 1 && *ptr >= 0x100)
-			return (-1);
-		if (MB_CUR_MAX == 1 && (*ptr >= 0x80 && *ptr < 0x100))
-			*ptr = *ptr - 256;
 		ptr++;
 	}
 	fta_reserve(d, 4 * (ptr - arg));
