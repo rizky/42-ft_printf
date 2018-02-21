@@ -24,6 +24,7 @@ WideChar Exeption
 Guides
 - https://github.com/tvisenti/Ft_Printf/blob/master/inc/ft_printf.h
 - http://en.cppreference.com/w/cpp/io/c/fprintf
+- quote flag https://stackoverflow.com/questions/1449805/how-to-format-a-number-from-1123456789-to-1-123-456-789-in-c
 
 # ft_printf
 

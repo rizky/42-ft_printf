@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/20 19:55:47 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/21 21:57:03 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ int
 	int		width;
 	int		len;
 
-	if (!m->conversion)
-		return (1);
 	before = d->size;
 	width = pf_precision(m, d, ap);
 	if (width == -1)

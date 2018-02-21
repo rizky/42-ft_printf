@@ -6,13 +6,13 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/18 18:57:00 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/21 21:56:31 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static inline const char
+static const char
 	*pf_update_value(char const *s, int *v, va_list ap)
 {
 	if (*s == '*')
@@ -26,7 +26,7 @@ static inline const char
 	return (s);
 }
 
-static inline void
+static void
 	pf_set_length_modifier(char c, char *lm)
 {
 	if ((c == 'h' || c == 'l') && *lm == c)
@@ -35,11 +35,12 @@ static inline void
 		*lm = c;
 }
 
-static inline const char
+static const char
 	*pf_match(char const *s, t_modifier *m, va_list ap)
 {
 	int			n;
 
+	*m = NEW_MODIFIER;
 	while (*s != '\0')
 	{
 		if (*s == '.')
@@ -57,23 +58,34 @@ static inline const char
 	return (s);
 }
 
+static const char
+	*pf_next_specifier(char const *s, t_array *d)
+{
+	char const	*p;
+	
+	p = s;
+	while (*p != '\0' && *p != '%')
+		p++;
+	if (p != s)
+		fta_append(d, (void *)s, p - s);
+	return p;
+}
+
 int
 	ft_vasprintf(char **ret, char const *s, va_list ap)
 {
 	t_array		d;
 	t_modifier	m;
-	char const	*p;
 	int			temp;
 
 	d = NEW_ARRAY(char);
 	fta_reserve(&d, ft_strlen(s));
 	while (*s != '\0')
 	{
-		m = NEW_MODIFIER;
 		if (*s == '%')
 		{
 			s = pf_match(s + 1, &m, ap);
-			if (pf_convert(&m, &d, ap) == -1)
+			if (m.conversion && pf_convert(&m, &d, ap) == -1)
 			{
 				fta_resize(&d, temp);
 				fta_trim(&d);
@@ -82,14 +94,8 @@ int
 			}
 			temp = d.size;
 		}
-		p = s;
-		while (*p != '\0' && *p != '%')
-			p++;
-		if (p != s)
-			fta_append(&d, (void *)s, p - s);
-		s = p;
+		s = pf_next_specifier(s, &d);
 	}
-	fta_append(&d, "\0", 1);
 	fta_trim(&d);
 	*ret = d.data;
 	return (d.size - 1);
