@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 22:39:21 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 00:09:16 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int
 	e = 0;
 	e = pf_finde(&arg, &ans, d, e);
 	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
-	while ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.')
+	while (d->size > 1 && ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.'))
 	{
 		fta_popback(d, 1);
 		ans--;
@@ -124,17 +124,12 @@ int
 
 	p = 0;
 	p = pf_findp(&arg, p);
-	if (c[0] == 'p')
+	ans = pf_rtoa(d, ABS(arg), 16, m->precision);
+	while (d->size > 3 && ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.'))
 	{
-		ans = pf_rtoa(d, ABS(arg), 16, m->precision);
-		while ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.')
-		{
-			fta_popback(d, 1);
-			ans--;
-		}
+		fta_popback(d, 1);
+		ans--;
 	}
-	else
-		ans = pf_rtoa(d, ABS(arg), -16, m->precision);
 	ans += fta_append(d, c, 1);
 	if (p >= 0)
 		ans += fta_append(d, "+", 1);

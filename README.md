@@ -25,6 +25,8 @@ Guides
 - https://github.com/tvisenti/Ft_Printf/blob/master/inc/ft_printf.h
 - http://en.cppreference.com/w/cpp/io/c/fprintf
 - quote flag https://stackoverflow.com/questions/1449805/how-to-format-a-number-from-1123456789-to-1-123-456-789-in-c
+- http://www.cplusplus.com/reference/cstdio/printf/
+
 
 # ft_printf
 
@@ -77,7 +79,6 @@ For s: this is the maximum number of characters to be printed. By default all ch
 If the period is specified without an explicit value for precision, 0 is assumed.
 
 <h2>Length sub-specifier:</h2>
-<b>hh h l ll j z</b>
 <table>
   <tr>
     <td><b>length</b></td>
@@ -123,7 +124,7 @@ If the period is specified without an explicit value for precision, 0 is assumed
     <td></td>
     <td></td>
   </tr>
-    <tr>
+  <tr>
     <td>j</td>
     <td>intmax_t</td>
     <td>uintmax_t</td>
@@ -132,8 +133,7 @@ If the period is specified without an explicit value for precision, 0 is assumed
     <td></td>
     <td></td>
   </tr>
-  </tr>
-    <tr>
+  <tr>
     <td>z</td>
     <td>size_t</td>
     <td>size_t</td>
@@ -142,5 +142,13 @@ If the period is specified without an explicit value for precision, 0 is assumed
     <td></td>
     <td></td>
   </tr>
-  
+  <tr>
+    <td>L</td>
+    <td></td>
+    <td></td>
+    <td>long double	</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>

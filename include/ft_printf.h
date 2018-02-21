@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:26 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/18 22:43:12 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 00:30:55 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int					pf_cv_b(t_modifier *m, t_array *d, va_list ap);
 int					pf_cv_n(t_modifier *m, t_array *d, va_list ap);
 
 int					pf_cv_f(t_modifier *m, t_array *d, va_list ap);
+int					pf_cv_cf(t_modifier *m, t_array *d, va_list ap);
 int					pf_cv_e(t_modifier *m, t_array *d, va_list ap);
 int					pf_cv_ce(t_modifier *m, t_array *d, va_list ap);
 int					pf_cv_g(t_modifier *m, t_array *d, va_list ap);

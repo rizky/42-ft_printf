@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/21 21:57:03 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 00:27:16 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int
 	&pf_cv_s, &pf_cv_ws, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
 	&pf_cv_o, &pf_cv_o, &pf_cv_u, &pf_cv_u, &pf_cv_x, &pf_cv_cx,
 	&pf_cv_c, &pf_cv_wc, &pf_cv_b, &pf_cv_n, &pf_cv_e, &pf_cv_ce,
-	&pf_cv_f, &pf_cv_f, &pf_cv_g, &pf_cv_cg, &pf_cv_a, &pf_cv_ca,
+	&pf_cv_f, &pf_cv_cf, &pf_cv_g, &pf_cv_cg, &pf_cv_a, &pf_cv_ca,
 	&pf_cv_w, &pf_cv_w};
 
 	if (is_in(m->conversion, "DOU") >= 0)
