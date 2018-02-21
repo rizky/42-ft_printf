@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/20 19:54:44 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/21 23:16:50 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		main(int ac, char **av)
 	int		ft;
 
 	double x=34523423.52342353;
-	// setlocale(LC_ALL, "");
+	printf("%1$d %1$x %1$o", 10);
 	TEST("%C", 0x6f);
 	TEST("%C", 0x11ffff);
 	TEST("%C", (wint_t)-2);
@@ -350,7 +350,8 @@ int		main(int ac, char **av)
 	TEST("%#0.3o", 0);
 	TEST("%lc", 0xa2);
 	TEST("%C", 0xa2);
-	TEST("%n", 0)
+	TEST("1%n", 0)
+	setlocale(LC_ALL, "");
 
 	TEST("%hhC, %hhC", 0, L'Á±≥');
 	TEST("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")

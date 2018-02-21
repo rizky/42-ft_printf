@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:54:20 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/17 22:27:19 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/21 23:14:55 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int
 
 	arg = va_arg(ap, void *);
 	if (!arg)
-		return (-1);
+		return (0);
 	m->size = 0;
 	m->precision = -1;
 	if (m->length == 'H')
