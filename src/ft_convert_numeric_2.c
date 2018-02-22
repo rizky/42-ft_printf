@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:54:20 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/21 23:14:55 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 01:00:01 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int
 {
 	(void)m;
 	fta_append(d, "0x", 2);
-	m->length = 'L';
 	return (pf_unsigned_integer(m, d, ap, 16));
 }
 
@@ -76,7 +75,7 @@ int
 		*(short *)arg = (short)d->size;
 	else if (m->length == 'l' || m->length == 'z')
 		*(long *)arg = (long)d->size;
-	else if (m->length == 'L')
+	else if (m->length == '7')
 		*(long long *)arg = (long long)d->size;
 	else if (m->length == 'j')
 		*(intmax_t *)arg = (intmax_t)d->size;

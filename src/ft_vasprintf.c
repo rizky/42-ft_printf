@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/21 21:56:31 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 00:51:48 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ static const char
 static void
 	pf_set_length_modifier(char c, char *lm)
 {
-	if ((c == 'h' || c == 'l') && *lm == c)
+	if (c == 'h' && *lm == 'h')
 		*lm = ft_toupper(c);
+	else if (c == 'l' && *lm == 'l')
+		*lm = '7';
 	else if (*lm == 0 || !(c == 'h' && *lm != 'H'))
 		*lm = c;
 }

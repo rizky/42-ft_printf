@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 00:35:28 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 00:39:00 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,12 @@ int
 int
 	pf_cv_f(t_modifier *m, t_array *d, va_list ap)
 {
-	double	arg;
+	long double	arg;
 
-	arg = va_arg(ap, double);
+	if (m->length == 'L')
+		arg = va_arg(ap, long double);
+	else
+		arg = va_arg(ap, double);
 	if (arg < 0)
 		fta_append(d, "-", 1);
 	else if (m->booleans.n.plus)
@@ -84,9 +87,12 @@ int
 int
 	pf_cv_cf(t_modifier *m, t_array *d, va_list ap)
 {
-	double	arg;
+	long double	arg;
 
-	arg = va_arg(ap, double);
+	if (m->length == 'L')
+		arg = va_arg(ap, long double);
+	else
+		arg = va_arg(ap, double);
 	if (arg < 0)
 		fta_append(d, "-", 1);
 	else if (m->booleans.n.plus)
