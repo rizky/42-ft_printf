@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vasprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 00:51:48 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 15:48:54 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ static const char
 	*pf_next_specifier(char const *s, t_array *d)
 {
 	char const	*p;
-	
+
 	p = s;
 	while (*p != '\0' && *p != '%')
 		p++;
 	if (p != s)
 		fta_append(d, (void *)s, p - s);
-	return p;
+	return (p);
 }
 
 int

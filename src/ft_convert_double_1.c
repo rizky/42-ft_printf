@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 00:39:00 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 15:54:41 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,12 @@ int
 		return (0);
 	if (m->precision == -1)
 		m->precision = 6;
-	if (arg != arg)
+	if (arg != arg || arg == 1.0 / 0.0)
 	{
-		fta_append(d, "nan", 3);
-		return (0);
-	}
-	if (arg == 1.0/0.0)
-	{
-		fta_append(d, "inf", 3);
+		if (arg == 1.0 / 0.0)
+			fta_append(d, "inf", 3);
+		else
+			fta_append(d, "nan", 3);
 		return (0);
 	}
 	return (pf_rtoa(d, ABS(arg), 10, m->precision));
@@ -103,14 +101,12 @@ int
 		return (0);
 	if (m->precision == -1)
 		m->precision = 6;
-	if (arg != arg)
+	if (arg != arg || arg == 1.0 / 0.0)
 	{
-		fta_append(d, "NAN", 3);
-		return (0);
-	}
-	if (arg == 1.0/0.0)
-	{
-		fta_append(d, "INF", 3);
+		if (arg == 1.0 / 0.0)
+			fta_append(d, "INF", 3);
+		else
+			fta_append(d, "NAN", 3);
 		return (0);
 	}
 	return (pf_rtoa(d, ABS(arg), 10, m->precision));

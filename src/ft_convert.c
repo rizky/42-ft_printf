@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 00:27:16 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 15:50:41 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,13 @@ int
 	if (len <= m->size)
 	{
 		if (m->booleans.n.zero && m->precision <= -1 && !m->booleans.n.minus)
-		{
 			while (len < m->size && ++len)
 				fta_append(d, "0", 1);
-			before = after - width;
-		}
 		else
 			while (len < m->size && ++len)
 				fta_append(d, " ", 1);
+		if (m->booleans.n.zero && m->precision <= -1 && !m->booleans.n.minus)
+			before = after - width;
 		if (!m->booleans.n.minus)
 			fta_swap(d, before, after);
 	}

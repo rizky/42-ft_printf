@@ -6,7 +6,7 @@
 #    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/02/19 14:20:53 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/02/22 15:56:15 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ $(NAME): $(OBJ)
 	@echo $(CYAN) " - Compiling $@" $(RED)
 	@$(LINKER) $(NAME) $(OBJ) $(LFTDIR)/$(CCHPATH)*.o $(LFTDIR)/$(CCHPATH)*/*.o
 	@ranlib $(NAME)
-	@echo $(GREEN)"OK"$(EOC)
+	@echo $(GREEN) " - OK" $(EOC)
 
 $(CCHPATH)%.o: $(SRCPATH)%.c | $(CCHF)
 	@echo $(PURPLE) " - Compiling $< into $@" $(EOC)
