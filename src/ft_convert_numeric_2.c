@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:54:20 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 01:00:01 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 01:15:10 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int
 {
 	(void)m;
 	fta_append(d, "0x", 2);
+	m->length = '7';
 	return (pf_unsigned_integer(m, d, ap, 16));
 }
 

@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 00:44:59 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 01:16:43 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,10 @@ int
 
 	p = 0;
 	p = pf_findp(&arg, p);
-	ans = pf_rtoa(d, ABS(arg), 16, m->precision);
+	if (*c == 'p')
+		ans = pf_rtoa(d, ABS(arg), 16, m->precision);
+	else
+		ans = pf_rtoa(d, ABS(arg), -16, m->precision);
 	while (d->size > 3 && ((ARRAY_LAST(d))[0] == '0' || (ARRAY_LAST(d))[0] == '.'))
 	{
 		fta_popback(d, 1);
