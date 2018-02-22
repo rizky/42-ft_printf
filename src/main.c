@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 00:59:49 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 01:11:18 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int		main(int ac, char **av)
 	double x=34523423.52342353;
 	// TEST("%1$d %1$x %1$o", 10);
 
-	int a = 234534534;
-	TEST("%p", a);
+	int a = -234823948;
+	TEST("%tu", a);
 	// TEST("%C", 0x6f);
 	// TEST("%C", 0x11ffff);
 	// TEST("%C", (wint_t)-2);

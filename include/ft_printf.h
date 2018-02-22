@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:26 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 00:40:55 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 01:07:15 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define FTPF_CV "sSpdDioOuUxXcCbn"
 # define FTPF_NUMERIC "diouDOUxXpb"
-# define FTPF_LM "hljzL"
+# define FTPF_LM "hljztL"
 # define FTPF_SWITCHES "0+- #_"
 # define NEW_MODIFIER (t_modifier){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, -1};
 

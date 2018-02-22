@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 01:00:20 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/22 01:11:07 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int
 		arg = va_arg(ap, long long);
 	else if (m->length == 'j')
 		arg = va_arg(ap, intmax_t);
+	else if (m->length == 't')
+		arg = va_arg(ap, ptrdiff_t);
 	else
 		arg = va_arg(ap, int);
 	if (arg < 0)
@@ -81,6 +83,8 @@ int
 		arg = va_arg(ap, size_t);
 	else if (m->length == 'j')
 		arg = va_arg(ap, uintmax_t);
+	else if (m->length == 't')
+		arg = va_arg(ap, size_t);
 	else
 		arg = va_arg(ap, unsigned);
 	if (arg == 0 && m->booleans.n.alternate
