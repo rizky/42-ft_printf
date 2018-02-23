@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 15:54:41 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 14:26:12 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*
-** Return the fraction of the parameter num
-*/
-
-static double
-	ft_modf(double num)
-{
-	long int		intpart;
-
-	intpart = (long int)num;
-	return (num - intpart);
-}
 
 int
 	pf_rtoa(t_array *d, long double x, int b, int precision)
@@ -131,4 +118,22 @@ int
 		m->precision = 6;
 	arg = ABS(arg);
 	return (pf_signed_double_e(m, d, arg, "e"));
+}
+
+int
+	pf_cv_ce(t_modifier *m, t_array *d, va_list ap)
+{
+	double	arg;
+
+	arg = va_arg(ap, double);
+	if (arg < 0)
+		fta_append(d, "-", 1);
+	else if (m->booleans.n.plus)
+		fta_append(d, "+", 1);
+	else if (m->booleans.n.space)
+		fta_append(d, " ", 1);
+	if (m->precision == -1)
+		m->precision = 6;
+	arg = ABS(arg);
+	return (pf_signed_double_e(m, d, arg, "E"));
 }

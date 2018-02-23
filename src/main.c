@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/22 15:58:59 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 14:29:47 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,10 +368,10 @@ int		main(int ac, char **av)
 	// // Todo
 
 	TEST("Hex Significant cut: %.5g", 0.00);
-	// TEST("Hex Significant cut: %a", 1e9);
-	// TEST("Hex Significant cut: %a", -1e9);
-	// TEST("Hex Significant cut: %a", 0);
-	// TEST("%a", -1e9);
+	TEST("Hex Significant cut: %a", 1e9);
+	TEST("Hex Significant cut: %a", -1e9);
+	TEST("Hex Significant cut: %a", 0);
+	TEST("%a", -1e9);
 
 	// TEST("Hex Round Problem: %04.1a", 26);
 	// TEST("Hex Round Problem: %04.2a", 1222e9);
