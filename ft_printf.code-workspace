@@ -19,7 +19,8 @@
 	"settings": {
 		"files.associations": {
 			"ft_printf.h": "c",
-			"conv_bigs_test.h": "c"
+			"conv_bigs_test.h": "c",
+			"libft.h": "c"
 		}
 	}
 }

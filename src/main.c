@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 15:32:38 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 17:24:58 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,20 @@ int		main(int ac, char **av)
 	char	*ft_dst;
 	int		pf;
 	int		ft;
+	int		date[6] = {
+		16, 53, 06, 22, 11, 2015
+	};
 
 	double x=34523423.52342353;
+	printf("%20d", unix_time_in_seconds(date));
 	// TEST("%10$s %1$x %1$o", 10);
-	setlocale(LC_NUMERIC, "");
-	TEST("%20.'d", 1000000);
-	TEST("%20.'u", -1000000);
-	TEST("%20.d", 1000000);
-	TEST("%20.u", -1000000);
-	TEST("%20'f", 24564564.333);
-	TEST("%20f", 24564564.333);
+	// setlocale(LC_NUMERIC, "");
+	// TEST("%20.'d", 1000000);
+	// TEST("%20.'u", -1000000);
+	// TEST("%20.d", 1000000);
+	// TEST("%20.u", -1000000);
+	// TEST("%20'f", 24564564.333);
+	// TEST("%20f", 24564564.333);
 	// TEST("%C", 0x6f);
 	// TEST("%C", 0x11ffff);
 	// TEST("%C", (wint_t)-2);
