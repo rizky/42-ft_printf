@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 14:27:07 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 15:30:56 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,22 @@ static int
 	return (e);
 }
 
+static int
+	pf_findp(long double *arg, int p)
+{
+	while (*arg > 0 && *arg < 1)
+	{
+		*arg = *arg * 2;
+		p--;
+	}
+	while (*arg > 2)
+	{
+		*arg = *arg / 2;
+		p++;
+	}
+	return (p);
+}
+
 static void
 	pf_popzero(t_array *d, int *ans)
 {
@@ -62,7 +78,7 @@ int
 
 	e = 0;
 	e = pf_finde(&arg, &ans, d, e);
-	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
+	ans = pf_rtoa(d, ABS(arg), 10, m);
 	pf_popzero(d, &ans);
 	if (e == 0)
 	{
@@ -80,22 +96,6 @@ int
 	return (ans);
 }
 
-static int
-	pf_findp(long double *arg, int p)
-{
-	while (*arg > 0 && *arg < 1)
-	{
-		*arg = *arg * 2;
-		p--;
-	}
-	while (*arg > 2)
-	{
-		*arg = *arg / 2;
-		p++;
-	}
-	return (p);
-}
-
 int
 	pf_signed_double_a(t_modifier *m, t_array *d, long double arg, char *c)
 {
@@ -105,9 +105,9 @@ int
 	p = 0;
 	p = pf_findp(&arg, p);
 	if (*c == 'p')
-		ans = pf_rtoa(d, ABS(arg), 16, m->precision);
+		ans = pf_rtoa(d, ABS(arg), 16, m);
 	else
-		ans = pf_rtoa(d, ABS(arg), -16, m->precision);
+		ans = pf_rtoa(d, ABS(arg), -16, m);
 	pf_popzero(d, &ans);
 	ans += fta_append(d, c, 1);
 	if (p >= 0)

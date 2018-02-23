@@ -3,30 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_numeric_3.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 14:48:01 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 15:26:33 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int
+int
 	pf_culturization(t_array *d, char c)
 {
 	t_array temp;
 	int		i;
 
-	i = 0;
+	i = 1;
 	temp = NEW_ARRAY(char);
-	while (ft_isdigit(ARRAY_LAST(d))[0]))
+	while (ft_isdigit((ARRAY_LAST(d))[0]))
 	{
-		fta_append(temp, ARRAY_LAST(d))[0], 1);
+		fta_append(&temp, ARRAY_LAST(d), 1);
 		fta_popback(d, 1);
+		if (i % 3 == 0)
+			fta_append(&temp, &c, 1);
 		i++;
-		if (i % 3)
-			fta_append(temp, c, 1);
+	}
+	while (temp.size > 0)
+	{
+		fta_append(d, ARRAY_LAST(&temp), 1);
+		fta_popback(&temp, 1);
 	}
 	return (i / 3);
 }
@@ -59,6 +64,7 @@ int
 	pf_signed_integer(t_modifier *m, t_array *d, va_list ap, int b)
 {
 	intmax_t	arg;
+	int			ans;
 
 	if (m->length == 'H')
 		arg = (signed char)va_arg(ap, int);
@@ -82,13 +88,17 @@ int
 		fta_append(d, " ", 1);
 	if (arg == 0 && m->precision == 0)
 		return (0);
-	return (pf_itoa_base(d, arg, ABS(b), b < 0));
+	ans = pf_itoa_base(d, arg, ABS(b), b < 0);
+	if (m->quote)
+		ans += pf_culturization(d, ',');
+	return (ans);
 }
 
 int
 	pf_unsigned_integer(t_modifier *m, t_array *d, va_list ap, int b)
 {
 	uintmax_t	arg;
+	int			ans;
 
 	if (m->length == 'H')
 		arg = (unsigned char)va_arg(ap, unsigned);
@@ -112,5 +122,8 @@ int
 	if ((arg == 0 && m->precision == 0) ||
 	(arg == 0 && m->conversion == 'o' && m->booleans.n.alternate))
 		return (0);
-	return (pf_itoa_base(d, arg, ABS(b), 2 | (b < 0)));
+	ans = pf_itoa_base(d, arg, ABS(b), 2 | (b < 0));
+	if (m->quote)
+		ans += pf_culturization(d, ',');
+	return (ans);
 }

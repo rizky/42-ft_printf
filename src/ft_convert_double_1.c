@@ -3,29 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 14:26:12 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 15:31:09 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 int
-	pf_rtoa(t_array *d, long double x, int b, int precision)
+	pf_rtoa(t_array *d, long double x, int b, t_modifier *m)
 {
 	double			frac;
 	int				ans;
 	int				bp;
 
 	ans = 1 + pf_itoa_base(d, (long long)x, ABS(b), 2 | (b < 0));
-	if (precision == 0)
+	if (m->quote)
+		ans += pf_culturization(d, ',');
+	if (m->precision == 0)
 		return (ans);
 	fta_append(d, ".", 1);
 	bp = 0;
 	frac = ft_modf(x);
-	while (bp < precision)
+	while (bp < m->precision)
 	{
 		frac *= ABS(b);
 		if (frac < 1)
@@ -66,7 +68,7 @@ int
 			fta_append(d, "nan", 3);
 		return (0);
 	}
-	return (pf_rtoa(d, ABS(arg), 10, m->precision));
+	return (pf_rtoa(d, ABS(arg), 10, m));
 }
 
 int
@@ -96,7 +98,7 @@ int
 			fta_append(d, "NAN", 3);
 		return (0);
 	}
-	return (pf_rtoa(d, ABS(arg), 10, m->precision));
+	return (pf_rtoa(d, ABS(arg), 10, m));
 }
 
 int

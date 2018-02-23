@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:26 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 14:38:09 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 15:30:29 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct		s_modifier
 	char			conversion;
 	char			length;
 	int				size;
-	int				precision;
 	int				quote;
+	int				precision;
 }					t_modifier;
 
 int					ft_printf(char const *format, ...);
@@ -65,7 +65,7 @@ int					pf_signed_integer(t_modifier *m,
 					t_array *d, va_list ap, int b);
 
 int					pf_itoa_base(t_array *d, intmax_t n, int b, char info);
-int					pf_rtoa(t_array *d, long double x, int b, int precision);
+int					pf_rtoa(t_array *d, long double x, int b, t_modifier *m);
 int					pf_signed_double_e(t_modifier *m,
 					t_array *d, long double arg, char *c);
 int					pf_signed_double_g(t_modifier *m,
@@ -98,6 +98,7 @@ int					pf_cv_ca(t_modifier *m, t_array *d, va_list ap);
 
 int					pf_cv_w(t_modifier *m, t_array *d, va_list ap);
 
+int					pf_culturization(t_array *d, char c);
 size_t				ft_wstrnconv(char *buff, const wchar_t *wstr, size_t n);
 size_t				ft_wstrconv(char *buff, const wchar_t *wstr);
 #endif

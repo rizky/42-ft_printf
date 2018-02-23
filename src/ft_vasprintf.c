@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vasprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 14:44:51 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 15:20:55 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static const char
 		if (*s == '.')
 			s = pf_update_value(s + 1, &(m->precision), ap) - 1;
 		else if (*s == '\'')
-			s = pf_update_value(s + 1, &(m->precision), ap) - 1;
+			m->quote = 1;
 		else if (('1' <= *s && *s <= '9') || *s == '*')
 			s = pf_update_value(s, &(m->size), ap) - 1;
 		else if ((n = is_in(*s, FTPF_SWITCHES)) >= 0)
-			m->quote = 1;
+			m->booleans.t[n] = 1;
 		else if (is_in(*s, FTPF_LM) >= 0)
 			pf_set_length_modifier(*s, &(m->length));
 		else if ((m->conversion = *s))

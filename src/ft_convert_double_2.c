@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:36:25 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 14:30:21 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 15:30:45 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int
 		arg = arg / 10;
 		e++;
 	}
-	ans = pf_rtoa(d, ABS(arg), 10, m->precision);
+	ans = pf_rtoa(d, ABS(arg), 10, m);
 	ans += fta_append(d, c, 1);
 	if (e >= 0)
 		ans += fta_append(d, "+", 1);
