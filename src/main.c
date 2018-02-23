@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 14:29:47 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 14:36:03 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int		main(int ac, char **av)
 
 	double x=34523423.52342353;
 	// TEST("%10$s %1$x %1$o", 10);
+	setlocale(LC_NUMERIC, "");
+	TEST("%20.'d", 1000000);
 
 	// TEST("%C", 0x6f);
 	// TEST("%C", 0x11ffff);
@@ -367,11 +369,11 @@ int		main(int ac, char **av)
 
 	// // Todo
 
-	TEST("Hex Significant cut: %.5g", 0.00);
-	TEST("Hex Significant cut: %a", 1e9);
-	TEST("Hex Significant cut: %a", -1e9);
-	TEST("Hex Significant cut: %a", 0);
-	TEST("%a", -1e9);
+	// TEST("Hex Significant cut: %.5g", 0.00);
+	// TEST("Hex Significant cut: %a", 1e9);
+	// TEST("Hex Significant cut: %a", -1e9);
+	// TEST("Hex Significant cut: %a", 0);
+	// TEST("%a", -1e9);
 
 	// TEST("Hex Round Problem: %04.1a", 26);
 	// TEST("Hex Round Problem: %04.2a", 1222e9);
