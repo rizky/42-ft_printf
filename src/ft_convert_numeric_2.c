@@ -3,26 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_numeric_2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:54:20 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 14:42:06 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/23 15:42:23 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int
+	pf_culturization(t_array *d, char c)
+{
+	t_array temp;
+	int		i;
+
+	i = 1;
+	temp = NEW_ARRAY(char);
+	while (ft_isdigit((ARRAY_LAST(d))[0]))
+	{
+		fta_append(&temp, ARRAY_LAST(d), 1);
+		fta_popback(d, 1);
+		if (i % 3 == 0)
+			fta_append(&temp, &c, 1);
+		i++;
+	}
+	while (temp.size > 0)
+	{
+		fta_append(d, ARRAY_LAST(&temp), 1);
+		fta_popback(&temp, 1);
+	}
+	return (i / 3);
+}
+
 /*
-** Writes an implementation defined character sequence defining a pointer.
+** pf_itoa_base appends _n_ expressed in base _b_ in _d_
+** if the weakest bit of _info_ is on, capital letters will be used
+** |  for digits greater than 10.
+** if the second weakest bit of _info_ is on, _n_ is considered unsigned.
 */
 
 int
-	pf_cv_p(t_modifier *m, t_array *d, va_list ap)
+	pf_itoa_base(t_array *d, intmax_t n, int b, char info)
 {
-	(void)m;
-	fta_append(d, "0x", 2);
-	m->length = '7';
-	return (pf_unsigned_integer(m, d, ap, 16));
+	int					ans;
+	const uintmax_t		un = (uintmax_t)n;
+	const char *const	base =
+
+	(info & 1 ? "0123456789ABCDEF" : "0123456789abcdef");
+	ans = 1;
+	if (info & 2 ? (uintmax_t)b <= un : n <= -b || b <= n)
+		ans += pf_itoa_base(d, (info & 2 ?
+			(intmax_t)(un / b) : n / b), b, info);
+	fta_append(d, (void *)(base +
+		(info & 2 ? (size_t)(un % b) : ABS(n % b))), 1);
+	return (ans);
 }
 
 /*
