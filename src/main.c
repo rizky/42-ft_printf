@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 02:02:36 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 02:08:25 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,12 @@ int		main(int ac, char **av)
 	long	date[6] = {
 		16, 53, 06, 22, 11, 2015
 	};
-	long long epoch;
-	long	*res_date;
 
 	double x=34523423.52342353;
-	epoch = ft_datetoepoch(date);
-	printf("%20lld\n", epoch);
-	res_date = ft_epochtodate(epoch);
-	ft_printf("%T\n", epoch);
+	printf("%d\n", ft_datetoepoch(date));
+	ft_printf("%T\n", ft_datetoepoch(date));
+	ft_printf("%1T\n", ft_datetoepoch(date));
+	ft_printf("%2T\n", ft_datetoepoch(date));
 	// TEST("%10$s %1$x %1$o", 10);
 	// setlocale(LC_NUMERIC, "");
 	// TEST("%20.'d", 1000000);
@@ -122,23 +120,23 @@ int		main(int ac, char **av)
 
 	// ft_printf("%1z|%s|%z\n","Test");
 
-	ft_printf("%w|%s|%w\n","Test");
-	ft_printf("%1w|%s|%w\n","Test");
-	ft_printf("%2w|%s|%w\n","Test");
-	ft_printf("%3w|%s|%w\n","Test");
-	ft_printf("%4w|%s|%w\n","Test");
-	ft_printf("%5w|%s|%w\n","Test");
-	ft_printf("%6w|%s|%w\n","Test");
+	// ft_printf("%w|%s|%w\n","Test");
+	// ft_printf("%1w|%s|%w\n","Test");
+	// ft_printf("%2w|%s|%w\n","Test");
+	// ft_printf("%3w|%s|%w\n","Test");
+	// ft_printf("%4w|%s|%w\n","Test");
+	// ft_printf("%5w|%s|%w\n","Test");
+	// ft_printf("%6w|%s|%w\n","Test");
 
-	ft_printf("%6w|%s|%5w|%s|%4w|%s|%3w|%s|%2w|%s|%1w|%s|%w\n","Test","Test","Test","Test","Test","Test");
+	// ft_printf("%6w|%s|%5w|%s|%4w|%s|%3w|%s|%2w|%s|%1w|%s|%w\n","Test","Test","Test","Test","Test","Test");
 	
-	ft_printf("%0W|%s|%w\n","Test");
-	ft_printf("%1W|%s|%w\n","Test");
-	ft_printf("%2W|%s|%w\n","Test");
-	ft_printf("%3W|%s|%w\n","Test");
-	ft_printf("%4W|%s|%w\n","Test");
-	ft_printf("%5W|%s|%w\n","Test");
-	ft_printf("%6W|%s|%w\n","Test");
+	// ft_printf("%0W|%s|%w\n","Test");
+	// ft_printf("%1W|%s|%w\n","Test");
+	// ft_printf("%2W|%s|%w\n","Test");
+	// ft_printf("%3W|%s|%w\n","Test");
+	// ft_printf("%4W|%s|%w\n","Test");
+	// ft_printf("%5W|%s|%w\n","Test");
+	// ft_printf("%6W|%s|%w\n","Test");
 	// s[0] = 'a';
 	// s[1] = 250;
 	// s[2] = 'b';
