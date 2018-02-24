@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 03:17:53 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 03:40:32 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,24 @@ int
 	return (1);
 }
 
+static
+	pf_maxdigit(intmax_t *tab, int len)
+{
+	int	i;
+	int max;
+
+	i = 0;
+	max = 0;
+	while (i < len)
+	{
+		if (max < tab[i])
+			max = tab[i];
+		i++;
+	}
+	max = ft_strlen(ft_itoa(max));
+	return (max);
+}
+
 int
 	pf_cv_cy(t_modifier *m, t_array *d, va_list ap)
 {
@@ -39,27 +57,28 @@ int
 	int			i;
 	int			j;
 	int			c;
+	char		*str;
 
 	arg = va_arg(ap, intmax_t *);
-	i = 0;
-	c = 0;
-	while (i < m->size)
+	i = -1;
+	c = -1;
+	fta_append(d, "[", 1);
+	while (++i < m->size)
 	{
-		j = 0;
+		j = -1;
 		if (i > 0)
-			fta_append(d, "\n", 1);
+			fta_append(d, "\n ", 2);
 		fta_append(d, "[", 1);
-		while (j < m->precision)
+		while (++j < m->precision)
 		{
 			if (j > 0)
 				fta_append(d, ", ", 2);
-			fta_append(d, ft_itoa(arg[c]), ft_strlen(ft_itoa(arg[c])));
-			j++;
-			c++;
+			ft_asprintf(&str, "%*d", pf_maxdigit(arg, m->size * m->precision),arg[++c]);
+			fta_append(d, str, ft_strlen(str));
 		}
 		fta_append(d, "]", 1);
-		i++;
 	}
+	fta_append(d, "]", 1);
 	return (1);
 }
 
