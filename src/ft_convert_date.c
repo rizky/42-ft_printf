@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 00:50:57 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 01:58:13 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 02:12:12 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ int
 	pf_cv_ct(t_modifier *m, t_array *d, va_list ap)
 {
 	long long	arg;
-	
-	(void)m;
+
 	arg = va_arg(ap, long long);
 	if (m->size == 1)
 		pf_date_format_date(d, ft_epochtodate(arg));
