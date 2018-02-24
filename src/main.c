@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 18:42:07 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 18:47:04 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int		main(int ac, char **av)
 
 	// ft_dollarprintf("%1$d\n", 5);
 	TEST("%2$d %3$d %d %5$d", 1, 2, 3 ,4 ,5, 6);
+	TEST("%2$d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+	TEST("%d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+
 	// ft_printf("%q\n", 32300000000000000.0);
 	// printf("%d\n", ft_datetoepoch(date));
 	// ft_printf("%T\n", ft_datetoepoch(date));

@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 18:39:34 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 19:03:29 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,7 @@ int
 		if (*s == '%')
 		{
 			s = pf_match(s + 1, &m, ap);
-			if (m.dollar)
-			{
-				va_copy(dap, ap);
-				while(--m.ndollar > 0)
-					va_arg(dap, void*);
-			}
-			if (m.conversion && pf_convert(&m, &d, dap) == -1)
+			if (m.conversion && pf_convert(&m, &d, ap, dap) == -1)
 			{
 				fta_resize(&d, temp);
 				fta_trim(&d);

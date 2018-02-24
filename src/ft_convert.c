@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 03:57:20 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 19:06:45 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,28 @@ static int
 	return (len);
 }
 
+static void
+	pf_handle_dollar(t_modifier *m, va_list ap, va_list dap)
+{
+	if (m->dollar)
+	{
+		va_copy(dap, ap);
+		while(--(m->ndollar) > 0)
+			va_arg(dap, void*);
+	}
+}
+
 int
-	pf_convert(t_modifier *m, t_array *d, va_list ap)
+	pf_convert(t_modifier *m, t_array *d, va_list ap, va_list dap)
 {
 	size_t	before;
 	size_t	after;
 	int		width;
 	int		len;
 
+	pf_handle_dollar(m, ap, dap);
 	before = d->size;
-	width = pf_precision(m, d, ap);
+	width = pf_precision(m, d, dap);
 	if (width == -1)
 		return (-1);
 	after = d->size;
