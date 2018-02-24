@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:35:59 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/18 19:03:37 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 04:16:26 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 ** Writes on the standard output.
 */
 
-int		ft_printf(char const *format, ...)
+int
+	ft_printf(char const *format, ...)
 {
 	va_list		ap;
 	int			ans;
@@ -38,7 +39,8 @@ int		ft_printf(char const *format, ...)
 ** Allocates a string, writes into it, and returns it through _ret_
 */
 
-int		ft_asprintf(char **ret, char const *format, ...)
+int
+	ft_asprintf(char **ret, char const *format, ...)
 {
 	va_list		ap;
 	int			ans;
@@ -47,4 +49,20 @@ int		ft_asprintf(char **ret, char const *format, ...)
 	ans = ft_vasprintf(ret, format, ap);
 	va_end(ap);
 	return (ans);
+}
+
+/*
+** Allocates a string, writes into it, and returns it through _ret_
+*/
+
+char
+	*ft_rasprintf(int *ans, char const *format, ...)
+{
+	va_list		ap;
+	char		*ret;
+
+	va_start(ap, format);
+	*ans = ft_vasprintf(&ret, format, ap);
+	va_end(ap);
+	return (ret);
 }

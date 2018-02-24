@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 03:47:09 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 04:19:54 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int		main(int ac, char **av)
 	long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
 	ft_printf("%*y\n", 6, date);
 	ft_printf("%*.*Y\n", 3, 2, tab);
+
+	ft_printf("%q\n", 32300000000000000.0);
 	// printf("%d\n", ft_datetoepoch(date));
 	// ft_printf("%T\n", ft_datetoepoch(date));
 	// ft_printf("%1T\n", ft_datetoepoch(date));

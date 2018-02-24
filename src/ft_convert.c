@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 03:47:24 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 03:57:20 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static int
 	pf_print(t_modifier *m, t_array *d, va_list ap)
 {
 	int			i;
-	char const	*c = "sSpdDioOuUxXcCbneEfFgGaAwWTyYr";
+	char const	*c = "sSpdDioOuUxXcCbneEfFgGaAwWTyYrq";
 	void *const	t[] = {
 	&pf_cv_s, &pf_cv_ws, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
 	&pf_cv_o, &pf_cv_o, &pf_cv_u, &pf_cv_u, &pf_cv_x, &pf_cv_cx,
 	&pf_cv_c, &pf_cv_wc, &pf_cv_b, &pf_cv_n, &pf_cv_e, &pf_cv_ce,
 	&pf_cv_f, &pf_cv_cf, &pf_cv_g, &pf_cv_cg, &pf_cv_a, &pf_cv_ca,
-	&pf_cv_w, &pf_cv_cw, &pf_cv_ct, pf_cv_y, pf_cv_cy, pf_cv_r};
+	&pf_cv_w, &pf_cv_cw, &pf_cv_ct, pf_cv_y, pf_cv_cy, pf_cv_r, pf_cv_q};
 
 	if (is_in(m->conversion, "DOU") >= 0)
 		m->length = 'l';

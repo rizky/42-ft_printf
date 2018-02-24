@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 03:50:48 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 04:21:42 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,29 @@ int
 		list = list->next;
 	}
 	return (1);
+}
+
+int
+	pf_cv_q(t_modifier *m, t_array *d, va_list ap)
+{
+	double		arg;
+	int			q;
+	int			ans;
+	const char	size[5] = "KMGTP";
+	
+	(void)m;
+	arg = va_arg(ap, double);
+	q = 0;
+	while(arg > 1000 && q < 5)
+	{
+		arg = arg / 1000;
+		q++;
+	}
+	fta_append(d, ft_rasprintf(&ans, "%.1f", arg), ans);
+	if (q > 0)
+	{
+		fta_append(d, &(size[q - 1]), 1);
+		ans++;
+	}
+	return (ans);
 }
