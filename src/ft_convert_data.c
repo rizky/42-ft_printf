@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 13:30:31 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 18:26:43 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int
 	return (1);
 }
 
-static
+static int
 	pf_maxdigit(intmax_t *tab, int len)
 {
 	intmax_t	i;
@@ -55,7 +55,6 @@ int
 {
 	intmax_t	*arg;
 	int			i;
-	char		*str;
 	int			max;
 
 	arg = va_arg(ap, intmax_t *);
@@ -82,6 +81,7 @@ int
 	t_list *arg;
 	t_list *list;
 
+	(void)m;
 	arg = va_arg(ap, t_list*);
 	list = arg;
 	while (list)

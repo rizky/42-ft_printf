@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vasprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 15:20:55 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 18:39:34 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ static const char
 			s = pf_update_value(s + 1, &(m->precision), ap) - 1;
 		else if (*s == '\'')
 			m->quote = 1;
+		else if (*s == '$')
+		{
+			m->ndollar = m->size;
+			m->size = 0;
+			m->dollar = 1;
+		}
 		else if (('1' <= *s && *s <= '9') || *s == '*')
 			s = pf_update_value(s, &(m->size), ap) - 1;
 		else if ((n = is_in(*s, FTPF_SWITCHES)) >= 0)
@@ -81,7 +87,9 @@ int
 	t_array		d;
 	t_modifier	m;
 	int			temp;
+	va_list		dap;
 
+	va_copy(dap, ap);
 	d = NEW_ARRAY(char);
 	fta_reserve(&d, ft_strlen(s));
 	while (*s != '\0')
@@ -89,7 +97,13 @@ int
 		if (*s == '%')
 		{
 			s = pf_match(s + 1, &m, ap);
-			if (m.conversion && pf_convert(&m, &d, ap) == -1)
+			if (m.dollar)
+			{
+				va_copy(dap, ap);
+				while(--m.ndollar > 0)
+					va_arg(dap, void*);
+			}
+			if (m.conversion && pf_convert(&m, &d, dap) == -1)
 			{
 				fta_resize(&d, temp);
 				fta_trim(&d);
