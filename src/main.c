@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 04:19:54 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 13:31:43 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,22 @@ int		main(int ac, char **av)
 	char	*ft_dst;
 	int		pf;
 	int		ft;
-	long	date[6] = {
-		16, 53, 06, 22, 11, 2015
-	};
 
-	t_list *list;
-	list = ft_strsplit_tolst("hello apa kabar",' ');
-	ft_printf("%r\n", list);
-
+	// t_list *list;
+	// list = ft_strsplit_tolst("hello apa kabar",' ');
+	// ft_printf("%r\n", list);
+	// long	date[6] = {
+	// 	16, 53, 06, 22, 11, 2015
+	// };
+	// ft_printf("%*y\n", 6, date);
 	long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
-	ft_printf("%*y\n", 6, date);
 	ft_printf("%*.*Y\n", 3, 2, tab);
 
-	ft_printf("%q\n", 32300000000000000.0);
+	long	tab2[6][6] = {{12324 , 2, 12324 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6},
+					{1 , 2, 1 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6}};
+	ft_printf("%*.*Y\n", 6, 6, tab2);
+
+	// ft_printf("%q\n", 32300000000000000.0);
 	// printf("%d\n", ft_datetoepoch(date));
 	// ft_printf("%T\n", ft_datetoepoch(date));
 	// ft_printf("%1T\n", ft_datetoepoch(date));

@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 04:21:42 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 13:30:31 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int
 static
 	pf_maxdigit(intmax_t *tab, int len)
 {
-	int	i;
-	int max;
+	intmax_t	i;
+	int			max;
 
 	i = 0;
 	max = 0;
@@ -55,30 +55,24 @@ int
 {
 	intmax_t	*arg;
 	int			i;
-	int			j;
-	int			c;
 	char		*str;
+	int			max;
 
 	arg = va_arg(ap, intmax_t *);
+	max = pf_maxdigit(arg, m->size * m->precision);
 	i = -1;
-	c = -1;
 	fta_append(d, "[", 1);
-	while (++i < m->size)
+	while (++i < m->size * m->precision)
 	{
-		j = -1;
-		if (i > 0)
-			fta_append(d, "\n ", 2);
-		fta_append(d, "[", 1);
-		while (++j < m->precision)
-		{
-			if (j > 0)
-				fta_append(d, ", ", 2);
-			ft_asprintf(&str, "%*d", pf_maxdigit(arg, m->size * m->precision),arg[++c]);
-			fta_append(d, str, ft_strlen(str));
-		}
-		fta_append(d, "]", 1);
+		if (i % m->precision == 0 && i > 0)
+			fta_append(d, "]\n ", 3);
+		if (i % m->precision != 0)
+			fta_append(d, ", ", 2);
+		else
+			fta_append(d, "[", 1);
+		fta_append(d, ft_rasprintf(&max, "%*d", max,arg[i]), max);
 	}
-	fta_append(d, "]", 1);
+	fta_append(d, "]]", 2);
 	return (1);
 }
 
