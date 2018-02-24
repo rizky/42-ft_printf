@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:35:59 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 04:16:26 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 13:42:29 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ int
 }
 
 /*
+** Writes on the specified fd.
+*/
+
+int
+	ft_dprintf(int fd, char const *format, ...)
+{
+	va_list		ap;
+	int			ans;
+
+	va_start(ap, format);
+	ans = ft_vdprintf(fd, format, ap);
+	va_end(ap);
+	return (ans);
+}
+
+/*
 ** Allocates a string, writes into it, and returns it through _ret_
 */
 
@@ -52,7 +68,7 @@ int
 }
 
 /*
-** Allocates a string, writes into it, and returns it through _ret_
+** Allocates a string, and returns it
 */
 
 char
