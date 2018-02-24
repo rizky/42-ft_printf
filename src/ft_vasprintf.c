@@ -6,18 +6,19 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 19:03:29 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 19:50:08 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static const char
-	*pf_update_value(char const *s, int *v, va_list ap)
+	*pf_update_value(char const *s, int *v, va_list ap, va_list dap)
 {
 	if (*s == '*')
 	{
-		*v = va_arg(ap, unsigned);
+		*v = va_arg(dap, unsigned);
+		va_copy(ap, dap);
 		return (s + 1);
 	}
 	*v = 0;
@@ -38,7 +39,7 @@ static void
 }
 
 static const char
-	*pf_match(char const *s, t_modifier *m, va_list ap)
+	*pf_match(char const *s, t_modifier *m, va_list ap, va_list dap)
 {
 	int			n;
 
@@ -46,7 +47,7 @@ static const char
 	while (*s != '\0')
 	{
 		if (*s == '.')
-			s = pf_update_value(s + 1, &(m->precision), ap) - 1;
+			s = pf_update_value(s + 1, &(m->precision), ap, dap) - 1;
 		else if (*s == '\'')
 			m->quote = 1;
 		else if (*s == '$')
@@ -56,7 +57,7 @@ static const char
 			m->dollar = 1;
 		}
 		else if (('1' <= *s && *s <= '9') || *s == '*')
-			s = pf_update_value(s, &(m->size), ap) - 1;
+			s = pf_update_value(s, &(m->size), ap, dap) - 1;
 		else if ((n = is_in(*s, FTPF_SWITCHES)) >= 0)
 			m->booleans.t[n] = 1;
 		else if (is_in(*s, FTPF_LM) >= 0)
@@ -96,7 +97,7 @@ int
 	{
 		if (*s == '%')
 		{
-			s = pf_match(s + 1, &m, ap);
+			s = pf_match(s + 1, &m, ap, dap);
 			if (m.conversion && pf_convert(&m, &d, ap, dap) == -1)
 			{
 				fta_resize(&d, temp);
