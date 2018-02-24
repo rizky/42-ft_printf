@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
+#    By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/02/22 15:56:15 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/02/24 00:55:29 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ FILES:=ft_printf ft_vprintf ft_vasprintf ft_convert \
 		ft_convert_numeric_1 ft_convert_numeric_2 ft_convert_numeric_3 \
 		ft_convert_char \
 		ft_convert_double_1 ft_convert_double_2 ft_convert_double_3 \
-		ft_convert_color
+		ft_convert_color \
+		ft_convert_date
 
 # ----- Libft ------
 LFTDIR:=./libft
