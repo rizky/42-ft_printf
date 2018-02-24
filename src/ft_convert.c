@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 00:58:59 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 02:01:32 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int
 	pf_print(t_modifier *m, t_array *d, va_list ap)
 {
 	int			i;
-	char const	*c = "sSpdDioOuUxXcCbneEfFgGaAwWTM";
+	char const	*c = "sSpdDioOuUxXcCbneEfFgGaAwWT";
 	void *const	t[] = {
 	&pf_cv_s, &pf_cv_ws, &pf_cv_p, &pf_cv_di, &pf_cv_di, &pf_cv_di,
 	&pf_cv_o, &pf_cv_o, &pf_cv_u, &pf_cv_u, &pf_cv_x, &pf_cv_cx,
