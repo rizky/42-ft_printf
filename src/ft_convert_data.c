@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 02:57:51 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 03:17:53 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,26 @@ int
 		}
 		fta_append(d, "]", 1);
 		i++;
+	}
+	return (1);
+}
+
+int
+	pf_cv_r(t_modifier *m, t_array *d, va_list ap)
+{
+	t_list *arg;
+	t_list *list;
+
+	arg = va_arg(ap, t_list*);
+	list = arg;
+	while (list)
+	{
+		if (list != arg)
+			fta_append(d, " -> ", 4);
+		fta_append(d, "[", 1);
+		fta_append(d, list->content, ft_strlen(list->content));
+		fta_append(d, "]", 1);
+		list = list->next;
 	}
 	return (1);
 }

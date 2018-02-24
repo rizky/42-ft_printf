@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 02:59:03 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 03:18:08 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,18 @@ int		main(int ac, char **av)
 		16, 53, 06, 22, 11, 2015
 	};
 
-	long	tab[3][2] = {{1 , 2}, {3, 4}, {5, 6}};
+	// long	tab[3][2] = {{1 , 2}, {3, 4}, {5, 6}};
+	// ft_printf("%*y\n", 6, date);
+	// ft_printf("%*.*Y\n", 3, 2, tab);
 
-	double x=34523423.52342353;
+	t_list *list;
+	list = ft_strsplit_tolst("hello apa kabar",' ');
+	ft_printf("%r\n", list);
 	// printf("%d\n", ft_datetoepoch(date));
 	// ft_printf("%T\n", ft_datetoepoch(date));
 	// ft_printf("%1T\n", ft_datetoepoch(date));
 	// ft_printf("%2T\n", ft_datetoepoch(date));
 
-	ft_printf("%*y\n", 6, date);
-	ft_printf("%*.*Y\n", 3, 2, tab);
 	// TEST("%10$s %1$x %1$o", 10);
 	// setlocale(LC_NUMERIC, "");
 	// TEST("%20.'d", 1000000);
