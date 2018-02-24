@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 03:40:32 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/24 03:50:48 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int
 	while (list)
 	{
 		if (list != arg)
-			fta_append(d, " -> ", 4);
+			fta_append(d, " ⟾  ", 6);
 		fta_append(d, "[", 1);
 		fta_append(d, list->content, ft_strlen(list->content));
 		fta_append(d, "]", 1);
