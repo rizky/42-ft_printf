@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 01:10:50 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 01:22:53 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int		main(int ac, char **av)
 	int		ft;
 	double 	x = 3.14;
 
-	// t_list *list;
-	// list = ft_strsplit_tolst("hello apa kabar",' ');
-	// ft_printf("%r\n", list);
+	t_list *list;
+	list = ft_strsplit_tolst("hello apa kabar",' ');
+	ft_printf("%r\n", list);
 
 	TEST("%*$*d", 5, 4, 3, 2, 1);
 	TEST("%2$5d", 5, 4, 3, 2, 1);
@@ -54,6 +54,7 @@ int		main(int ac, char **av)
 	TEST("%2$d %3$d %d %5$d", 1, 2, 3 ,4 ,5, 6);
 	TEST("%2$d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
 	TEST("%d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+	TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
 
 	// long	date[6] = {
 	// 	16, 53, 06, 22, 11, 2015

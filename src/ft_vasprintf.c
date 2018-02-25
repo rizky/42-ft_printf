@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 01:13:47 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 01:22:50 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static const char
 		}
 		else if (('1' <= *s && *s <= '9') || *s == '*')
 		{
-			if (m->size == 0)
+			if (m->size == 0 || m->dollar == 0)
 				s = pf_update_value(s, &(m->size), dap) - 1;
 			if (m->dollar)
 				va_copy(ap, dap);
