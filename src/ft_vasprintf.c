@@ -6,19 +6,18 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 19:50:08 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 01:13:47 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static const char
-	*pf_update_value(char const *s, int *v, va_list ap, va_list dap)
+	*pf_update_value(char const *s, int *v, va_list dap)
 {
 	if (*s == '*')
 	{
 		*v = va_arg(dap, unsigned);
-		va_copy(ap, dap);
 		return (s + 1);
 	}
 	*v = 0;
@@ -41,23 +40,42 @@ static void
 static const char
 	*pf_match(char const *s, t_modifier *m, va_list ap, va_list dap)
 {
-	int			n;
+	int n;
+	int	temp;
 
 	*m = NEW_MODIFIER;
 	while (*s != '\0')
 	{
 		if (*s == '.')
-			s = pf_update_value(s + 1, &(m->precision), ap, dap) - 1;
+		{
+			s = pf_update_value(s + 1, &(m->precision), dap) - 1;
+			if (m->dollar)
+				va_copy(ap, dap);
+		}
 		else if (*s == '\'')
 			m->quote = 1;
 		else if (*s == '$')
 		{
-			m->ndollar = m->size;
-			m->size = 0;
+			if (*(s - 1) != '*')
+			{
+				m->ndollar = m->size;
+				m->size = 0;
+			}
 			m->dollar = 1;
 		}
 		else if (('1' <= *s && *s <= '9') || *s == '*')
-			s = pf_update_value(s, &(m->size), ap, dap) - 1;
+		{
+			if (m->size == 0)
+				s = pf_update_value(s, &(m->size), dap) - 1;
+			if (m->dollar)
+				va_copy(ap, dap);
+			if (*(s - 1) == '*')
+			{
+				temp = m->size;
+				m->size = m->ndollar;
+				m->ndollar = temp;
+			}
+		}
 		else if ((n = is_in(*s, FTPF_SWITCHES)) >= 0)
 			m->booleans.t[n] = 1;
 		else if (is_in(*s, FTPF_LM) >= 0)
