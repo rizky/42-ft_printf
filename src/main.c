@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 16:04:29 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 16:52:29 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		main(int ac, char **av)
 
 	t_list *list;
 
-	TEST("%f", -0.0);
 	// TEST("%*$*d", 5, 4, 3, 2, 1);
 	// TEST("%2$5d", 5, 4, 3, 2, 1);
 	// TEST("%*$*.*d", 5, 4, 3, 2, 1);
@@ -61,10 +60,12 @@ int		main(int ac, char **av)
 	// list = ft_strsplit_tolst("Hello how are you doing",' ');
 	// ft_printf("%r\n", list->next->next);
 
-	// long	date[6] = {
-	// 	16, 53, 06, 22, 11, 2015
-	// };
+	long	date[6] = {
+		16, 53, 06, 22, 11, 2015
+	};
 	// ft_printf("%*y\n", 6, date);
+	int	tabs[10] = {0, 23, 150, 255, 12, 16,  21, 42};
+	ft_printf("%*m", sizeof(date), date);
 	// long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
 	// ft_printf("%*.*'Y\n", 3, 2, tab);
 
