@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 15:30:56 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 01:44:25 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,19 @@ static void
 	}
 }
 
+static void
+	pf_popzerohex(t_array *d, int *ans)
+{
+	while (((ARRAY_LAST(d))[0] == '0' &&
+		(ft_ishexdigit((ARRAY_LAST(d) - 1)[0]) ||
+		(ARRAY_LAST(d) - 1)[0] == '.')) ||
+		(ARRAY_LAST(d))[0] == '.')
+	{
+		fta_popback(d, 1);
+		ans--;
+	}
+}
+
 int
 	pf_signed_double_g(t_modifier *m, t_array *d, long double arg, char *c)
 {
@@ -108,7 +121,7 @@ int
 		ans = pf_rtoa(d, ABS(arg), 16, m);
 	else
 		ans = pf_rtoa(d, ABS(arg), -16, m);
-	pf_popzero(d, &ans);
+	pf_popzerohex(d, &ans);
 	ans += fta_append(d, c, 1);
 	if (p >= 0)
 		ans += fta_append(d, "+", 1);
