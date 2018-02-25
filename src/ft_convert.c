@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 15:02:04 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 15:04:43 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int
 }
 
 static void
-	pf_handle_dollar(t_modifier *m, va_list ap, va_list dap)
+	pf_handle_dollar_sign(t_modifier *m, va_list ap, va_list dap)
 {
 	if (m->dollar)
 	{
@@ -96,14 +96,12 @@ int
 	int		width;
 	int		len;
 
-	pf_handle_dollar(m, ap, dap);
+	pf_handle_dollar_sign(m, ap, dap);
 	before = d->size;
 	width = pf_precision(m, d, dap);
-	if (width == -1)
-		return (-1);
 	after = d->size;
 	len = after - before;
-	if (len <= m->size)
+	if (len <= m->size && width != -1)
 	{
 		if (m->booleans.n.zero && m->precision <= -1 && !m->booleans.n.minus)
 			while (len < m->size && ++len)
@@ -116,5 +114,5 @@ int
 		if (!m->booleans.n.minus)
 			fta_swap(d, before, after);
 	}
-	return (1);
+	return (width);
 }
