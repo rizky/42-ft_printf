@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:26 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 19:02:34 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 15:00:43 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int					ft_vdprintf(int fd, char const *format, va_list ap);
 int					ft_vasprintf(char **ret, char const *s, va_list ap);
 
 int					pf_convert(t_modifier *m, t_array *d, va_list ap, va_list dap);
-
+char				*pf_next_specifier(char const *s, t_array *d);
 int					pf_unsigned_integer(t_modifier *m,
 					t_array *d, va_list ap, int b);
 int					pf_signed_integer(t_modifier *m,

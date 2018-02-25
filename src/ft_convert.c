@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 19:45:28 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 15:02:04 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ static int
 	fta_append(d, &m->conversion, 1);
 	m->precision = -1;
 	return (1);
+}
+
+char
+	*pf_next_specifier(char const *s, t_array *d)
+{
+	char	*p;
+
+	p = (char*)s;
+	while (*p != '\0' && *p != '%')
+		p++;
+	if (p != s)
+		fta_append(d, (void *)s, p - s);
+	return (p);
 }
 
 static int

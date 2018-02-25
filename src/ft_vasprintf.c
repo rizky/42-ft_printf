@@ -6,23 +6,46 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 01:22:50 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 14:59:53 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static const char
-	*pf_update_value(char const *s, int *v, va_list dap)
+	*pf_update_precision(char const *s, t_modifier *m, va_list ap, va_list dap)
 {
 	if (*s == '*')
 	{
-		*v = va_arg(dap, unsigned);
+		m->precision = va_arg(dap, unsigned);
+		if (m->dollar)
+			va_copy(ap, dap);
 		return (s + 1);
 	}
-	*v = 0;
+	m->precision = 0;
 	while ('0' <= *s && *s <= '9')
-		*v = 10 * (*v) + *s++ - '0';
+		m->precision = 10 * (m->precision) + *s++ - '0';
+	return (s);
+}
+
+static const char
+	*pf_update_size(char const *s, t_modifier *m, va_list ap, va_list dap)
+{
+	if (!(m->size == 0 || m->dollar == 0))
+		s = s + 1;
+	else if (*s == '*')
+	{
+		m->size = va_arg(dap, unsigned);
+		s = s + 1;
+	}
+	else
+	{
+		m->size = 0;
+		while ('0' <= *s && *s <= '9')
+			m->size = 10 * (m->size) + *s++ - '0';
+	}
+	if (m->dollar)
+		va_copy(ap, dap);
 	return (s);
 }
 
@@ -40,18 +63,11 @@ static void
 static const char
 	*pf_match(char const *s, t_modifier *m, va_list ap, va_list dap)
 {
-	int n;
-	int	temp;
-
 	*m = NEW_MODIFIER;
-	while (*s != '\0')
+	while (*(++s) != '\0')
 	{
 		if (*s == '.')
-		{
-			s = pf_update_value(s + 1, &(m->precision), dap) - 1;
-			if (m->dollar)
-				va_copy(ap, dap);
-		}
+			s = pf_update_precision(s + 1, m, ap, dap) - 1;
 		else if (*s == '\'')
 			m->quote = 1;
 		else if (*s == '$')
@@ -64,40 +80,15 @@ static const char
 			m->dollar = 1;
 		}
 		else if (('1' <= *s && *s <= '9') || *s == '*')
-		{
-			if (m->size == 0 || m->dollar == 0)
-				s = pf_update_value(s, &(m->size), dap) - 1;
-			if (m->dollar)
-				va_copy(ap, dap);
-			if (*(s - 1) == '*')
-			{
-				temp = m->size;
-				m->size = m->ndollar;
-				m->ndollar = temp;
-			}
-		}
-		else if ((n = is_in(*s, FTPF_SWITCHES)) >= 0)
-			m->booleans.t[n] = 1;
+			s = pf_update_size(s, m, ap, dap) - 1;
+		else if ((is_in(*s, FTPF_SWITCHES)) >= 0)
+			m->booleans.t[is_in(*s, FTPF_SWITCHES)] = 1;
 		else if (is_in(*s, FTPF_LM) >= 0)
 			pf_set_length_modifier(*s, &(m->length));
 		else if ((m->conversion = *s))
 			return (s + 1);
-		s++;
 	}
 	return (s);
-}
-
-static const char
-	*pf_next_specifier(char const *s, t_array *d)
-{
-	char const	*p;
-
-	p = s;
-	while (*p != '\0' && *p != '%')
-		p++;
-	if (p != s)
-		fta_append(d, (void *)s, p - s);
-	return (p);
 }
 
 int
@@ -110,17 +101,17 @@ int
 
 	va_copy(dap, ap);
 	d = NEW_ARRAY(char);
-	fta_reserve(&d, ft_strlen(s));
 	while (*s != '\0')
 	{
 		if (*s == '%')
 		{
-			s = pf_match(s + 1, &m, ap, dap);
+			s = pf_match(s, &m, ap, dap);
 			if (m.conversion && pf_convert(&m, &d, ap, dap) == -1)
 			{
 				fta_resize(&d, temp);
 				fta_trim(&d);
 				*ret = d.data;
+				d.size = 0;
 				return (-1);
 			}
 			temp = d.size;

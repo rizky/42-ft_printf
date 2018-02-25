@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 13:44:17 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 15:02:32 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		main(int ac, char **av)
 
 	t_list *list;
 
+	TEST("%*d", 5, 4, 3, 2, 1);
 	TEST("%*$*d", 5, 4, 3, 2, 1);
 	TEST("%2$5d", 5, 4, 3, 2, 1);
 	TEST("%*$*.*d", 5, 4, 3, 2, 1);
@@ -56,15 +57,15 @@ int		main(int ac, char **av)
 	TEST("%1$f %1$F %1$g %1$a", 0.2);
 	TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
 
-	list = ft_strsplit_tolst("Hello how are you doing",' ');
-	ft_printf("%r\n", list->next->next);
+	// list = ft_strsplit_tolst("Hello how are you doing",' ');
+	// ft_printf("%r\n", list->next->next);
 
-	long	date[6] = {
-		16, 53, 06, 22, 11, 2015
-	};
-	ft_printf("%*y\n", 6, date);
-	long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
-	ft_printf("%'*.*Y\n", 3, 2, tab);
+	// long	date[6] = {
+	// 	16, 53, 06, 22, 11, 2015
+	// };
+	// ft_printf("%*y\n", 6, date);
+	// long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
+	// ft_printf("%*.*'Y\n", 3, 2, tab);
 
 	// long	tab2[6][6] = {{12324 , 2, 12324 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6},
 	// 				{1 , 2, 1 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6}};
