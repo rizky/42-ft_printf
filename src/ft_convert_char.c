@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:33:58 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/20 19:22:57 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 16:03:07 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int
 	return (ans);
 }
 
-int
+static int
 	pf_widechar_exception(wchar_t *c)
 {
 	if (*c >= 0xD800 && *c <= 0xDBFF)

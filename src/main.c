@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 15:04:02 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 16:04:29 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,20 @@ int		main(int ac, char **av)
 	int		pf;
 	int		ft;
 	double 	x = 3.14;
+	wchar_t	s[4];
 
 	t_list *list;
 
-	TEST("%*d", 5, 4, 3, 2, 1);
-	TEST("%*$*d", 5, 4, 3, 2, 1);
-	TEST("%2$5d", 5, 4, 3, 2, 1);
-	TEST("%*$*.*d", 5, 4, 3, 2, 1);
-	TEST("%2$d %3$d %d %5$d", 1, 2, 3 ,4 ,5, 6);
-	TEST("%2$d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
-	TEST("%d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
-	TEST("%1$d %1$u %1$D %1$x", 2352352);
-	TEST("%1$f %1$F %1$g %1$a", 0.2);
-	TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
+	TEST("%f", -0.0);
+	// TEST("%*$*d", 5, 4, 3, 2, 1);
+	// TEST("%2$5d", 5, 4, 3, 2, 1);
+	// TEST("%*$*.*d", 5, 4, 3, 2, 1);
+	// TEST("%2$d %3$d %d %5$d", 1, 2, 3 ,4 ,5, 6);
+	// TEST("%2$d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+	// TEST("%d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+	// TEST("%1$d %1$u %1$D %1$x", 2352352);
+	// TEST("%1$f %1$F %1$g %1$a", 0.2);
+	// TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
 
 	// list = ft_strsplit_tolst("Hello how are you doing",' ');
 	// ft_printf("%r\n", list->next->next);
@@ -102,9 +103,7 @@ int		main(int ac, char **av)
 	// ft_printf("yo%2C%-12lc et %C titi %C tyty\n", 'u', 254, 256, 'a');
 	// printf("yo%2C%-12lc et %C titi %C tyty\n", 'u', 254, 256, 'a');
 
-	// wchar_t	s[4];
-
-	// // setlocale(LC_ALL, "");
+	// setlocale(LC_ALL, "");
 	// s[0] = 0x53;
 	// s[1] = 0x3abc;
 	// s[2] = 0x81000;
