@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:26 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 16:45:19 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/26 22:05:19 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_modifier
 }					t_modifier;
 
 int					ft_printf(char const *format, ...);
+int					ft_printfln(char const *format, ...);
 int					ft_dprintf(int fd, char const *format, ...);
 int					ft_asprintf(char **ret, char const *format, ...);
 char				*ft_rasprintf(int *ans, char const *format, ...);

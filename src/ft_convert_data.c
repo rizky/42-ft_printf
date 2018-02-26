@@ -6,31 +6,11 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 16:40:18 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/26 22:09:16 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int
-	pf_cv_y(t_modifier *m, t_array *d, va_list ap)
-{
-	intmax_t	*arg;
-	int			i;
-
-	arg = va_arg(ap, intmax_t *);
-	i = 0;
-	fta_append(d, "[", 1);
-	while (i < m->size)
-	{
-		if (i > 0)
-			fta_append(d, ", ", 2);
-		fta_append(d, ft_itoa(arg[i]), ft_strlen(ft_itoa(arg[i])));
-		i++;
-	}
-	fta_append(d, "]", 1);
-	return (1);
-}
 
 static int
 	pf_maxdigit(intmax_t *tab, int len, int quote)
@@ -50,6 +30,26 @@ static int
 	if (quote)
 		max = max + max / 3;
 	return (max);
+}
+
+int
+	pf_cv_y(t_modifier *m, t_array *d, va_list ap)
+{
+	intmax_t	*arg;
+	int			i;
+
+	arg = va_arg(ap, intmax_t *);
+	i = 0;
+	fta_append(d, "[", 1);
+	while (i < m->size)
+	{
+		if (i > 0)
+			fta_append(d, ", ", 2);
+		fta_append(d, ft_itoa(arg[i]), ft_strlen(ft_itoa(arg[i])));
+		i++;
+	}
+	fta_append(d, "]", 1);
+	return (1);
 }
 
 int

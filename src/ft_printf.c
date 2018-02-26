@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:35:59 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 18:27:39 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/26 22:06:34 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ int
 	ans = ft_vprintf(format, ap);
 	va_end(ap);
 	return (ans);
+}
+
+/*
+** Writes on the standard output ends with \n.
+*/
+
+int
+	ft_printfln(char const *format, ...)
+{
+	va_list		ap;
+	int			ans;
+
+	va_start(ap, format);
+	ans = ft_vprintf(format, ap);
+	va_end(ap);
+	ft_printf("\n");
+	return (ans + 1);
 }
 
 /*

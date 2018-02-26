@@ -35,6 +35,7 @@ New Custom Conversions
 - Byte Size Specifie (%q)
 
 Adds-On
+- ft_dprintfln
 - ft_dprintf
 - ft_asprintf
 - ft_rasprintf

@@ -6,12 +6,11 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:33:58 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 16:03:07 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/25 19:13:16 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <wchar.h>
 
 int
 	pf_cv_s(t_modifier *m, t_array *d, va_list ap)

@@ -6,11 +6,12 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 16:52:29 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/26 22:08:03 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <wchar.h>
 
 #include <stdio.h>
 #include <string.h>
@@ -57,17 +58,17 @@ int		main(int ac, char **av)
 	// TEST("%1$f %1$F %1$g %1$a", 0.2);
 	// TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
 
-	// list = ft_strsplit_tolst("Hello how are you doing",' ');
-	// ft_printf("%r\n", list->next->next);
+	list = ft_strsplit_tolst("Hello how are you doing",' ');
+	ft_printfln("%r", list);
 
 	long	date[6] = {
 		16, 53, 06, 22, 11, 2015
 	};
-	// ft_printf("%*y\n", 6, date);
+	ft_printfln("%*y", 6, date);
 	int	tabs[10] = {0, 23, 150, 255, 12, 16,  21, 42};
 	ft_printf("%*m", sizeof(date), date);
-	// long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
-	// ft_printf("%*.*'Y\n", 3, 2, tab);
+	long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
+	ft_printfln("%*.*'Y", 3, 2, tab);
 
 	// long	tab2[6][6] = {{12324 , 2, 12324 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6},
 	// 				{1 , 2, 1 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6}};
