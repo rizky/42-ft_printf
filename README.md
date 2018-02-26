@@ -33,6 +33,7 @@ New Custom Conversions
 - Array Convesion (%y & $Y)
 - Color Specifier (%w & %W)
 - Byte Size Specifie (%q)
+- Repetitif Char Conversion (%R)
 
 Adds-On
 - ft_dprintfln

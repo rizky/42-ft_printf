@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/26 22:09:16 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/26 22:12:49 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,6 @@ static int
 
 int
 	pf_cv_y(t_modifier *m, t_array *d, va_list ap)
-{
-	intmax_t	*arg;
-	int			i;
-
-	arg = va_arg(ap, intmax_t *);
-	i = 0;
-	fta_append(d, "[", 1);
-	while (i < m->size)
-	{
-		if (i > 0)
-			fta_append(d, ", ", 2);
-		fta_append(d, ft_itoa(arg[i]), ft_strlen(ft_itoa(arg[i])));
-		i++;
-	}
-	fta_append(d, "]", 1);
-	return (1);
-}
-
-int
-	pf_cv_cy(t_modifier *m, t_array *d, va_list ap)
 {
 	intmax_t	*arg;
 	int			i;
