@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/26 22:12:49 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/26 22:19:48 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int
 	int			max;
 
 	arg = va_arg(ap, intmax_t *);
+	if (m->size == 0)
+		m->size = 1;
 	max = pf_maxdigit(arg, m->size * m->precision, m->quote);
 	i = -1;
 	fta_append(d, "[", 1);
@@ -104,4 +106,25 @@ int
 		ans++;
 	}
 	return (ans);
+}
+
+int
+	pf_cv_cr(t_modifier *m, t_array *d, va_list ap)
+{
+	unsigned char	arg;
+	int				i;
+
+	(void)m;
+	i = 0;
+	if (m->length == 'l')
+		return (pf_cv_wc(m, d, ap));
+	else
+		arg = (char)va_arg(ap, int);
+	m->precision = -1;
+	while (i < m->size)
+	{
+		fta_append(d, (void *)&arg, 1);
+		i++;
+	}
+	return (1);
 }
