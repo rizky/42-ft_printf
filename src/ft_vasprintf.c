@@ -6,14 +6,14 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 14:30:53 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 15:27:53 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static const char
-	*pf_update_precision(char const *s, t_modifier *m, va_list ap, va_list dap)
+	*pf_update_precision(char const *s, t_modifier *m, va_list dap)
 {
 	if (*s == '*')
 	{
@@ -27,12 +27,24 @@ static const char
 }
 
 static const char
-	*pf_update_size(char const *s, t_modifier *m, va_list ap, va_list dap)
+	*pf_update_size(char const *s, t_modifier *m, va_list dap)
 {
+	va_list temp;
+	int		nsize;
+
+	va_copy(temp, dap);
 	if (*s == '*')
 	{
+		nsize = 0;
 		m->size = va_arg(dap, unsigned);
 		s = s + 1;
+		while ('0' <= *s && *s <= '9')
+			nsize = 10 * (nsize) + *s++ - '0';
+		while (nsize > 0)
+		{
+			m->size = va_arg(temp, unsigned);
+			nsize--;
+		}
 	}
 	else
 	{
@@ -40,8 +52,6 @@ static const char
 		while ('0' <= *s && *s <= '9')
 			m->size = 10 * (m->size) + *s++ - '0';
 	}
-	if (m->ndollar != 0)
-		va_copy(ap, dap);
 	return (s);
 }
 
@@ -57,23 +67,22 @@ static void
 }
 
 static const char
-	*pf_match(char const *s, t_modifier *m, va_list ap, va_list dap)
+	*pf_match(char const *s, t_modifier *m, va_list dap)
 {
 	*m = NEW_MODIFIER;
 	while (*(++s) != '\0')
 	{
 		if (*s == '.')
-			s = pf_update_precision(s + 1, m, ap, dap) - 1;
+			s = pf_update_precision(s + 1, m, dap) - 1;
 		else if (*s == '\'')
 			m->quote = 1;
 		else if (*s == '$')
 		{
 			m->ndollar = m->size;
 			m->size = 0;
-			va_arg(dap, unsigned);
 		}
 		else if (('1' <= *s && *s <= '9') || *s == '*')
-			s = pf_update_size(s, m, ap, dap) - 1;
+			s = pf_update_size(s, m, dap) - 1;
 		else if ((is_in(*s, FTPF_SWITCHES)) >= 0)
 			m->booleans.t[is_in(*s, FTPF_SWITCHES)] = 1;
 		else if (is_in(*s, FTPF_LM) >= 0)
@@ -96,7 +105,7 @@ int
 	{
 		if (*s == '%')
 		{
-			s = pf_match(s, &m, ap, dap);
+			s = pf_match(s, &m, dap);
 			if (m.conversion && pf_convert(&m, &d, ap, dap) == -1)
 			{
 				fta_resize(&d, temp);

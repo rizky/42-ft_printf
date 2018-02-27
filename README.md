@@ -26,6 +26,7 @@ Guides
 - http://en.cppreference.com/w/cpp/io/c/fprintf
 - quote flag https://stackoverflow.com/questions/1449805/how-to-format-a-number-from-1123456789-to-1-123-456-789-in-c
 - http://www.cplusplus.com/reference/cstdio/printf/
+- Wildcard http://man7.org/linux/man-pages/man3/printf.3.html
 
 New Custom Conversions
 - DateTime Conversion (%T)
