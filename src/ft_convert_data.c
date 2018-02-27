@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 13:20:00 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 16:43:24 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int
 }
 
 int
-	pf_cv_cr(t_modifier *m, t_array *d, va_list ap)
+	pf_cv_cq(t_modifier *m, t_array *d, va_list ap)
 {
 	unsigned char	arg;
 	int				i;
