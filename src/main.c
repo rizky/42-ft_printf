@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 16:02:17 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 16:38:52 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,14 @@ int		main(int ac, char **av)
 
 	t_list *list;
 
-	// TEST("%2$*d %2$*d %2$*d %2$*d", 6, 5, 4, 3, 2, 1);	
 	// TEST("%*d %*d", 6, 5, 4, 3, 2, 1);	
 	// TEST("%2$d %2$d", 6, 5, 4, 3, 2, 1);	
 
-	TEST("%2$*d", 6, 5, 4, 3, 2, 1);
-	TEST("%2$*6$d", 6, 5, 4, 3, 2, 1);
-	TEST("%*d", 2, 1);
-	TEST("%2$*1$d", 2, 3);
-	// TEST("%2$.*d", 5, 4, 3, 2, 1);
-	// TEST("%*$*d", 5, 4, 3, 2, 1);
-	// TEST("%*$*.*d", 5, 4, 3, 2, 1);
+	// TEST("%*d", 6, 5, 4, 3, 2, 1);
+	// TEST("%*5d", 6, 5, 4, 3, 2, 1);
+	// TEST("%2$*6$d", 6, 5, 4, 3, 2, 1);
+	// TEST("%*d", 2, 1);
+	// TEST("%2$*1$d", 2, 3);
 	// TEST("%2$d", 5, 4, 3, 2, 1);	
 
 	// TEST("%2$5d", 5, 4, 3, 2, 1);
@@ -191,11 +188,11 @@ int		main(int ac, char **av)
 	// s[3] = '\0';
 	// TEST("%9ls", s);
 
-	// s[0] = 0x53;
-	// s[1] = 0x3abc;
-	// s[2] = 0x81000;
-	// s[3] = '\0';
-	// TEST("%9.6ls %S", s, (wchar_t *)'a');
+	// // s[0] = 0x53;
+	// // s[1] = 0x3abc;
+	// // s[2] = 0x81000;
+	// // s[3] = '\0';
+	// // TEST("%9.6ls %S", s, (wchar_t *)'a');
 
 	// char *ret;
 	// ft_asprintf(&ret, "%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256);
@@ -325,138 +322,139 @@ int		main(int ac, char **av)
 	// TEST("%E", 1222e9);
 	// TEST("%E", -1e9);
 	// TEST("%E", (-1e-9));
-	// TEST("%.2E", 0);
-	// TEST("%.e", 0);
-	// TEST("%.e", -1.22e-9);
-    // TEST("%g",x);
-	// TEST("%04.2f", x);
-	// TEST("%04.1e", x);
+	TEST("%.2E", 0);
+	TEST("%.e", 0);
+	TEST("%.e", -1.22e-9);
+    TEST("%g",x);
+	TEST("%04.2f", x);
+	TEST("%04.1e", x);
 
 	
-	// TEST("{%f}{%F}", 1444565444646.6465424242242, 1444565444646.6465424242242);
+	TEST("{%f}{%F}", 1444565444646.6465424242242, 1444565444646.6465424242242);
 
-	// TEST("%4.2g", 0.10000000000001);
-	// TEST("%g", 0.10000000000001);
+	TEST("%4.2g", 0.10000000000001);
+	TEST("%g", 0.10000000000001);
 
-	// TEST("%g", 0.00010000000000001);
-	// TEST("%g", 0.00001000000000001);
-	// TEST("%g", 0.00000010000000001);
+	TEST("%g", 0.00010000000000001);
+	TEST("%g", 0.00001000000000001);
+	TEST("%g", 0.00000010000000001);
 
 
-	// TEST("%4.2f", 0.10000000000001);
-	// TEST("%f", 0.10000000000001);
+	TEST("%4.2f", 0.10000000000001);
+	TEST("%f", 0.10000000000001);
 
-	// TEST("%f", 0.00010000000000001);
-	// TEST("%f", 0.00001000000000001);
-	// TEST("%f", 0.00000010000000001);
-	// TEST("%03.2d", 0);
-	// TEST("%03.2d", 1);
-	// TEST("%%");
-	// TEST("% ");
-	// TEST("% h");
+	TEST("%f", 0.00010000000000001);
+	TEST("%f", 0.00001000000000001);
+	TEST("%f", 0.00000010000000001);
+	TEST("%03.2d", 0);
+	TEST("%03.2d", 1);
+	TEST("%%");
+	TEST("% ");
+	TEST("% h");
 
-	// TEST("%04.2g", 1222e9);
-	// TEST("%04.1g", 1222e9);
-	// TEST("%04.g", 1222e9);
-	// TEST("%g", -1e9);
-	// TEST("%g", -1e-9);
-	// TEST("%.2g", 0);
-	// TEST("%G", 1222e9);
-	// TEST("%G", -1e9);
-	// TEST("%G", (-1e-9));
-	// TEST("%.2G", 0);
-	// TEST("%.g", 0);
-	// TEST("%.g", -1.22e-9);
+	TEST("%04.2g", 1222e9);
+	TEST("%04.1g", 1222e9);
+	TEST("%04.g", 1222e9);
+	TEST("%g", -1e9);
+	TEST("%g", -1e-9);
+	TEST("%.2g", 0);
+	TEST("%G", 1222e9);
+	TEST("%G", -1e9);
+	TEST("%G", (-1e-9));
+	TEST("%.2G", 0);
+	TEST("%.g", 0);
+	TEST("%.g", -1.22e-9);
 
-	// TEST("%X", -60);
-	// TEST("%x", 15);
-	// TEST("%x", 3141593);
-	// TEST("%X", 2);
-	// TEST("%X", 3);
+	TEST("%X", -60);
+	TEST("%x", 15);
+	TEST("%x", 3141593);
+	TEST("%X", 2);
+	TEST("%X", 3);
 
-	// TEST("aA: %a", 0.12);
-	// TEST("%a", 0.1);
-	// TEST("%a", 0.2);
-	// TEST("%a", 0.3);
-	// TEST("%a", 1.12);
-	// TEST("%a", 0.12);
-	// TEST("%f", 0.02);
-	// TEST("%a", 0.53);
-	// TEST("%a", 1.06);
-	// TEST("%a", 2.12);
+	TEST("aA: %a", 0.12);
+	TEST("%a", 0.1);
+	TEST("%a", 0.2);
+	TEST("%a", 0.3);
+	TEST("%a", 1.12);
+	TEST("%a", 0.12);
+	TEST("%f", 0.02);
+	TEST("%a", 0.53);
+	TEST("%a", 1.06);
+	TEST("%a", 2.12);
 
-	// TEST("%04.1a", 1222e9);
-	// TEST("%04.a", 1222e9);
-    // TEST("%a",x);
-	// TEST("%a", -1e-9);
-	// TEST("%.a", -1.22e-9);
-	// TEST("%.2a", 0);
+	TEST("%04.1a", 1222e9);
+	TEST("%04.a", 1222e9);
+    TEST("%a",x);
+	TEST("%a", -1e-9);
+	TEST("%.a", -1.22e-9);
+	TEST("%.2a", 0);
 
-	// TEST("%#0.3o", 0);
-	// TEST("%#0.3o", 1);
-	// TEST("%#.3o", 1);
-	// TEST("%9.o", 482);
-	// TEST("%#09.0o", 482);
-	// TEST("%.3o", 1);
-	// TEST("%#0#4lo", 0);
-	// TEST("%n", 0);
+	TEST("%#0.3o", 0);
+	TEST("%#0.3o", 1);
+	TEST("%#.3o", 1);
+	TEST("%9.o", 482);
+	TEST("%#09.0o", 482);
+	TEST("%.3o", 1);
+	TEST("%#0#4lo", 0);
+	TEST("%n", 0);
 	
-	// TEST("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
-	// TEST("%#0.3o", 0);
-	// TEST("%lc", 0xa2);
-	// TEST("%C", 0xa2);
-	// TEST("1%n", 0)
-	// setlocale(LC_ALL, "");
+	TEST("%lc, %lc\n", L'ÊM-^ZM-^V', L'ÿ≠');
+	TEST("%#0.3o", 0);
+	TEST("%lc", 0xa2);
+	TEST("%C", 0xa2);
+	TEST("1%n", 0)
+	setlocale(LC_ALL, "");
 
-	// TEST("%hhC, %hhC", 0, L'Á±≥');
-	// TEST("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")
-	// TEST("%C", L'ÁM-^L´');
-	// TEST("{%030S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-	// TEST("{%*d}", -5, 42);
-	// TEST("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-	// char cc;
-	// TEST("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &cc, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	TEST("%hhC, %hhC", 0, L'Á±≥');
+	TEST("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")
+	TEST("%C", L'ÁM-^L´');
+	TEST("{%030S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	TEST("{%*d}", -5, 42);
+	TEST("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	char cc;
+	TEST("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &cc, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
 	
-	// TEST("%#o", 0)
-	// TEST("%.a", 0);
+	TEST("%#o", 0)
+	TEST("%.a", 0);
 
-	// // Todo
+	// Todo
 
-	// TEST("Hex Significant cut: %.5g", 0.00);
-	// TEST("Hex Significant cut: %a", 1e9);
-	// TEST("Hex Significant cut: %a", -1e9);
-	// TEST("Hex Significant cut: %a", 0);
-	// TEST("%a", -1e9);
+	TEST("Hex Significant cut: %.5g", 0.00);
+	TEST("Hex Significant cut: %a", 1e9);
+	TEST("Hex Significant cut: %a", -1e9);
+	TEST("Hex Significant cut: %a", 0);
+	TEST("%a", -1e9);
 
-	// TEST("Hex Round Problem: %04.1a", 26);
-	// TEST("Hex Round Problem: %04.2a", 1222e9);
-	// TEST("Hex Round Problem: %04.3a", 1222e9);
+	TEST("Hex Round Problem: %04.1a", 26);
+	TEST("Hex Round Problem: %04.2a", 1222e9);
+	TEST("Hex Round Problem: %04.3a", 1222e9);
 
-	// TEST("Hex Capital Problem: %.2A", 1222e9);
-	// TEST("Hex Capital Problem: %.3A", 1222e9);
-	// TEST("Hex Capital Problem: %.4A", 1222e9);
-	// TEST("Hex Capital Problem: %.5A", 1222e9);
-	// // TEST("Hex Capital Problem: %.6A", 1222e9);
-	// TEST("Hex Capital Problem: %.7A", 1222e9);
-	// TEST("Hex Capital Problem: %.8A", 1222e9);
+	TEST("Hex Capital Problem: %.2A", 1222e9);
+	TEST("Hex Capital Problem: %.3A", 1222e9);
+	TEST("Hex Capital Problem: %.4A", 1222e9);
+	TEST("Hex Capital Problem: %.5A", 1222e9);
+	// TEST("Hex Capital Problem: %.6A", 1222e9);
+	TEST("Hex Capital Problem: %.7A", 1222e9);
+	TEST("Hex Capital Problem: %.8A", 1222e9);
 
-	// TEST("Hex Capital Problem: %.2G", 1222e9);
-	// TEST("Hex Capital Problem: %.3G", 1222e9);
-	// TEST("Hex Capital Problem: %.4G", 1222e9);
-	// TEST("Hex Capital Problem: %.5G", 1222e9);
-	// TEST("Hex Capital Problem: %.6G", 1222e9);
-	// TEST("Hex Capital Problem: %.7G", 1222e9);
-	// TEST("Hex Capital Problem: %.8G", 1222e9);
-	// TEST("Hex Capital Problem: %.2A", 0);
+	TEST("Hex Capital Problem: %.2G", 1222e9);
+	TEST("Hex Capital Problem: %.3G", 1222e9);
+	TEST("Hex Capital Problem: %.4G", 1222e9);
+	TEST("Hex Capital Problem: %.5G", 1222e9);
+	TEST("Hex Capital Problem: %.6G", 1222e9);
+	TEST("Hex Capital Problem: %.7G", 1222e9);
+	TEST("Hex Capital Problem: %.8G", 1222e9);
+	TEST("Hex Capital Problem: %.2A", 0.0);
 
-	// TEST("%2.2a", 15);
-	// TEST("%2.3a", 15);
-	// TEST("%2.4a", 15);
-	// TEST("%2.5a", 15);
-	// // TEST("%2.6a", 15);
-	// TEST("%2.7a", 15);
+	TEST("%2.2a", 15);
+	TEST("%2.3a", 15);
+	TEST("%2.4a", 15);
+	TEST("%2.5a", 15);
+	// TEST("%2.6a", 15);
+	TEST("%2.7a", 15);
+	TEST("{%10R}")
 
-	// TEST("%s", "The End");
+	TEST("%s", "The End");
 	(void)ac;
 	(void)av;
 	return (0);

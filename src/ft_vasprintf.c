@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 15:58:07 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 16:26:35 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,21 @@ static const char
 {
 	va_list temp;
 	int		nsize;
+	int		i;
 
 	va_copy(temp, dap);
 	if (*s == '*')
 	{
-		nsize = 0;
 		m->size = va_arg(dap, unsigned);
 		s = s + 1;
+		nsize = 0;
 		while ('0' <= *s && *s <= '9')
 			nsize = 10 * (nsize) + *s++ - '0';
-		while (nsize > 0)
-		{
+		i = -1;
+		while (++i < nsize)
 			m->size = va_arg(temp, unsigned);
-			nsize--;
-		}
+		if (*s != '$' && nsize != 0)
+			m->size = nsize;
 	}
 	else
 	{
