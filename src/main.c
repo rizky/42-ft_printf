@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/26 22:22:15 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 14:24:16 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 #define TEST(FMT,...)															\
 	pf = asprintf(&pf_dst,FMT,##__VA_ARGS__);									\
 	ft = ft_asprintf(&ft_dst,FMT,##__VA_ARGS__);								\
+	ft_printf_format(&pf_dst,FMT,##__VA_ARGS__);								\
+	printf("\n");																\
 	if (ft != pf)																\
 		dprintf(2, "Fail : return value Real(%i vs %i)Yours\n", pf, ft);		\
 	if (pf >= 0 && ft >= 0) {													\
@@ -48,32 +50,37 @@ int		main(int ac, char **av)
 
 	t_list *list;
 
-	// TEST("%*$*d", 5, 4, 3, 2, 1);
-	// TEST("%2$5d", 5, 4, 3, 2, 1);
-	// TEST("%*$*.*d", 5, 4, 3, 2, 1);
-	// TEST("%2$d %3$d %d %5$d", 1, 2, 3 ,4 ,5, 6);
-	// TEST("%2$d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
-	// TEST("%d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
-	// TEST("%1$d %1$u %1$D %1$x", 2352352);
-	// TEST("%1$f %1$F %1$g %1$a", 0.2);
-	// TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
+	TEST("%2$*d", 5, 4, 3, 2, 1);	
+	TEST("%2$.*d", 5, 4, 3, 2, 1);
+	
+	TEST("%2$d", 5, 4, 3, 2, 1);	
+	TEST("%*$*d", 5, 4, 3, 2, 1);
+	TEST("%2$5d", 5, 4, 3, 2, 1);
+	TEST("%*$*.*d", 5, 4, 3, 2, 1);
+	TEST("%2$d %3$d %d %5$d", 1, 2, 3 ,4 ,5, 6);
+	TEST("%2$d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+	TEST("%d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+	TEST("%1$d %1$u %1$D %1$x", 2352352);
+	TEST("%1$f %1$F %1$g %1$a", 0.2);
+	TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
 
-	list = ft_strsplit_tolst("Hello how are you doing",' ');
-	ft_printfln("%r", list);
+	// list = ft_strsplit_tolst("Hello how are you doing",' ');
+	// ft_printfln("%r", list);
 
-	long	date[6] = {
-		16, 53, 06, 22, 11, 2015
-	};
-	ft_printfln("%.*y",6, date);
-	int	tabs[10] = {0, 23, 150, 255, 12, 16,  21, 42};
-	ft_printf("%*m", sizeof(date), date);
-	long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
-	ft_printfln("%*.*'y", 3, 2, tab);
+	// long	date[6] = {
+	// 	16, 53, 06, 22, 11, 2015
+	// };
+	// ft_printfln("%.*y",6, date);
+	// int	tabs[10] = {0, 23, 150, 255, 12, 16,  21, 42};
+	// ft_printf("%*m", sizeof(date), date);
+	// ft_printf("%*m", 100, "Hello how are you doing");
+	// long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
+	// ft_printfln("%*.*y", 2, 2, tab);
 
-	ft_printfln("%*R", 10, '-');
+	// ft_printfln("%*R", 10, '-');
 	// long	tab2[6][6] = {{12324 , 2, 12324 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6},
 	// 				{1 , 2, 1 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6}};
-	// ft_printf("%*.*Y\n", 6, 6, tab2);
+	// ft_printf("%*.*y\n", 6, 6, tab2);
 
 	// ft_printf("%q\n", 32300000000000000.0);
 	// printf("%d\n", ft_datetoepoch(date));

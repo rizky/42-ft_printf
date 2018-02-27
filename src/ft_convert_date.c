@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_date.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 00:50:57 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/24 02:12:12 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 13:24:32 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	const char
-	*months[12] = {
-		"January", "February", "March", "April", "May", "June",
-		"July", "August", "September", "October", "November",
-		"December"
-	};
-
 static void
 	pf_date_format_date(t_array *d, long *res_date)
 {
+	const char	*months[12] = {
+		"January", "February", "March", "April", "May", "June",
+		"July", "August", "September", "October", "November",
+		"December"};
+
 	fta_append(d, ft_itoa(res_date[3]), ft_strlen(ft_itoa(res_date[3])));
 	fta_append(d, " ", 1);
 	fta_append(d, months[res_date[4]], ft_strlen(months[res_date[4]]));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 01:44:25 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 13:46:37 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,6 @@ static int
 }
 
 static void
-	pf_popzero(t_array *d, int *ans)
-{
-	while (((ARRAY_LAST(d))[0] == '0' &&
-		(ft_isdigit((ARRAY_LAST(d) - 1)[0]) ||
-		(ARRAY_LAST(d) - 1)[0] == '.')) ||
-		(ARRAY_LAST(d))[0] == '.')
-	{
-		fta_popback(d, 1);
-		ans--;
-	}
-}
-
-static void
 	pf_popzerohex(t_array *d, int *ans)
 {
 	while (((ARRAY_LAST(d))[0] == '0' &&
@@ -92,7 +79,7 @@ int
 	e = 0;
 	e = pf_finde(&arg, &ans, d, e);
 	ans = pf_rtoa(d, ABS(arg), 10, m);
-	pf_popzero(d, &ans);
+	fta_popzero(d, &ans);
 	if (e == 0)
 	{
 		m->precision = -1;

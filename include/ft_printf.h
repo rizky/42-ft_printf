@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:26 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/26 22:18:20 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 14:20:18 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define FTPF_NUMERIC "diouDOUxXpb"
 # define FTPF_LM "hljztL"
 # define FTPF_SWITCHES "0+- #_"
-# define NEW_MODIFIER (t_modifier){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, 0, -1};
+# define NEW_MODIFIER (t_modifier){{{0, 0, 0, 0, 0, 0}}, 0, 0, 0, 0, 0, -1};
 
 typedef struct		s_modifier
 {
@@ -41,7 +41,6 @@ typedef struct		s_modifier
 	char			length;
 	int				size;
 	int				quote;
-	int				dollar;
 	int				ndollar;
 	int				precision;
 }					t_modifier;
@@ -52,12 +51,15 @@ int					ft_dprintf(int fd, char const *format, ...);
 int					ft_asprintf(char **ret, char const *format, ...);
 char				*ft_rasprintf(int *ans, char const *format, ...);
 int					ft_dollarprintf(char const *format, ...);
+int					ft_printf_format(char const *format, ...);
 
 int					ft_vprintf(char const *format, va_list ap);
 int					ft_vdprintf(int fd, char const *format, va_list ap);
-int					ft_vasprintf(char **ret, char const *s, va_list ap);
+int					ft_vasprintf(char **ret, char const *s,
+					va_list ap, va_list dap);
 
-int					pf_convert(t_modifier *m, t_array *d, va_list ap, va_list dap);
+int					pf_convert(t_modifier *m, t_array *d,
+					va_list ap, va_list dap);
 char				*pf_next_specifier(char const *s, t_array *d);
 int					pf_unsigned_integer(t_modifier *m,
 					t_array *d, va_list ap, int b);

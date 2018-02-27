@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vasprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 15:04:04 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 14:13:29 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static const char
 	if (*s == '*')
 	{
 		m->precision = va_arg(dap, unsigned);
-		if (m->dollar)
-			va_copy(ap, dap);
 		return (s + 1);
 	}
 	m->precision = 0;
@@ -31,9 +29,7 @@ static const char
 static const char
 	*pf_update_size(char const *s, t_modifier *m, va_list ap, va_list dap)
 {
-	if (!(m->size == 0 || m->dollar == 0))
-		s = s + 1;
-	else if (*s == '*')
+	if (*s == '*')
 	{
 		m->size = va_arg(dap, unsigned);
 		s = s + 1;
@@ -44,7 +40,7 @@ static const char
 		while ('0' <= *s && *s <= '9')
 			m->size = 10 * (m->size) + *s++ - '0';
 	}
-	if (m->dollar)
+	if (m->ndollar != 0)
 		va_copy(ap, dap);
 	return (s);
 }
@@ -72,12 +68,9 @@ static const char
 			m->quote = 1;
 		else if (*s == '$')
 		{
-			if (*(s - 1) != '*')
-			{
-				m->ndollar = m->size;
-				m->size = 0;
-			}
-			m->dollar = 1;
+			m->ndollar = m->size;
+			m->size = 0;
+			va_arg(dap, unsigned);
 		}
 		else if (('1' <= *s && *s <= '9') || *s == '*')
 			s = pf_update_size(s, m, ap, dap) - 1;
@@ -92,14 +85,12 @@ static const char
 }
 
 int
-	ft_vasprintf(char **ret, char const *s, va_list ap)
+	ft_vasprintf(char **ret, char const *s, va_list ap, va_list dap)
 {
 	t_array		d;
 	t_modifier	m;
 	int			temp;
-	va_list		dap;
 
-	va_copy(dap, ap);
 	d = NEW_ARRAY(char);
 	while (*s != '\0')
 	{

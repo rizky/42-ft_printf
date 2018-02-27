@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 02:11:04 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/26 22:19:48 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 13:20:00 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int
 		else
 			fta_append(d, "[", 1);
 		if (m->quote)
-			fta_append(d, ft_rasprintf(&max, "%'*d", max,arg[i]), max);
+			fta_append(d, ft_rasprintf(&max, "%'*d", max, arg[i]), max);
 		else
-			fta_append(d, ft_rasprintf(&max, "%*d", max,arg[i]), max);
+			fta_append(d, ft_rasprintf(&max, "%*d", max, arg[i]), max);
 	}
 	fta_append(d, "]]", 2);
 	return (1);
@@ -90,11 +90,11 @@ int
 	int			q;
 	int			ans;
 	const char	size[5] = "KMGTP";
-	
+
 	(void)m;
 	arg = va_arg(ap, double);
 	q = 0;
-	while(arg > 1000 && q < 5)
+	while (arg > 1000 && q < 5)
 	{
 		arg = arg / 1000;
 		q++;

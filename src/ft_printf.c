@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:35:59 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/26 22:06:34 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 13:56:11 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,12 @@ int
 	ft_asprintf(char **ret, char const *format, ...)
 {
 	va_list		ap;
+	va_list		dap;
 	int			ans;
 
 	va_start(ap, format);
-	ans = ft_vasprintf(ret, format, ap);
+	va_copy(dap, ap);
+	ans = ft_vasprintf(ret, format, ap, dap);
 	va_end(ap);
 	return (ans);
 }
@@ -92,10 +94,12 @@ char
 	*ft_rasprintf(int *ans, char const *format, ...)
 {
 	va_list		ap;
+	va_list		dap;
 	char		*ret;
 
 	va_start(ap, format);
-	*ans = ft_vasprintf(&ret, format, ap);
+	va_copy(dap, ap);
+	*ans = ft_vasprintf(&ret, format, ap, dap);
 	va_end(ap);
 	return (ret);
 }

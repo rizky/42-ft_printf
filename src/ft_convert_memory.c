@@ -3,25 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_memory.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 16:40:45 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/25 16:51:47 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 13:24:07 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_hex(int number, int rem, t_array *d)
+static void
+	ft_putnbr_hex(int number, int rem, t_array *d, int col)
 {
 	const char *base = "0123456789abcdef";
 
 	if (rem > 1)
-		ft_putnbr_hex(number / 16, rem - 1, d);
+		ft_putnbr_hex(number / 16, rem - 1, d, col);
 	fta_append(d, &(base[number % 16]), 1);
+	if (col % 2 && rem == 2)
+		fta_append(d, " ", 1);
 }
 
-void	ft_putchar_dot(unsigned char const c, t_array *d)
+static void
+	ft_putchar_dot(unsigned char const c, t_array *d)
 {
 	if (c >= ' ' && c <= '~')
 		fta_append(d, &c, 1);
@@ -29,23 +33,19 @@ void	ft_putchar_dot(unsigned char const c, t_array *d)
 		fta_append(d, ".", 1);
 }
 
-void	print_memory(const void *addr, size_t size, t_array *d)
+static void
+	print_memory(const void *addr, size_t size, t_array *d)
 {
-	size_t	i;
-	size_t	col;
 	const unsigned char *ptr = addr;
-	
+	size_t				i;
+	size_t				col;
+
 	i = 0;
 	while (i < size)
 	{
-		col = 0;
-		while (col < 16 && col + i < size)
-		{
-			ft_putnbr_hex(*(ptr + i + col), 2, d);
-			if (col % 2)
-				fta_append(d, " ", 1);
-			col++;
-		}
+		col = -1;
+		while (++col < 16 && col + i < size)
+			ft_putnbr_hex(*(ptr + i + col), 2, d, col);
 		while (col < 16)
 		{
 			fta_append(d, "  ", 2);
@@ -53,12 +53,9 @@ void	print_memory(const void *addr, size_t size, t_array *d)
 				fta_append(d, " ", 1);
 			col++;
 		}
-		col = 0;
-		while (col < 16 && col + i < size)
-		{
+		col = -1;
+		while (++col < 16 && col + i < size)
 			ft_putchar_dot(*(ptr + i + col), d);
-			col++;
-		}
 		fta_append(d, "\n", 1);
 		i = i + 16;
 	}

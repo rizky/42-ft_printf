@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:23 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/26 22:18:53 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 14:00:12 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ static int
 static void
 	pf_handle_dollar_sign(t_modifier *m, va_list ap, va_list dap)
 {
-	if (m->dollar)
+	if (m->ndollar)
 	{
 		va_copy(dap, ap);
-		while(--(m->ndollar) > 0)
+		while (--(m->ndollar) > 0)
 			va_arg(dap, void*);
 	}
 }
