@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vasprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 15:27:53 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 15:58:07 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,11 @@ static const char
 			m->quote = 1;
 		else if (*s == '$')
 		{
-			m->ndollar = m->size;
-			m->size = 0;
+			if (m->ndollar == 0)
+			{
+				m->ndollar = m->size;
+				m->size = 0;
+			}
 		}
 		else if (('1' <= *s && *s <= '9') || *s == '*')
 			s = pf_update_size(s, m, dap) - 1;
