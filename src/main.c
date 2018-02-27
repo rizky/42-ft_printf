@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 14:24:16 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 14:49:27 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@
 #define ULONG_MAX (__LONG_MAX__ *2UL+1UL)
 
 #define TEST(FMT,...)															\
+	ft_printf_format(FMT,##__VA_ARGS__, NULL);									\
 	pf = asprintf(&pf_dst,FMT,##__VA_ARGS__);									\
 	ft = ft_asprintf(&ft_dst,FMT,##__VA_ARGS__);								\
-	ft_printf_format(&pf_dst,FMT,##__VA_ARGS__);								\
-	printf("\n");																\
 	if (ft != pf)																\
 		dprintf(2, "Fail : return value Real(%i vs %i)Yours\n", pf, ft);		\
 	if (pf >= 0 && ft >= 0) {													\
@@ -43,6 +42,7 @@ int		main(int ac, char **av)
 {
 	char	*pf_dst;
 	char	*ft_dst;
+	char	*format_dump;
 	int		pf;
 	int		ft;
 	double 	x = 3.14;
@@ -51,18 +51,18 @@ int		main(int ac, char **av)
 	t_list *list;
 
 	TEST("%2$*d", 5, 4, 3, 2, 1);	
-	TEST("%2$.*d", 5, 4, 3, 2, 1);
+	// TEST("%2$.*d", 5, 4, 3, 2, 1);
 	
-	TEST("%2$d", 5, 4, 3, 2, 1);	
-	TEST("%*$*d", 5, 4, 3, 2, 1);
-	TEST("%2$5d", 5, 4, 3, 2, 1);
-	TEST("%*$*.*d", 5, 4, 3, 2, 1);
-	TEST("%2$d %3$d %d %5$d", 1, 2, 3 ,4 ,5, 6);
-	TEST("%2$d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
-	TEST("%d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
-	TEST("%1$d %1$u %1$D %1$x", 2352352);
-	TEST("%1$f %1$F %1$g %1$a", 0.2);
-	TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
+	// TEST("%2$d", 5, 4, 3, 2, 1);	
+	// TEST("%*$*d", 5, 4, 3, 2, 1);
+	// TEST("%2$5d", 5, 4, 3, 2, 1);
+	// TEST("%*$*.*d", 5, 4, 3, 2, 1);
+	// TEST("%2$d %3$d %d %5$d", 1, 2, 3 ,4 ,5, 6);
+	// TEST("%2$d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+	// TEST("%d %3$s %d %5$d", 1, 2, "Hello" ,4 ,5, 6);
+	// TEST("%1$d %1$u %1$d %1$x", 152);
+	// TEST("%1$f %1$F %1$g %1$a", 0.2);
+	// TEST("16-Bonus _%-2147483648.99h+08h#.04i_", '*');
 
 	// list = ft_strsplit_tolst("Hello how are you doing",' ');
 	// ft_printfln("%r", list);

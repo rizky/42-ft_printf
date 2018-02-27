@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:14 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 14:25:35 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/27 14:42:42 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,20 @@ int
 }
 
 int
+	pf_print_format(char const *s)
+{
+	ft_printf("%wFormat: %s\n", s);
+	return (ft_strlen(s) + 1);
+}
+
+int
 	ft_printf_format(char const *format, ...)
 {
-	ft_printf("%s", format);
-	return (ft_strlen(format));
+	va_list		ap;
+	int			ans;
+
+	va_start(ap, format);
+	ans = pf_print_format(format);
+	va_end(ap);
+	return (ans);
 }
