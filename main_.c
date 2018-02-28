@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/28 15:02:11 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:35:23 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ int		main(int ac, char **av)
 	int	tabs[10] = {0, 23, 150, 255, 12, 16,  21, 42};
 	ft_printf("%*m", sizeof(date), date);
 	long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
-	ft_printfln("%*.*'y", 3, 2, tab);
+	ft_printfln("%*.*y", 3, 2, tab);
 
 	ft_printfln("%*R", 10, '-');
 	long	tab2[6][6] = {{12324 , 2, 12324 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6},
 					{1 , 2, 1 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6}};
-	// ft_printf("%*.*y\n", 6, 6, tab2);
+	ft_printf("%*.*y\n", 6, 6, tab2);
 
 	ft_printf("%q\n", 32300000000000000.0);
 	printf("%d\n", ft_datetoepoch(date));

@@ -6,7 +6,7 @@
 #    By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/02/25 16:44:03 by rnugroho         ###   ########.fr        #
+#    Updated: 2018/02/28 20:39:09 by rnugroho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,11 +87,11 @@ re: fclean
 
 test: $(NAME)
 	@echo "Files :" $(FILES)
-	@$(COMPILER) -g -w $(CFLAGS) src/main.c $(SRC) $(LFLAGS) -o test_me
+	@$(COMPILER) -g -w $(CFLAGS) main.c $(SRC) $(LFLAGS) -o test_me
 
 debug: $(NAME)
 	@echo "Files :" $(FILES)
-	@$(COMPILER) -g $(IFLAGS) src/main.c $(SRC) $(LFLAGS)
+	@$(COMPILER) -g $(IFLAGS) main.c $(SRC) $(LFLAGS)
 
 norm:
 	@echo $(RED)

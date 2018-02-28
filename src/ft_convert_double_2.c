@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:36:25 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 15:30:45 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 22:04:17 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ int
 	else if (m->booleans.n.space)
 		fta_append(d, " ", 1);
 	fta_append(d, "0x", 2);
-	if (m->precision == -1)
-		m->precision = 13;
 	arg = ABS(arg);
 	return (pf_signed_double_a(m, d, arg, "p"));
 }
@@ -84,8 +82,6 @@ int
 	else if (m->booleans.n.space)
 		fta_append(d, " ", 1);
 	fta_append(d, "0X", 2);
-	if (m->precision == -1)
-		m->precision = 13;
 	arg = ABS(arg);
 	return (pf_signed_double_a(m, d, arg, "P"));
 }

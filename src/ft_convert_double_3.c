@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 13:46:37 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 22:04:09 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int
 	pf_finde(long double *arg, int *ans, t_array *d, int e)
 {
-	if (*arg < 1 && *arg >= 0.0001)
+	if (*arg < 100000 && *arg >= 0.0001)
 		return (e);
 	if (*arg > 0 && *arg < 1)
 	{
@@ -108,7 +108,8 @@ int
 		ans = pf_rtoa(d, ABS(arg), 16, m);
 	else
 		ans = pf_rtoa(d, ABS(arg), -16, m);
-	pf_popzerohex(d, &ans);
+	if (m->precision == -1)
+		pf_popzerohex(d, &ans);
 	ans += fta_append(d, c, 1);
 	if (p >= 0)
 		ans += fta_append(d, "+", 1);

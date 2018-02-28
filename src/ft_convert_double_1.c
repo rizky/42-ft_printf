@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/23 15:31:09 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 22:07:57 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int
 	double			frac;
 	int				ans;
 	int				bp;
+	int				p;
 
 	ans = 1 + pf_itoa_base(d, (long long)x, ABS(b), 2 | (b < 0));
 	if (m->quote)
@@ -27,7 +28,8 @@ int
 	fta_append(d, ".", 1);
 	bp = 0;
 	frac = ft_modf(x);
-	while (bp < m->precision)
+	p = (m->precision == -1? 13 : m->precision);
+	while (bp < p)
 	{
 		frac *= ABS(b);
 		if (frac < 1)
