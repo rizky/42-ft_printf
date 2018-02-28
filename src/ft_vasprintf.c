@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/28 02:14:31 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:01:16 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int
 {
 	t_array		d;
 	t_modifier	m;
-	int			temp;
 	va_list		dap;
 
 	va_copy(dap, ap);
@@ -114,13 +113,13 @@ int
 			s = pf_match(s, &m, dap);
 			if (m.conversion && pf_convert(&m, &d, ap, dap) == -1)
 			{
-				fta_resize(&d, temp);
+				fta_resize(&d, m.mindex);
 				fta_trim(&d);
 				*ret = d.data;
 				d.size = 0;
 				return (-1);
 			}
-			temp = d.size;
+			m.mindex = d.size;
 		}
 		s = pf_next_specifier(s, &d);
 	}
