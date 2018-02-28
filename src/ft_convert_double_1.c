@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/28 22:07:57 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 23:14:07 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int
 	int				bp;
 	int				p;
 
-	ans = 1 + pf_itoa_base(d, (long long)x, ABS(b), 2 | (b < 0));
+	ans = 1 + pf_itoa_base(d, (intmax_t)x, ABS(b), (b < 0));
 	if (m->quote)
 		ans += pf_culturization(d, ',');
 	if (m->precision == 0)
@@ -129,7 +129,10 @@ int
 {
 	double	arg;
 
-	arg = va_arg(ap, double);
+	if (m->length == 'L')
+		arg = va_arg(ap, long double);
+	else
+		arg = va_arg(ap, double);
 	if (arg < 0)
 		fta_append(d, "-", 1);
 	else if (m->booleans.n.plus)

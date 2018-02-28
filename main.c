@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/28 22:21:47 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 23:22:12 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int		main(int ac, char **av)
 	int i;
 	i = 42;
 
-	TEST("%f", FLT_MAX);
-
+	// TEST("%f %Lf", 42.0f, 42.0f);
+	printf("%La", 42.0f, 42.0f);
 	// TEST("%%s: %s", "Hello World");
 	// TEST("%%p: %p", &i);
 	// TEST("%%d: %d", i);
