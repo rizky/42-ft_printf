@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:26 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 16:43:47 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 02:15:13 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,12 @@ int					ft_dprintf(int fd, char const *format, ...);
 int					ft_asprintf(char **ret, char const *format, ...);
 char				*ft_rasprintf(int *ans, char const *format, ...);
 int					ft_dollarprintf(char const *format, ...);
-int					ft_printf_format(char const *format, ...);
 
 int					ft_vprintf(char const *format, va_list ap);
 int					ft_vdprintf(int fd, char const *format, va_list ap);
-int					ft_vasprintf(char **ret, char const *s,
-					va_list ap, va_list dap);
+int					ft_vasprintf(char **ret, char const *s, va_list ap);
 
-int					pf_convert(t_modifier *m, t_array *d,
-					va_list ap, va_list dap);
+int					pf_convert(t_modifier *m, t_array *d, va_list ap, va_list dap);
 char				*pf_next_specifier(char const *s, t_array *d);
 int					pf_unsigned_integer(t_modifier *m,
 					t_array *d, va_list ap, int b);
@@ -107,7 +104,6 @@ int					pf_cv_r(t_modifier *m, t_array *d, va_list ap);
 int					pf_cv_q(t_modifier *m, t_array *d, va_list ap);
 int					pf_cv_m(t_modifier *m, t_array *d, va_list ap);
 int					pf_cv_cq(t_modifier *m, t_array *d, va_list ap);
-
 int					pf_culturization(t_array *d, char c);
 size_t				ft_wstrnconv(char *buff, const wchar_t *wstr, size_t n);
 size_t				ft_wstrconv(char *buff, const wchar_t *wstr);

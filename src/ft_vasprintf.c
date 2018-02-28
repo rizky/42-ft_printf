@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/27 16:26:35 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/02/28 02:14:31 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,14 @@ static const char
 }
 
 int
-	ft_vasprintf(char **ret, char const *s, va_list ap, va_list dap)
+	ft_vasprintf(char **ret, char const *s, va_list ap)
 {
 	t_array		d;
 	t_modifier	m;
 	int			temp;
+	va_list		dap;
 
+	va_copy(dap, ap);
 	d = NEW_ARRAY(char);
 	while (*s != '\0')
 	{
