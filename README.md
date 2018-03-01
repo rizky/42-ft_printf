@@ -36,6 +36,7 @@ New Custom Conversions
 - Color Specifier (%w & %W)
 - Byte Size Specifie (%q)
 - Repetitif Char Conversion (%R)
+- Binary (%b)
 
 Adds-On
 - ft_dprintfln

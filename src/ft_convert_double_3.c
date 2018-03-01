@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:37:10 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/28 22:04:09 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/03/01 00:24:04 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int
 		*arg = *arg * 2;
 		p--;
 	}
-	while (*arg > 2)
+	while (*arg >= 2)
 	{
 		*arg = *arg / 2;
 		p++;
@@ -57,17 +57,23 @@ static int
 	return (p);
 }
 
-static void
-	pf_popzerohex(t_array *d, int *ans)
+static int
+	pf_findlp(long double *arg, int p)
 {
-	while (((ARRAY_LAST(d))[0] == '0' &&
-		(ft_ishexdigit((ARRAY_LAST(d) - 1)[0]) ||
-		(ARRAY_LAST(d) - 1)[0] == '.')) ||
-		(ARRAY_LAST(d))[0] == '.')
+	if (*arg > 0 && *arg < 1)
 	{
-		fta_popback(d, 1);
-		ans--;
+		while (*arg < 16)
+		{
+			*arg = *arg * 2;
+			p--;
+		}
 	}
+	while (*arg >= 16)
+	{
+		*arg = *arg / 2;
+		p++;
+	}
+	return (p);
 }
 
 int
@@ -103,13 +109,13 @@ int
 	int		p;
 
 	p = 0;
-	p = pf_findp(&arg, p);
+	p = (m->length == 'L' ? pf_findlp(&arg, p) : pf_findp(&arg, p));
 	if (*c == 'p')
 		ans = pf_rtoa(d, ABS(arg), 16, m);
 	else
 		ans = pf_rtoa(d, ABS(arg), -16, m);
 	if (m->precision == -1)
-		pf_popzerohex(d, &ans);
+		fta_popzerohex(d, &ans);
 	ans += fta_append(d, c, 1);
 	if (p >= 0)
 		ans += fta_append(d, "+", 1);

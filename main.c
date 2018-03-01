@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/28 23:22:12 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/03/01 01:11:42 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 #define LONG_MAX  __LONG_MAX__
 
-#define LONG_MIN  (-__LONG_MAX__ -1L)
 #define ULONG_MAX (__LONG_MAX__ *2UL+1UL)
 
 #define TEST(FMT,...)															\
@@ -34,8 +33,8 @@
 					"\e[1;31m", pf_dst, ft_dst, "\e[0m");						\
 		else																	\
 		{																		\
-			printf("\e[1;32m|%s|%d\e[0m\n", pf_dst, pf);								\
-			printf("\e[1;32m|%s|%d\e[0m\n\n", ft_dst, ft);								\
+			printf("\e[1;32m%s|%s|%d\e[0m\n",FMT, pf_dst, pf);					\
+			printf("\e[1;32m%s|%s|%d\e[0m\n\n",FMT, ft_dst, ft);				\
 		}																		\
 	}
 
@@ -47,89 +46,106 @@ int		main(int ac, char **av)
 	int		ft;
 
 	int i;
+	double g;
+	long double lg;
 	i = 42;
 
-	// TEST("%f %Lf", 42.0f, 42.0f);
-	printf("%La", 42.0f, 42.0f);
-	// TEST("%%s: %s", "Hello World");
-	// TEST("%%p: %p", &i);
-	// TEST("%%d: %d", i);
-	// TEST("%%");
+	TEST("%s", "Hello World");
+	TEST("%p", &i);
+	TEST("%d", i);
+	TEST("%%");
 
-	// TEST("%s %p %d", "Hello World", &i, i);
+	TEST("%s %p %d", "Hello World", &i, i);
 
-	// setlocale(LC_ALL, "");
-	// TEST("%%S: %S", L"你好");
-	// TEST("%%D: %D", i);
-	// TEST("%%i: %i", i);
-	// TEST("%%o: %o", i);
-	// TEST("%%O: %O", i);
-	// TEST("%%u: %u", i * -1);
-	// TEST("%%U: %U", i * -1);
-	// TEST("%%x: %x", i);
-	// TEST("%%X: %X", i);
-	// TEST("%%c: %c", i);
-	// TEST("%%C: %C", L'你');
+	setlocale(LC_ALL, "");
+	TEST("%S", L"你好");
+	TEST("%D", i);
+	TEST("%i", i);
+	TEST("%o", i);
+	TEST("%O", i);
+	TEST("%u", i * -1);
+	TEST("%U", i * -1);
+	TEST("%x", i);
+	TEST("%X", i);
+	TEST("%c", i);
+	TEST("%C", L'你');
 
-	// TEST("%s %d %p %% %S %D %i %o %O %u %U %x %X %c %C","bonjour", i, &i, L"你好", LONG_MAX, i, i, i, 100000, ULONG_MAX, i, i, 'c', L'你');
+	TEST("%s %d %p %% %S %D %i %o %O %u %U %x %X %c %C","bonjour", i, &i, L"你好", LONG_MAX, i, i, i, 100000, ULONG_MAX, i, i, 'c', L'你');
 
-	// TEST("%#8d", i);
-	// TEST("%08d", i);
-	// TEST("%+#8d", i);
-	// TEST("%-08d", i);
+	TEST("%#8d", i);
+	TEST("%08d", i);
+	TEST("%+#8d", i);
+	TEST("%-08d", i);
 
-	// TEST("%d %hd", 32768, 32768);
-	// TEST("%d %hhd", 257, 257);
-	// TEST("%d %ld", LONG_MAX, LONG_MAX);
-	// TEST("%d %lld", LONG_MAX, LONG_MAX);
-	// TEST("%d %jd", 2147483648, 2147483648);
+	TEST("%d %hd", 32768, 32768);
+	TEST("%d %hhd", 257, 257);
+	TEST("%d %ld", LONG_MAX, LONG_MAX);
+	TEST("%d %lld", LONG_MAX, LONG_MAX);
+	TEST("%d %jd", 2147483648, 2147483648);
 
-	// TEST("%.5s", "Hello World");
-	// TEST("%.5d", i);
-	// TEST("%.5x", i);
-	// TEST("%.5o", i);
-	// TEST("%.5e", 42.0);
-	// TEST("%.5f", 42.0);
-	// TEST("%.5g", 0.000042);
-	// TEST("%.5g", 420000.0);
-	// TEST("%.5g", 99999.0);
-	// TEST("%.5a", 42.0);
+	TEST("%.5s", "Hello World");
+	TEST("%.5d", i);
+	TEST("%.5x", i);
+	TEST("%.5o", i);
+	TEST("%.5e", 42.0);
+	TEST("%.5f", 42.0);
+	TEST("%.5g", 0.000042);
+	TEST("%.5g", 420000.0);
+	TEST("%.5g", 99999.0);
+	TEST("%.5a", 42.0);
 
-	// TEST("%%E: %E", 42.0);
-	// TEST("%%F: %F", 42.0);
-	// TEST("%%G: %G", 42.0);
-	// TEST("%%A: %A", 42.0);
+	TEST("%E", 42.0);
+	TEST("%F", 42.0);
+	TEST("%G", 42.0);
+	TEST("%A", 42.0);
 
-	// TEST("%*.*f", 10, 3, 42.0);
-	// TEST("%1$d %1$x %1$o %2$e %2$f %2$g %2$g", 42, 42.0);
-	// TEST("%2$*1$d", 2, 1);
-	// TEST("%*d", 2, 1);
+	int a,b,c,d,e,f;
+	ft_printf("12%n45%n78%n\n", &a, &b, &c);
+	printf("12%n45%n78%n\n", &d, &e, &f);
+	ft_printf("(Real,FT) (%i,%i) (%i,%i) (%i,%i)\n\n", d,a,e,b,f,c);
 
-	// TEST("%f %'f", 10000000.0, 10000000.0);
+	TEST("%*.*f", 10, 3, 42.0);
+	TEST("%1$d %1$x %1$o %2$e %2$f %2$g %2$g", 42, 42.0);
+	TEST("%2$*1$d", 2, 1);
+	TEST("%*d", 2, 1);
 
-	// ft_printf("%6w|%s|%5w|%s|%4w|%s|%3w|%s|%2w|%s|%1w|%s|%w\n","Test","Test","Test","Test","Test","Test");
-	
-	// t_list *list;
-	// list = ft_strsplit_tolst("Hello how are you doing",' ');
-	// ft_printfln("%r", list);
-	// ft_printfln("%*Q", 100, '-');
-	// long	date[6] = {
-	// 	16, 53, 06, 22, 11, 2015
-	// };
-	// ft_printfln("%*.*y", 1, 6, date);
-	// int	tabs[10] = {0, 23, 150, 255, 12, 16,  21, 42};
-	// ft_printf("%*m", sizeof(date), date);
-	// long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
-	// ft_printfln("%*.*y", 3, 2, tab);
-	// long	tab2[6][6] = {{12324 , 2, 12324 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6},
-	// 				{1 , 2, 1 , 2, 1 , 2}, {3, 12324, 5, 6 ,5, 6}, {5, 6, 5, 6, 5, 6}};
-	// ft_printf("%*.*y\n", 6, 6, tab2);
+	setlocale(LC_NUMERIC, "");
+	TEST("%f %'f", 10000000.0, 10000000.0);
+	TEST("%d %'d", 10000000, 10000000);
 
-	// ft_printf("%q\n", 32300000000.0);
-	// printf("%d\n", ft_datetoepoch(date));
-	// ft_printf("%T\n", ft_datetoepoch(date));
-	// ft_printf("%1T\n", ft_datetoepoch(date));
-	// ft_printf("%2T\n", ft_datetoepoch(date));	
+	g = 42.0;
+	lg = 42.0;
+	TEST("%f %Lf", g, lg);
+	TEST("%a %La", g, lg);
+
+	ft_printfln("%6W|%s|%5w|%s|%4W|%s|%3w|%s|%2W|%s|%1w|%s|%w","H","E","L","L","O","W");
+	ft_printfln("%b", 42);
+	t_list *list;
+	char	str[] = "Hello how are you doing ?";
+	list = ft_strsplit_tolst(str,' ');
+	ft_printfln("%r", list);
+	ft_printfln("%*Q", 100, '-');
+	long	date[6] = {
+		16, 53, 06, 22, 11, 2015
+	};
+	ft_printfln("%*.*y", 1, 6, date);
+	ft_printfln("%T", ft_datetoepoch(date));
+	ft_printfln("%1T", ft_datetoepoch(date));
+	ft_printfln("%2T", ft_datetoepoch(date));
+
+	int	tabs[10] = {0, 23, 150, 255, 12, 16,  21, 42};
+	long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
+	ft_printfln("%*.*y", 3, 2, tab);
+
+	ft_printf("%*m", sizeof(date), date);
+	ft_printf("%*m", ft_strlen(str) + 5, str);
+
+	ft_printfln("%q", 32300000000.0);	
+
+	char *res;
+	i = ft_asprintf(&res, "%s", "Hello World");
+	ft_printfln("%s|%d", res, i);
+	ft_printfln("%s|%d", ft_rasprintf(&i, "%s", "Hello World"), i);
 	(void)ac;
 	(void)av;
 	return (0);
