@@ -6,7 +6,7 @@
 /*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/03/01 14:34:27 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/03/01 15:18:34 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@
 			printf("\e[1;32m%s|%s|%d\e[0m\n\n",FMT, ft_dst, ft);				\
 		}																		\
 	}
+
+#define TEST_C(FMT,...)															\
+	ft = ft_asprintf(&ft_dst,FMT,##__VA_ARGS__);								\
+	printf("\e[1;32m%s|%s|%d\e[0m\n\n",FMT, ft_dst, ft);				\
 
 int		main(int ac, char **av)
 {
@@ -100,6 +104,7 @@ int		main(int ac, char **av)
 	TEST("%A", 42.0);
 
 	int a,b,c,d,e,f;
+	TEST("12%n45%n78%n", &a, &b, &c);
 	ft_printf("12%n45%n78%n\n", &a, &b, &c);
 	printf("12%n45%n78%n\n", &d, &e, &f);
 	ft_printf("(Real,FT) (%i,%i) (%i,%i) (%i,%i)\n\n", d,a,e,b,f,c);
@@ -117,29 +122,29 @@ int		main(int ac, char **av)
 	lg = 42.0;
 	TEST("%f %f %2$Lf", g, lg);
 
-	ft_printfln("%6W|%s|%5w|%s|%4W|%s|%3w|%s|%2W|%s|%1w|%s|%w","H","E","L","L","O","W");
-	ft_printfln("%b", 42);
+	TEST_C("%6W|%s|%5w|%s|%4W|%s|%3w|%s|%2W|%s|%1w|%s|%w","H","E","L","L","O","W");
+	TEST_C("%b", 42);
 	t_list *list;
 	char	str[] = "Hello how are you doing ?";
 	list = ft_strsplit_tolst(str,' ');
-	ft_printfln("%r", list);
-	ft_printfln("%*Q", 100, '-');
+	TEST_C("%r", list);
+	TEST_C("%*Q", 100, '-');
 	long	date[6] = {
 		16, 53, 06, 22, 11, 2015
 	};
-	ft_printfln("%*.*y", 1, 6, date);
-	ft_printfln("%T", ft_datetoepoch(date));
-	ft_printfln("%1T", ft_datetoepoch(date));
-	ft_printfln("%2T", ft_datetoepoch(date));
+	TEST_C("%*.*y", 1, 6, date);
+	TEST_C("%T", ft_datetoepoch(date));
+	TEST_C("%1T", ft_datetoepoch(date));
+	TEST_C("%2T", ft_datetoepoch(date));
 
 	int	tabs[10] = {0, 23, 150, 255, 12, 16,  21, 42};
 	long	tab[3][2] = {{1 , 2}, {3, 12324}, {5, 6}};
-	ft_printfln("%*.*y", 3, 2, tab);
+	TEST_C("\n%*.*y", 3, 2, tab);
 
-	ft_printf("%*m", sizeof(date), date);
-	ft_printf("%*m", ft_strlen(str) + 5, str);
+	TEST_C("\n%*m", sizeof(date), date);
+	TEST_C("\n%*m", ft_strlen(str) + 5, str);
 
-	ft_printfln("%q", 32300000000.0);	
+	TEST_C("%q", 32300000000.0);	
 
 	char *res;
 	i = ft_asprintf(&res, "%s", "Hello World");
