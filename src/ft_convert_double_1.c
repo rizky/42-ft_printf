@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_double_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/28 23:14:07 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/03/01 14:35:58 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,15 @@ int
 	if (m->precision == 0)
 		return (ans);
 	fta_append(d, ".", 1);
-	bp = 0;
+	bp = -1;
 	frac = ft_modf(x);
-	p = (m->precision == -1? 13 : m->precision);
-	while (bp < p)
+	p = (m->precision == -1 ? 13 : m->precision);
+	while (++bp < p)
 	{
 		frac *= ABS(b);
 		if (frac < 1)
 			fta_append(d, "0", 1);
 		ans++;
-		bp++;
 	}
 	frac = ft_round_base(frac, ft_modf(frac), ABS(b));
 	if (frac != 0)

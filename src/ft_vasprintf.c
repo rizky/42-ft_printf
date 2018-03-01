@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vasprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:36:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/02/28 15:01:16 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/03/01 14:37:49 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ int
 				fta_resize(&d, m.mindex);
 				fta_trim(&d);
 				*ret = d.data;
-				d.size = 0;
 				return (-1);
 			}
 			m.mindex = d.size;

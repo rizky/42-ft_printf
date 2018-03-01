@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rnugroho <rnugroho@students.42.fr>         +#+  +:+       +#+        */
+/*   By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 09:35:12 by rnugroho          #+#    #+#             */
-/*   Updated: 2018/03/01 01:11:42 by rnugroho         ###   ########.fr       */
+/*   Updated: 2018/03/01 14:34:27 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,7 @@ int		main(int ac, char **av)
 
 	g = 42.0;
 	lg = 42.0;
-	TEST("%f %Lf", g, lg);
-	TEST("%a %La", g, lg);
+	TEST("%f %f %2$Lf", g, lg);
 
 	ft_printfln("%6W|%s|%5w|%s|%4W|%s|%3w|%s|%2W|%s|%1w|%s|%w","H","E","L","L","O","W");
 	ft_printfln("%b", 42);
